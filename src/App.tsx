@@ -1329,7 +1329,7 @@ function App() {
             {newsCards.map((card, index) => (
               <article
                 key={card.title}
-                className={`news-card tone-${newsAccents[index]} ${index === 0 ? "is-featured" : ""}`}
+                className={`news-card tone-${newsAccents[index]}`}
                 data-reveal
               >
                 {card.image ? (

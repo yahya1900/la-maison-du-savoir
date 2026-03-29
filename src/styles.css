@@ -1472,10 +1472,6 @@ textarea:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .news-card.is-featured {
-    grid-column: auto;
-  }
-
   .steps-grid {
     grid-template-columns: 1fr;
   }
@@ -1844,23 +1840,6 @@ textarea:focus-visible {
 @media (min-width: 1041px) {
   .gallery-card.is-featured {
     grid-row: span 2;
-  }
-
-  .news-card.is-featured {
-    grid-column: span 2;
-    grid-template-columns: minmax(260px, 0.92fr) minmax(0, 1.08fr);
-    align-items: stretch;
-    gap: 24px;
-  }
-
-  .news-card.is-featured .news-media {
-    height: 100%;
-    margin-bottom: 0;
-  }
-
-  .news-card.is-featured .news-media img {
-    height: 100%;
-    max-height: none;
   }
 }
 
