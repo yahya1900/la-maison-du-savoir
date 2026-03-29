@@ -422,6 +422,7 @@ function App() {
   const [language, setLanguage] = useState<LanguageCode>(getInitialLanguage);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeGalleryImage, setActiveGalleryImage] = useState<number | null>(null);
+  const [showAllGalleryImages, setShowAllGalleryImages] = useState(false);
   const [activeSection, setActiveSection] = useState<SectionId>("home");
   const [, startTransition] = useTransition();
 
@@ -622,6 +623,8 @@ function App() {
     alt: `${copy.gallery.section.title} ${index + 1}`
   }));
   const previewGalleryCards = galleryCards.slice(0, GALLERY_PREVIEW_COUNT);
+  const visibleGalleryCards = showAllGalleryImages ? galleryCards : previewGalleryCards;
+  const hasHiddenGalleryImages = galleryCards.length > GALLERY_PREVIEW_COUNT;
   const programCards = [copy.programs.cards.one, copy.programs.cards.two, copy.programs.cards.three];
   const newsCards = [
     { ...copy.news.cards.one },
@@ -869,7 +872,7 @@ function App() {
           />
 
           <div className="shell gallery-grid">
-            {previewGalleryCards.map((card, index) => (
+            {visibleGalleryCards.map((card, index) => (
               <article key={card.alt} className="gallery-card" data-reveal>
                 <button
                   type="button"
@@ -888,11 +891,17 @@ function App() {
             ))}
           </div>
 
-          <div className="shell gallery-actions" data-reveal>
-            <button type="button" className="secondary-action gallery-view-all-button" onClick={() => setActiveGalleryImage(0)}>
-              {galleryViewAllLabel}
-            </button>
-          </div>
+          {hasHiddenGalleryImages && !showAllGalleryImages ? (
+            <div className="shell gallery-actions" data-reveal>
+              <button
+                type="button"
+                className="secondary-action gallery-view-all-button"
+                onClick={() => setShowAllGalleryImages(true)}
+              >
+                {galleryViewAllLabel}
+              </button>
+            </div>
+          ) : null}
         </section>
 
         <section id="programs" ref={setSectionRef("programs")} className="section-shell section-anchor">
