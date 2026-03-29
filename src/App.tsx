@@ -1084,6 +1084,22 @@ function App() {
               </a>
             </div>
           </nav>
+
+          <div className="language-group nav-language-group desktop-language-group desktop-only" aria-label={common.languageSwitcher}>
+            {(Object.keys(languages) as LanguageCode[]).map((code) => (
+              <button
+                key={code}
+                type="button"
+                className={`language-chip ${language === code ? "is-active" : ""}`}
+                onClick={() => changeLanguage(code)}
+                aria-pressed={language === code}
+                lang={code}
+                title={languages[code].name}
+              >
+                {languages[code].short}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="scroll-progress" aria-hidden="true">

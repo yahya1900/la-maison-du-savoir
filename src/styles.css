@@ -184,6 +184,21 @@ textarea:focus-visible {
   color: #fff;
 }
 
+.desktop-language-group {
+  margin-inline-start: 0;
+  flex-wrap: nowrap;
+  justify-self: end;
+  padding: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(13, 70, 111, 0.08);
+  box-shadow: 0 16px 28px rgba(13, 70, 111, 0.08);
+}
+
+.desktop-language-group .language-chip {
+  min-width: 44px;
+}
+
 .main-nav {
   position: sticky;
   top: 0;
@@ -1512,6 +1527,10 @@ textarea:focus-visible {
 
   .nav-row {
     grid-template-columns: 1fr auto;
+  }
+
+  .desktop-language-group {
+    display: none;
   }
 
   .desktop-only {
