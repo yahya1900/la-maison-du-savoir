@@ -185,6 +185,7 @@ textarea:focus-visible {
 }
 
 .desktop-language-group {
+  display: none;
   margin-inline-start: 0;
   flex-wrap: nowrap;
   justify-self: end;
@@ -291,6 +292,10 @@ textarea:focus-visible {
 }
 
 @media (min-width: 921px) {
+  .desktop-language-group {
+    display: inline-flex;
+  }
+
   .nav-links {
     padding: 8px;
     border-radius: 999px;

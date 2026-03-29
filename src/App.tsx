@@ -1085,7 +1085,7 @@ function App() {
             </div>
           </nav>
 
-          <div className="language-group nav-language-group desktop-language-group desktop-only" aria-label={common.languageSwitcher}>
+          <div className="language-group nav-language-group desktop-language-group" aria-label={common.languageSwitcher}>
             {(Object.keys(languages) as LanguageCode[]).map((code) => (
               <button
                 key={code}
