@@ -1049,7 +1049,7 @@ textarea:focus-visible {
 }
 
 .gallery-media,
-.gallery-media img {
+.gallery-media :is(img, video) {
   width: 100%;
   height: 100%;
 }
@@ -1066,20 +1066,30 @@ textarea:focus-visible {
   background: linear-gradient(180deg, rgba(9, 47, 76, 0.04), rgba(9, 47, 76, 0.72));
 }
 
-.gallery-media img {
+.gallery-media :is(img, video) {
   object-fit: cover;
   object-position: center center;
   transition: transform 0.7s ease;
 }
 
-.gallery-card:hover .gallery-media img {
+.gallery-media video {
+  pointer-events: none;
+}
+
+.gallery-card:hover .gallery-media :is(img, video) {
   transform: scale(1.04);
 }
 
-.gallery-card.is-featured .gallery-zoom-indicator {
+.gallery-card.is-featured .gallery-zoom-indicator:not(.is-video) {
   width: 52px;
   height: 52px;
   font-size: 34px;
+}
+
+.gallery-card.is-featured .gallery-zoom-indicator.is-video {
+  min-width: 104px;
+  height: 52px;
+  font-size: 15px;
 }
 
 .gallery-zoom-indicator {
@@ -1097,6 +1107,16 @@ textarea:focus-visible {
   font-size: 30px;
   line-height: 1;
   box-shadow: 0 12px 28px rgba(9, 47, 76, 0.16);
+}
+
+.gallery-zoom-indicator.is-video {
+  width: auto;
+  min-width: 82px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .gallery-actions {
@@ -1139,12 +1159,13 @@ textarea:focus-visible {
   box-shadow: 0 30px 80px rgba(9, 47, 76, 0.36);
 }
 
-.gallery-lightbox-shell img {
+.gallery-lightbox-shell :is(img, video) {
   display: block;
   width: 100%;
   max-height: calc(100dvh - 68px);
   object-fit: contain;
   border-radius: 22px;
+  background: #000;
 }
 
 .gallery-lightbox-close {
@@ -1837,7 +1858,7 @@ textarea:focus-visible {
     border-radius: 24px;
   }
 
-  .gallery-lightbox-shell img {
+  .gallery-lightbox-shell :is(img, video) {
     max-height: calc(100dvh - 64px);
     border-radius: 18px;
   }

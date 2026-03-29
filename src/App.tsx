@@ -7,6 +7,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 type LanguageCode = "fr" | "en" | "ar" | "es";
 type SectionId = "home" | "about" | "gallery" | "programs" | "news" | "contact";
+type GalleryMediaType = "image" | "video";
+type GalleryMedia = {
+  path: string;
+  src: string;
+  type: GalleryMediaType;
+};
 
 const languages = siteLanguages as Record<LanguageCode, { short: string; name: string; dir: "ltr" | "rtl" }>;
 const translations = siteTranslations as Record<LanguageCode, any>;
@@ -23,13 +29,22 @@ const ACUPUNCTURE_NEWS_IMAGE = `${ASSET_BASE}news-acupuncture.jpeg`;
 const REGISTRATION_NEWS_IMAGE = `${ASSET_BASE}news-registration.jpeg`;
 const DARIJA_NEWS_IMAGE = `${ASSET_BASE}news-darija.jpeg`;
 const LOGO_URL = `${ASSET_BASE}logo.png`;
-const GALLERY_IMAGES = [
-  `${ASSET_BASE}gallery-1.jpg`,
-  `${ASSET_BASE}gallery-2.jpg`,
-  `${ASSET_BASE}gallery-3.jpg`,
-  `${ASSET_BASE}gallery-4.jpg`,
-  `${ASSET_BASE}gallery-5.jpg`
-] as const;
+const picture2MediaModules = import.meta.glob("../.github/picture2/*.{jpeg,jpg,png,webp,avif,mp4,webm,mov}", {
+  eager: true,
+  import: "default",
+  query: "?url"
+}) as Record<string, string>;
+const GALLERY_MEDIA: GalleryMedia[] = Object.entries(picture2MediaModules)
+  .map(([path, src]) => ({
+    path,
+    src,
+    type: (/\.(mp4|webm|mov)$/i.test(path) ? "video" : "image") as GalleryMediaType
+  }))
+  .sort((a, b) => {
+    if (a.type !== b.type) return a.type === "video" ? -1 : 1;
+
+    return a.path.localeCompare(b.path, undefined, { numeric: true, sensitivity: "base" });
+  });
 const GALLERY_PREVIEW_COUNT = 4;
 const sections: SectionId[] = ["home", "about", "gallery", "programs", "news", "contact"];
 const stats: Array<{ value: number; key: "one" | "two" | "three" | "four"; prefix?: string }> = [
@@ -45,20 +60,20 @@ const copyEnhancements: Record<LanguageCode, any> = {
   fr: {
     common: {
       topbar: {
-        badgeLine: "Lieu associatif d'apprentissage, CNED et ateliers à Ghazoua"
+        badgeLine: "Lieu associatif d'apprentissage du primaire au lycée, CNED et ateliers à Ghazoua"
       },
       hero: {
         card: {
-          text: "Lieu associatif d'apprentissage et de partage à Ghazoua. Accompagnement CNED en journée, ateliers de darija, dessin, poésie et peinture dans un cadre attentif."
+          text: "Lieu associatif d'apprentissage et de partage à Ghazoua. Accompagnement CNED du primaire au lycée en journée, ateliers de darija, dessin, poésie et peinture dans un cadre attentif."
         }
       }
     },
     home: {
       section: {
-        text: "La Maison du Savoir accompagne les élèves du primaire et du collège inscrits au CNED dans un lieu associatif d'apprentissage et de partage, serein, stimulant et personnalisé."
+        text: "La Maison du Savoir accompagne les élèves du primaire, du collège et du lycée inscrits au CNED dans un lieu associatif d'apprentissage et de partage, serein, stimulant et personnalisé."
       },
       info: {
-        text: "Située à Ghazoua, route de Sidi Kaouki, La Maison du Savoir est un espace pensé pour la concentration, le partage et la progression de chaque enfant, avec des temps CNED et des ateliers créatifs."
+        text: "Située à Ghazoua, route de Sidi Kaouki, La Maison du Savoir est un espace pensé pour la concentration, le partage et la progression de chaque enfant du primaire au lycée, avec des temps CNED et des ateliers créatifs."
       },
       cards: {
         three: {
@@ -69,7 +84,7 @@ const copyEnhancements: Record<LanguageCode, any> = {
     },
     about: {
       section: {
-        text: "Notre mission est d'offrir aux familles un lieu associatif de confiance où les élèves peuvent suivre leur scolarité CNED avec méthode, sérénité, partage et motivation."
+        text: "Notre mission est d'offrir aux familles un lieu associatif de confiance où les élèves du primaire, du collège et du lycée peuvent suivre leur scolarité CNED avec méthode, sérénité, partage et motivation."
       },
       includes: {
         five: "Activités complémentaires : darija le mercredi, poésie et peinture le vendredi, ateliers créatifs et pratique du dessin"
@@ -82,7 +97,7 @@ const copyEnhancements: Record<LanguageCode, any> = {
     },
     programs: {
       section: {
-        text: "Chaque journée est pensée pour aider les élèves à progresser avec régularité, confiance et plaisir d'apprendre, du suivi CNED aux ateliers de langue et d'expression."
+        text: "Chaque journée est pensée pour aider les élèves du primaire, du collège et du lycée à progresser avec régularité, confiance et plaisir d'apprendre, du suivi CNED aux ateliers de langue et d'expression."
       },
       cards: {
         three: {
@@ -116,27 +131,27 @@ const copyEnhancements: Record<LanguageCode, any> = {
     },
     contact: {
       section: {
-        text: "Nous serons heureux d'échanger avec vous sur le parcours de votre enfant, ses besoins, son rythme d'apprentissage et les ateliers proposés à Ghazoua."
+        text: "Nous serons heureux d'échanger avec vous sur le parcours de votre enfant, ses besoins, son rythme d'apprentissage, son niveau du primaire au lycée et les ateliers proposés à Ghazoua."
       }
     }
   },
   en: {
     common: {
       topbar: {
-        badgeLine: "Associative learning space, CNED and workshops in Ghazoua"
+        badgeLine: "Associative learning space from primary through high school, CNED and workshops in Ghazoua"
       },
       hero: {
         card: {
-          text: "An associative place for learning and sharing in Ghazoua. Daytime CNED support, Darija workshops, drawing, poetry, and painting in a caring setting."
+          text: "An associative place for learning and sharing in Ghazoua. Daytime CNED support from primary through high school, plus Darija workshops, drawing, poetry, and painting in a caring setting."
         }
       }
     },
     home: {
       section: {
-        text: "La Maison du Savoir supports primary and middle school students enrolled in CNED in an associative space for learning and sharing: calm, stimulating, and personalized."
+        text: "La Maison du Savoir supports primary, middle, and high school students enrolled in CNED in an associative space for learning and sharing: calm, stimulating, and personalized."
       },
       info: {
-        text: "Located in Ghazoua on the road to Sidi Kaouki, La Maison du Savoir is a space designed for focus, sharing, and each child's progress, with CNED guidance and creative workshops."
+        text: "Located in Ghazoua on the road to Sidi Kaouki, La Maison du Savoir is a space designed for focus, sharing, and each child's progress from primary through high school, with CNED guidance and creative workshops."
       },
       cards: {
         three: {
@@ -147,7 +162,7 @@ const copyEnhancements: Record<LanguageCode, any> = {
     },
     about: {
       section: {
-        text: "Our mission is to offer families a trusted associative place where students can follow their CNED schooling with method, calm, shared learning, and motivation."
+        text: "Our mission is to offer families a trusted associative place where primary, middle, and high school students can follow their CNED schooling with method, calm, shared learning, and motivation."
       },
       includes: {
         five: "Complementary activities: Darija on Wednesdays, poetry and painting on Fridays, creative workshops, and drawing practice"
@@ -160,7 +175,7 @@ const copyEnhancements: Record<LanguageCode, any> = {
     },
     programs: {
       section: {
-        text: "Each day is designed to help students progress with consistency, confidence, and joy in learning, from CNED follow-up to language and creative-expression workshops."
+        text: "Each day is designed to help primary, middle, and high school students progress with consistency, confidence, and joy in learning, from CNED follow-up to language and creative-expression workshops."
       },
       cards: {
         three: {
@@ -194,27 +209,27 @@ const copyEnhancements: Record<LanguageCode, any> = {
     },
     contact: {
       section: {
-        text: "We would be delighted to talk with you about your child's path, learning rhythm, CNED follow-up, and the workshops offered in Ghazoua."
+        text: "We would be delighted to talk with you about your child's path, learning rhythm, school level from primary through high school, CNED follow-up, and the workshops offered in Ghazoua."
       }
     }
   },
   ar: {
     common: {
       topbar: {
-        badgeLine: "فضاء جمعوي للتعلّم، ومرافقة CNED وورشات في غزوة"
+        badgeLine: "فضاء جمعوي للتعلّم من الابتدائي إلى الثانوي، ومرافقة CNED وورشات في غزوة"
       },
       hero: {
         card: {
-          text: "فضاء جمعوي للتعلّم والتشارك في غزوة. مرافقة CNED نهاراً مع ورشات في الدارجة والرسم والشعر والتلوين داخل أجواء مليئة بالعناية."
+          text: "فضاء جمعوي للتعلّم والتشارك في غزوة. مرافقة CNED نهاراً من الابتدائي إلى الثانوي مع ورشات في الدارجة والرسم والشعر والتلوين داخل أجواء مليئة بالعناية."
         }
       }
     },
     home: {
       section: {
-        text: "يرافق بيت المعرفة تلاميذ الابتدائي والإعدادي المسجلين في CNED داخل فضاء جمعوي للتعلّم والتشارك، هادئ ومحفّز ومخصّص لكل متعلّم."
+        text: "يرافق بيت المعرفة تلاميذ الابتدائي والإعدادي والثانوي المسجلين في CNED داخل فضاء جمعوي للتعلّم والتشارك، هادئ ومحفّز ومخصّص لكل متعلّم."
       },
       info: {
-        text: "يقع بيت المعرفة في غزوة على طريق سيدي كاوكي، وهو فضاء صُمم للتركيز والتشارك وتقدّم كل طفل، مع أوقات CNED وورشات إبداعية."
+        text: "يقع بيت المعرفة في غزوة على طريق سيدي كاوكي، وهو فضاء صُمم للتركيز والتشارك وتقدّم كل طفل من الابتدائي إلى الثانوي، مع أوقات CNED وورشات إبداعية."
       },
       cards: {
         three: {
@@ -225,7 +240,7 @@ const copyEnhancements: Record<LanguageCode, any> = {
     },
     about: {
       section: {
-        text: "مهمتنا هي أن نقدم للأسر فضاءً جمعوياً موثوقاً يتيح للتلاميذ متابعة دراستهم مع CNED بمنهجية وطمأنينة وروح مشاركة وتحفيز."
+        text: "مهمتنا هي أن نقدم للأسر فضاءً جمعوياً موثوقاً يتيح لتلاميذ الابتدائي والإعدادي والثانوي متابعة دراستهم مع CNED بمنهجية وطمأنينة وروح مشاركة وتحفيز."
       },
       includes: {
         five: "أنشطة مكمّلة: الدارجة يوم الأربعاء، والشعر والتلوين يوم الجمعة، وورشات إبداعية وممارسة الرسم"
@@ -238,7 +253,7 @@ const copyEnhancements: Record<LanguageCode, any> = {
     },
     programs: {
       section: {
-        text: "كل يوم مُصمم لمساعدة التلاميذ على التقدّم بثبات وثقة ومتعة في التعلّم، من متابعة CNED إلى ورشات اللغة والتعبير."
+        text: "كل يوم مُصمم لمساعدة تلاميذ الابتدائي والإعدادي والثانوي على التقدّم بثبات وثقة ومتعة في التعلّم، من متابعة CNED إلى ورشات اللغة والتعبير."
       },
       cards: {
         three: {
@@ -272,27 +287,27 @@ const copyEnhancements: Record<LanguageCode, any> = {
     },
     contact: {
       section: {
-        text: "يسعدنا أن نتحدث معكم حول مسار طفلكم وإيقاع تعلّمه ومرافقة CNED والورشات المقترحة في غزوة."
+        text: "يسعدنا أن نتحدث معكم حول مسار طفلكم وإيقاع تعلّمه ومستواه من الابتدائي إلى الثانوي ومرافقة CNED والورشات المقترحة في غزوة."
       }
     }
   },
   es: {
     common: {
       topbar: {
-        badgeLine: "Espacio asociativo de aprendizaje, CNED y talleres en Ghazoua"
+        badgeLine: "Espacio asociativo de aprendizaje de primaria a liceo, CNED y talleres en Ghazoua"
       },
       hero: {
         card: {
-          text: "Un espacio asociativo de aprendizaje y de compartir en Ghazoua. Acompañamiento CNED durante el día con talleres de darija, dibujo, poesía y pintura en un entorno atento."
+          text: "Un espacio asociativo de aprendizaje y de compartir en Ghazoua. Acompañamiento CNED durante el día desde primaria hasta liceo, con talleres de darija, dibujo, poesía y pintura en un entorno atento."
         }
       }
     },
     home: {
       section: {
-        text: "La Maison du Savoir acompaña a los alumnos de primaria y colegio inscritos en CNED dentro de un espacio asociativo de aprendizaje y de compartir, sereno, estimulante y personalizado."
+        text: "La Maison du Savoir acompaña a los alumnos de primaria, colegio y liceo inscritos en CNED dentro de un espacio asociativo de aprendizaje y de compartir, sereno, estimulante y personalizado."
       },
       info: {
-        text: "Situada en Ghazoua, en la carretera de Sidi Kaouki, La Maison du Savoir es un espacio pensado para la concentración, el intercambio y el progreso de cada niño, con tiempos CNED y talleres creativos."
+        text: "Situada en Ghazoua, en la carretera de Sidi Kaouki, La Maison du Savoir es un espacio pensado para la concentración, el intercambio y el progreso de cada niño desde primaria hasta liceo, con tiempos CNED y talleres creativos."
       },
       cards: {
         three: {
@@ -303,7 +318,7 @@ const copyEnhancements: Record<LanguageCode, any> = {
     },
     about: {
       section: {
-        text: "Nuestra misión es ofrecer a las familias un lugar asociativo de confianza donde los alumnos puedan seguir su escolaridad CNED con método, serenidad, intercambio y motivación."
+        text: "Nuestra misión es ofrecer a las familias un lugar asociativo de confianza donde los alumnos de primaria, colegio y liceo puedan seguir su escolaridad CNED con método, serenidad, intercambio y motivación."
       },
       includes: {
         five: "Actividades complementarias: darija los miércoles, poesía y pintura los viernes, talleres creativos y práctica de dibujo"
@@ -316,7 +331,7 @@ const copyEnhancements: Record<LanguageCode, any> = {
     },
     programs: {
       section: {
-        text: "Cada jornada está pensada para ayudar a los alumnos a avanzar con regularidad, confianza y gusto por aprender, desde el seguimiento CNED hasta los talleres de lengua y expresión."
+        text: "Cada jornada está pensada para ayudar a los alumnos de primaria, colegio y liceo a avanzar con regularidad, confianza y gusto por aprender, desde el seguimiento CNED hasta los talleres de lengua y expresión."
       },
       cards: {
         three: {
@@ -350,7 +365,7 @@ const copyEnhancements: Record<LanguageCode, any> = {
     },
     contact: {
       section: {
-        text: "Estaremos encantados de hablar contigo sobre el recorrido de tu hijo, su ritmo de aprendizaje, el seguimiento CNED y los talleres propuestos en Ghazoua."
+        text: "Estaremos encantados de hablar contigo sobre el recorrido de tu hijo, su ritmo de aprendizaje, su nivel de primaria a liceo, el seguimiento CNED y los talleres propuestos en Ghazoua."
       }
     }
   }
@@ -401,7 +416,7 @@ const siteExtras: Record<LanguageCode, any> = {
       items: [
         {
           q: "Quels niveaux accompagnez-vous ?",
-          a: "Nous accompagnons les élèves du primaire et du collège inscrits au CNED dans un cadre calme et structuré."
+          a: "Nous accompagnons les élèves du primaire, du collège et du lycée inscrits au CNED dans un cadre calme et structuré."
         },
         {
           q: "Comment se passe l'inscription ?",
@@ -462,7 +477,7 @@ const siteExtras: Record<LanguageCode, any> = {
       items: [
         {
           q: "Which school levels do you support?",
-          a: "We support primary and middle school students enrolled in CNED in a calm and structured setting."
+          a: "We support primary, middle, and high school students enrolled in CNED in a calm and structured setting."
         },
         {
           q: "How does registration work?",
@@ -523,7 +538,7 @@ const siteExtras: Record<LanguageCode, any> = {
       items: [
         {
           q: "ما هي المستويات التي تواكبونها؟",
-          a: "نواكب تلاميذ الابتدائي والإعدادي المسجلين في CNED داخل فضاء هادئ ومنظم."
+          a: "نواكب تلاميذ الابتدائي والإعدادي والثانوي المسجلين في CNED داخل فضاء هادئ ومنظم."
         },
         {
           q: "كيف يتم التسجيل؟",
@@ -584,7 +599,7 @@ const siteExtras: Record<LanguageCode, any> = {
       items: [
         {
           q: "¿Qué niveles acompañan?",
-          a: "Acompañamos a alumnos de primaria y colegio inscritos en CNED dentro de un entorno tranquilo y estructurado."
+          a: "Acompañamos a alumnos de primaria, colegio y liceo inscritos en CNED dentro de un entorno tranquilo y estructurado."
         },
         {
           q: "¿Cómo funciona la inscripción?",
@@ -666,8 +681,8 @@ function App() {
 
   const [language, setLanguage] = useState<LanguageCode>(getInitialLanguage);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeGalleryImage, setActiveGalleryImage] = useState<number | null>(null);
-  const [showAllGalleryImages, setShowAllGalleryImages] = useState(false);
+  const [activeGalleryItem, setActiveGalleryItem] = useState<number | null>(null);
+  const [showAllGalleryItems, setShowAllGalleryItems] = useState(false);
   const [activeSection, setActiveSection] = useState<SectionId>("home");
   const [scrollProgress, setScrollProgress] = useState(0);
   const [, startTransition] = useTransition();
@@ -683,7 +698,7 @@ function App() {
     document.documentElement.lang = language;
     document.documentElement.dir = languages[language].dir;
     document.body.classList.toggle("is-rtl", isRtl);
-    document.body.classList.toggle("menu-open", menuOpen || activeGalleryImage !== null);
+    document.body.classList.toggle("menu-open", menuOpen || activeGalleryItem !== null);
 
     try {
       window.localStorage.setItem("la-maison-language", language);
@@ -694,7 +709,7 @@ function App() {
     return () => {
       document.body.classList.remove("menu-open");
     };
-  }, [activeGalleryImage, isRtl, language, menuOpen]);
+  }, [activeGalleryItem, isRtl, language, menuOpen]);
 
   useEffect(() => {
     document.title = activeMeta.title;
@@ -766,32 +781,32 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (!menuOpen && activeGalleryImage === null) return;
+    if (!menuOpen && activeGalleryItem === null) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        if (activeGalleryImage !== null) {
-          setActiveGalleryImage(null);
+        if (activeGalleryItem !== null) {
+          setActiveGalleryItem(null);
           return;
         }
 
         setMenuOpen(false);
       }
 
-      if (activeGalleryImage !== null && event.key === "ArrowRight") {
-        setActiveGalleryImage((current) => (current === null ? 0 : (current + 1) % GALLERY_IMAGES.length));
+      if (activeGalleryItem !== null && event.key === "ArrowRight") {
+        setActiveGalleryItem((current) => (current === null ? 0 : (current + 1) % GALLERY_MEDIA.length));
       }
 
-      if (activeGalleryImage !== null && event.key === "ArrowLeft") {
-        setActiveGalleryImage((current) =>
-          current === null ? GALLERY_IMAGES.length - 1 : (current - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length
+      if (activeGalleryItem !== null && event.key === "ArrowLeft") {
+        setActiveGalleryItem((current) =>
+          current === null ? GALLERY_MEDIA.length - 1 : (current - 1 + GALLERY_MEDIA.length) % GALLERY_MEDIA.length
         );
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeGalleryImage, menuOpen]);
+  }, [activeGalleryItem, menuOpen]);
 
   useLayoutEffect(() => {
     if (!rootRef.current) return;
@@ -894,12 +909,21 @@ function App() {
     copy.about.includes.five
   ];
 
-  const galleryCards = GALLERY_IMAGES.map((_, index) => ({
+  const galleryVideoLabel =
+    {
+      fr: "Vidéo",
+      en: "Video",
+      ar: "فيديو",
+      es: "Video"
+    }[language] ?? "Video";
+  const galleryCards = GALLERY_MEDIA.map((media, index) => ({
+    ...media,
+    index,
     alt: `${copy.gallery.section.title} ${index + 1}`
   }));
   const previewGalleryCards = galleryCards.slice(0, GALLERY_PREVIEW_COUNT);
-  const visibleGalleryCards = showAllGalleryImages ? galleryCards : previewGalleryCards;
-  const hasHiddenGalleryImages = galleryCards.length > GALLERY_PREVIEW_COUNT;
+  const visibleGalleryCards = showAllGalleryItems ? galleryCards : previewGalleryCards;
+  const hasHiddenGalleryItems = galleryCards.length > GALLERY_PREVIEW_COUNT;
   const programCards = [copy.programs.cards.one, copy.programs.cards.two, copy.programs.cards.three];
   const stepCards = [extraCopy.steps.cards.one, extraCopy.steps.cards.two, extraCopy.steps.cards.three];
   const faqItems = extraCopy.faq.items as Array<{ q: string; a: string }>;
@@ -936,14 +960,14 @@ function App() {
     { ...copy.news.cards.three, ...customAcupunctureNewsCard, image: ACUPUNCTURE_NEWS_IMAGE },
     { ...copy.news.cards.four, image: DARIJA_NEWS_IMAGE }
   ];
-  const activeGalleryCard = activeGalleryImage !== null ? galleryCards[activeGalleryImage] : null;
+  const activeGalleryCard = activeGalleryItem !== null ? galleryCards[activeGalleryItem] : null;
   const galleryViewAllLabel =
     {
-      fr: "Voir toutes les photos",
-      en: "See all pictures",
+      fr: "Voir toute la galerie",
+      en: "View full gallery",
       ar: "عرض جميع الصور",
-      es: "Ver todas las fotos"
-    }[language] ?? "See all pictures";
+      es: "Ver toda la galeria"
+    }[language] ?? "View full gallery";
   const contactWhatsappIntro =
     {
       fr: "Bonjour, je souhaite obtenir plus d'informations.",
@@ -1282,31 +1306,35 @@ function App() {
           />
 
           <div className="shell gallery-grid">
-            {visibleGalleryCards.map((card, index) => (
-              <article key={card.alt} className={`gallery-card ${index === 0 ? "is-featured" : ""}`} data-reveal>
+            {visibleGalleryCards.map((card) => (
+              <article key={card.path} className={`gallery-card ${card.index === 0 ? "is-featured" : ""}`} data-reveal>
                 <button
                   type="button"
                   className="gallery-open-button"
-                  aria-label={card.alt}
-                  onClick={() => setActiveGalleryImage(index)}
+                  aria-label={card.type === "video" ? `${card.alt} (${galleryVideoLabel})` : card.alt}
+                  onClick={() => setActiveGalleryItem(card.index)}
                 >
-                  <div className={`gallery-media gallery-media-${index + 1}`}>
-                    <img src={GALLERY_IMAGES[index]} alt={card.alt} loading="lazy" />
+                  <div className={`gallery-media gallery-media-${card.index + 1}`}>
+                    {card.type === "video" ? (
+                      <video src={card.src} muted loop playsInline autoPlay preload="metadata" aria-hidden="true" />
+                    ) : (
+                      <img src={card.src} alt={card.alt} loading="lazy" />
+                    )}
                   </div>
-                  <span className="gallery-zoom-indicator" aria-hidden="true">
-                    +
+                  <span className={`gallery-zoom-indicator ${card.type === "video" ? "is-video" : ""}`} aria-hidden="true">
+                    {card.type === "video" ? galleryVideoLabel : "+"}
                   </span>
                 </button>
               </article>
             ))}
           </div>
 
-          {hasHiddenGalleryImages && !showAllGalleryImages ? (
+          {hasHiddenGalleryItems && !showAllGalleryItems ? (
             <div className="shell gallery-actions" data-reveal>
               <button
                 type="button"
                 className="secondary-action gallery-view-all-button"
-                onClick={() => setShowAllGalleryImages(true)}
+                onClick={() => setShowAllGalleryItems(true)}
               >
                 {galleryViewAllLabel}
               </button>
@@ -1442,20 +1470,20 @@ function App() {
         </div>
       </footer>
 
-      {activeGalleryImage !== null ? (
+      {activeGalleryItem !== null ? (
         <div className="gallery-lightbox" role="dialog" aria-modal="true" aria-label={activeGalleryCard?.alt ?? "Gallery image"}>
           <button
             type="button"
             className="gallery-lightbox-backdrop"
             aria-label="Close image"
-            onClick={() => setActiveGalleryImage(null)}
+            onClick={() => setActiveGalleryItem(null)}
           />
           <div className="gallery-lightbox-shell">
             <button
               type="button"
               className="gallery-lightbox-close"
               aria-label="Close image"
-              onClick={() => setActiveGalleryImage(null)}
+              onClick={() => setActiveGalleryItem(null)}
             >
               <span />
               <span />
@@ -1465,8 +1493,8 @@ function App() {
               className="gallery-lightbox-nav gallery-lightbox-prev"
               aria-label="Previous image"
               onClick={() =>
-                setActiveGalleryImage((current) =>
-                  current === null ? GALLERY_IMAGES.length - 1 : (current - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length
+                setActiveGalleryItem((current) =>
+                  current === null ? GALLERY_MEDIA.length - 1 : (current - 1 + GALLERY_MEDIA.length) % GALLERY_MEDIA.length
                 )
               }
             >
@@ -1477,14 +1505,18 @@ function App() {
               className="gallery-lightbox-nav gallery-lightbox-next"
               aria-label="Next image"
               onClick={() =>
-                setActiveGalleryImage((current) => (current === null ? 0 : (current + 1) % GALLERY_IMAGES.length))
+                setActiveGalleryItem((current) => (current === null ? 0 : (current + 1) % GALLERY_MEDIA.length))
               }
             >
               <span>&rsaquo;</span>
             </button>
-            <img src={GALLERY_IMAGES[activeGalleryImage]} alt={activeGalleryCard?.alt ?? ""} />
+            {activeGalleryCard?.type === "video" ? (
+              <video src={activeGalleryCard.src} controls autoPlay playsInline />
+            ) : (
+              <img src={activeGalleryCard?.src ?? ""} alt={activeGalleryCard?.alt ?? ""} />
+            )}
             <div className="gallery-lightbox-count">
-              {activeGalleryImage + 1} / {GALLERY_IMAGES.length}
+              {activeGalleryItem + 1} / {GALLERY_MEDIA.length}
             </div>
           </div>
         </div>

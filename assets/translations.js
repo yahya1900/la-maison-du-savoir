@@ -11,7 +11,7 @@ export const siteTranslations = {
       languageSwitcher: "Choisir la langue",
       menuToggle: "Ouvrir le menu",
       topbar: {
-        badgeLine: "Primaire & Collège - accueil en journée à Ghazoua",
+        badgeLine: "Primaire, collège et lycée - accueil en journée à Ghazoua",
         location: "Ghazoua - route de Sidi Kaouki"
       },
       brand: {
@@ -34,12 +34,12 @@ export const siteTranslations = {
         pills: {
           calm: "Cadre serein",
           personalized: "Suivi individualisé",
-          levels: "Primaire & Collège"
+          levels: "Primaire • Collège • Lycée"
         },
         card: {
           alt: "Logo La Maison du Savoir Ghazoua",
           location: "Ghazoua",
-          levels: "Primaire & Collège",
+          levels: "Primaire • Collège • Lycée",
           text: "Un lieu ouvert sur le monde, la nature et les savoirs. Accompagnement CNED dans un espace propice à la concentration et à l'épanouissement."
         }
       },
@@ -49,7 +49,7 @@ export const siteTranslations = {
       },
       footer: {
         brandTitle: "La Maison du Savoir - Ghazoua",
-        subtitle: "Accompagnement CNED - Primaire & Collège",
+        subtitle: "Accompagnement CNED - Primaire, collège et lycée",
         contact: "Contact",
         pages: "Pages"
       }
@@ -57,7 +57,7 @@ export const siteTranslations = {
     meta: {
       home: {
         title: "La Maison du Savoir Ghazoua | Accompagnement CNED",
-        description: "Accompagnement CNED pour élèves du primaire et du collège à Ghazoua. Encadrement pédagogique personnalisé, petits groupes et ateliers éducatifs."
+        description: "Accompagnement CNED pour élèves du primaire, du collège et du lycée à Ghazoua. Encadrement pédagogique personnalisé, petits groupes et ateliers éducatifs."
       },
       about: {
         title: "À propos | La Maison du Savoir Ghazoua",
@@ -69,7 +69,7 @@ export const siteTranslations = {
       },
       programs: {
         title: "Programmes | La Maison du Savoir Ghazoua",
-        description: "Programmes CNED primaire et collège à Ghazoua : fondamentaux, suivi structuré et ateliers créatifs."
+        description: "Programmes CNED primaire, collège et lycée à Ghazoua : fondamentaux, suivi structuré et ateliers créatifs."
       },
       news: {
         title: "Actualités | La Maison du Savoir Ghazoua",
@@ -84,12 +84,12 @@ export const siteTranslations = {
       hero: {
         eyebrow: "Accueil",
         title: "La Maison du Savoir",
-        lead: "Accompagnement CNED - Primaire & Collège dans un cadre bienveillant, serein et stimulant à Ghazoua."
+        lead: "Accompagnement CNED - Primaire, collège et lycée dans un cadre bienveillant, serein et stimulant à Ghazoua."
       },
       section: {
         eyebrow: "Accompagnement CNED",
         title: "Un cadre bienveillant pour apprendre autrement",
-        text: "La Maison du Savoir accompagne les élèves du primaire et du collège inscrits au CNED dans un environnement serein, stimulant et personnalisé.",
+        text: "La Maison du Savoir accompagne les élèves du primaire, du collège et du lycée inscrits au CNED dans un environnement serein, stimulant et personnalisé.",
         checks: {
           one: "Accueil en journée du lundi au vendredi",
           two: "Équipe pédagogique bienveillante",
@@ -124,12 +124,12 @@ export const siteTranslations = {
       hero: {
         eyebrow: "À propos",
         title: "Un lieu chaleureux pour apprendre autrement",
-        lead: "Nous accompagnons les élèves inscrits au CNED avec attention, méthode et proximité."
+        lead: "Nous accompagnons les élèves du primaire, du collège et du lycée inscrits au CNED avec attention, méthode et proximité."
       },
       section: {
         eyebrow: "À propos",
         title: "Un accompagnement humain, attentif et structuré",
-        text: "Notre mission est d'offrir aux familles un lieu de confiance où les élèves peuvent suivre leur scolarité CNED avec méthode, sérénité et motivation."
+        text: "Notre mission est d'offrir aux familles un lieu de confiance où les élèves du primaire, du collège et du lycée peuvent suivre leur scolarité CNED avec méthode, sérénité et motivation."
       },
       photoAlt: "Enfants en apprentissage",
       includes: {
@@ -174,7 +174,7 @@ export const siteTranslations = {
       },
       section: {
         eyebrow: "Programmes",
-        title: "Un accompagnement adapté au primaire et au collège",
+        title: "Un accompagnement adapté au primaire, au collège et au lycée",
         text: "Chaque journée est pensée pour aider les élèves à progresser avec régularité, confiance et plaisir d'apprendre."
       },
       cards: {
@@ -234,7 +234,7 @@ export const siteTranslations = {
       hero: {
         eyebrow: "Contact",
         title: "Parlons du parcours de votre enfant",
-        lead: "Nous vous accueillons à Ghazoua pour vous présenter notre accompagnement CNED."
+        lead: "Nous vous accueillons à Ghazoua pour vous présenter notre accompagnement CNED du primaire au lycée."
       },
       section: {
         eyebrow: "Contact",
@@ -260,7 +260,7 @@ export const siteTranslations = {
       languageSwitcher: "Choose language",
       menuToggle: "Open menu",
       topbar: {
-        badgeLine: "Primary & Middle School - daytime support in Ghazoua",
+        badgeLine: "Primary, Middle, and High School - daytime support in Ghazoua",
         location: "Ghazoua - Sidi Kaouki road"
       },
       brand: {
@@ -283,12 +283,12 @@ export const siteTranslations = {
         pills: {
           calm: "Calm setting",
           personalized: "Personalized support",
-          levels: "Primary & Middle School"
+          levels: "Primary • Middle • High School"
         },
         card: {
           alt: "La Maison du Savoir Ghazoua logo",
           location: "Ghazoua",
-          levels: "Primary & Middle School",
+          levels: "Primary • Middle • High School",
           text: "A place open to the world, nature, and knowledge. CNED support in a space designed for focus and personal growth."
         }
       },
@@ -298,7 +298,7 @@ export const siteTranslations = {
       },
       footer: {
         brandTitle: "La Maison du Savoir - Ghazoua",
-        subtitle: "CNED support - Primary & Middle School",
+        subtitle: "CNED support - Primary, Middle, and High School",
         contact: "Contact",
         pages: "Pages"
       }
@@ -306,7 +306,7 @@ export const siteTranslations = {
     meta: {
       home: {
         title: "La Maison du Savoir Ghazoua | CNED Support",
-        description: "CNED support for primary and middle school students in Ghazoua. Personalized educational guidance, small groups, and learning workshops."
+        description: "CNED support for primary, middle, and high school students in Ghazoua. Personalized educational guidance, small groups, and learning workshops."
       },
       about: {
         title: "About | La Maison du Savoir Ghazoua",
@@ -318,7 +318,7 @@ export const siteTranslations = {
       },
       programs: {
         title: "Programs | La Maison du Savoir Ghazoua",
-        description: "CNED programs for primary and middle school students in Ghazoua: fundamentals, structured follow-up, and creative workshops."
+        description: "CNED programs for primary, middle, and high school students in Ghazoua: fundamentals, structured follow-up, and creative workshops."
       },
       news: {
         title: "News | La Maison du Savoir Ghazoua",
@@ -333,12 +333,12 @@ export const siteTranslations = {
       hero: {
         eyebrow: "Home",
         title: "La Maison du Savoir",
-        lead: "CNED support for primary and middle school students in a caring, calm, and stimulating setting in Ghazoua."
+        lead: "CNED support for primary, middle, and high school students in a caring, calm, and stimulating setting in Ghazoua."
       },
       section: {
         eyebrow: "CNED Support",
         title: "A caring environment for learning differently",
-        text: "La Maison du Savoir supports primary and middle school students enrolled in CNED in a calm, stimulating, and personalized environment.",
+        text: "La Maison du Savoir supports primary, middle, and high school students enrolled in CNED in a calm, stimulating, and personalized environment.",
         checks: {
           one: "Daytime support from Monday to Friday",
           two: "A caring educational team",
@@ -373,12 +373,12 @@ export const siteTranslations = {
       hero: {
         eyebrow: "About",
         title: "A warm place to learn differently",
-        lead: "We support students enrolled in CNED with care, structure, and closeness."
+        lead: "We support primary, middle, and high school students enrolled in CNED with care, structure, and closeness."
       },
       section: {
         eyebrow: "About",
         title: "Human, attentive, and structured support",
-        text: "Our mission is to offer families a trusted place where students can follow their CNED schooling with method, serenity, and motivation."
+        text: "Our mission is to offer families a trusted place where primary, middle, and high school students can follow their CNED schooling with method, serenity, and motivation."
       },
       photoAlt: "Children learning together",
       includes: {
@@ -423,7 +423,7 @@ export const siteTranslations = {
       },
       section: {
         eyebrow: "Programs",
-        title: "Support tailored to primary and middle school",
+        title: "Support tailored to primary, middle, and high school",
         text: "Each day is designed to help students progress with consistency, confidence, and joy in learning."
       },
       cards: {
@@ -483,7 +483,7 @@ export const siteTranslations = {
       hero: {
         eyebrow: "Contact",
         title: "Let's talk about your child's journey",
-        lead: "We welcome you in Ghazoua to present our CNED support."
+        lead: "We welcome you in Ghazoua to present our CNED support from primary through high school."
       },
       section: {
         eyebrow: "Contact",
@@ -509,7 +509,7 @@ export const siteTranslations = {
       languageSwitcher: "اختر اللغة",
       menuToggle: "افتح القائمة",
       topbar: {
-        badgeLine: "الابتدائي والإعدادي - استقبال نهاري في غزوة",
+        badgeLine: "الابتدائي والإعدادي والثانوي - استقبال نهاري في غزوة",
         location: "غزوة - طريق سيدي كاوكي"
       },
       brand: {
@@ -532,12 +532,12 @@ export const siteTranslations = {
         pills: {
           calm: "أجواء هادئة",
           personalized: "متابعة فردية",
-          levels: "الابتدائي والإعدادي"
+          levels: "الابتدائي • الإعدادي • الثانوي"
         },
         card: {
           alt: "شعار بيت المعرفة غزوة",
           location: "غزوة",
-          levels: "الابتدائي والإعدادي",
+          levels: "الابتدائي • الإعدادي • الثانوي",
           text: "فضاء منفتح على العالم والطبيعة والمعرفة. مرافقة CNED داخل مكان يساعد على التركيز والنمو."
         }
       },
@@ -547,7 +547,7 @@ export const siteTranslations = {
       },
       footer: {
         brandTitle: "بيت المعرفة - غزوة",
-        subtitle: "مرافقة CNED - الابتدائي والإعدادي",
+        subtitle: "مرافقة CNED - الابتدائي والإعدادي والثانوي",
         contact: "تواصل",
         pages: "الصفحات"
       }
@@ -555,7 +555,7 @@ export const siteTranslations = {
     meta: {
       home: {
         title: "بيت المعرفة غزوة | مرافقة CNED",
-        description: "مرافقة CNED لتلاميذ الابتدائي والإعدادي في غزوة. تأطير تربوي شخصي، مجموعات صغيرة وورشات تعليمية."
+        description: "مرافقة CNED لتلاميذ الابتدائي والإعدادي والثانوي في غزوة. تأطير تربوي شخصي، مجموعات صغيرة وورشات تعليمية."
       },
       about: {
         title: "من نحن | بيت المعرفة غزوة",
@@ -567,7 +567,7 @@ export const siteTranslations = {
       },
       programs: {
         title: "البرامج | بيت المعرفة غزوة",
-        description: "برامج CNED للابتدائي والإعدادي في غزوة: الأساسيات، متابعة منظمة وورشات إبداعية."
+        description: "برامج CNED للابتدائي والإعدادي والثانوي في غزوة: الأساسيات، متابعة منظمة وورشات إبداعية."
       },
       news: {
         title: "الأخبار | بيت المعرفة غزوة",
@@ -582,12 +582,12 @@ export const siteTranslations = {
       hero: {
         eyebrow: "الرئيسية",
         title: "بيت المعرفة",
-        lead: "مرافقة CNED لتلاميذ الابتدائي والإعدادي داخل فضاء هادئ ومحفّز ومليء بالعناية في غزوة."
+        lead: "مرافقة CNED لتلاميذ الابتدائي والإعدادي والثانوي داخل فضاء هادئ ومحفّز ومليء بالعناية في غزوة."
       },
       section: {
         eyebrow: "مرافقة CNED",
         title: "بيئة داعمة للتعلّم بطريقة مختلفة",
-        text: "يرافق بيت المعرفة تلاميذ الابتدائي والإعدادي المسجلين في CNED داخل بيئة هادئة ومحفزة ومخصّصة لكل متعلم.",
+        text: "يرافق بيت المعرفة تلاميذ الابتدائي والإعدادي والثانوي المسجلين في CNED داخل بيئة هادئة ومحفزة ومخصّصة لكل متعلم.",
         checks: {
           one: "استقبال نهاري من الاثنين إلى الجمعة",
           two: "فريق تربوي داعم ومهتم",
@@ -622,12 +622,12 @@ export const siteTranslations = {
       hero: {
         eyebrow: "من نحن",
         title: "مكان دافئ للتعلّم بطريقة مختلفة",
-        lead: "نرافق التلاميذ المسجلين في CNED باهتمام ومنهجية وقرب."
+        lead: "نرافق تلاميذ الابتدائي والإعدادي والثانوي المسجلين في CNED باهتمام ومنهجية وقرب."
       },
       section: {
         eyebrow: "من نحن",
         title: "مرافقة إنسانية ومنتبهة ومنظمة",
-        text: "مهمتنا هي أن نقدم للأسر فضاءً موثوقًا يمكن للتلاميذ فيه متابعة دراستهم مع CNED بمنهجية وطمأنينة وتحفيز."
+        text: "مهمتنا هي أن نقدم للأسر فضاءً موثوقًا يمكن لتلاميذ الابتدائي والإعدادي والثانوي فيه متابعة دراستهم مع CNED بمنهجية وطمأنينة وتحفيز."
       },
       photoAlt: "أطفال يتعلمون معًا",
       includes: {
@@ -672,7 +672,7 @@ export const siteTranslations = {
       },
       section: {
         eyebrow: "البرامج",
-        title: "مرافقة مناسبة للابتدائي والإعدادي",
+        title: "مرافقة مناسبة للابتدائي والإعدادي والثانوي",
         text: "كل يوم مُصمم لمساعدة التلاميذ على التقدم بثبات وثقة ومتعة في التعلّم."
       },
       cards: {
@@ -732,7 +732,7 @@ export const siteTranslations = {
       hero: {
         eyebrow: "تواصل",
         title: "لنتحدث عن مسار طفلك",
-        lead: "نستقبلكم في غزوة لتقديم مرافقة CNED الخاصة بنا."
+        lead: "نستقبلكم في غزوة لتقديم مرافقة CNED الخاصة بنا من الابتدائي إلى الثانوي."
       },
       section: {
         eyebrow: "تواصل",
@@ -781,12 +781,12 @@ export const siteTranslations = {
         pills: {
           calm: "Entorno sereno",
           personalized: "Seguimiento personalizado",
-          levels: "Primaria y colegio"
+          levels: "Primaria • Colegio • Liceo"
         },
         card: {
           alt: "Logotipo de La Maison du Savoir Ghazoua",
           location: "Ghazoua",
-          levels: "Primaria y colegio",
+          levels: "Primaria • Colegio • Liceo",
           text: "Un lugar abierto al mundo, la naturaleza y el conocimiento. Acompañamiento CNED en un espacio pensado para la concentración y el desarrollo."
         }
       },
@@ -796,7 +796,7 @@ export const siteTranslations = {
       },
       footer: {
         brandTitle: "La Maison du Savoir - Ghazoua",
-        subtitle: "Acompañamiento CNED - Primaria y colegio",
+        subtitle: "Acompañamiento CNED - Primaria, colegio y liceo",
         contact: "Contacto",
         pages: "Páginas"
       }
@@ -804,7 +804,7 @@ export const siteTranslations = {
     meta: {
       home: {
         title: "La Maison du Savoir Ghazoua | Acompañamiento CNED",
-        description: "Acompañamiento CNED para alumnos de primaria y colegio en Ghazoua. Apoyo pedagógico personalizado, grupos reducidos y talleres educativos."
+        description: "Acompañamiento CNED para alumnos de primaria, colegio y liceo en Ghazoua. Apoyo pedagógico personalizado, grupos reducidos y talleres educativos."
       },
       about: {
         title: "Quiénes somos | La Maison du Savoir Ghazoua",
@@ -816,7 +816,7 @@ export const siteTranslations = {
       },
       programs: {
         title: "Programas | La Maison du Savoir Ghazoua",
-        description: "Programas CNED de primaria y colegio en Ghazoua: fundamentos, seguimiento estructurado y talleres creativos."
+        description: "Programas CNED de primaria, colegio y liceo en Ghazoua: fundamentos, seguimiento estructurado y talleres creativos."
       },
       news: {
         title: "Noticias | La Maison du Savoir Ghazoua",
@@ -831,12 +831,12 @@ export const siteTranslations = {
       hero: {
         eyebrow: "Inicio",
         title: "La Maison du Savoir",
-        lead: "Acompañamiento CNED para primaria y colegio en un entorno amable, sereno y estimulante en Ghazoua."
+        lead: "Acompañamiento CNED para primaria, colegio y liceo en un entorno amable, sereno y estimulante en Ghazoua."
       },
       section: {
         eyebrow: "Acompañamiento CNED",
         title: "Un entorno cercano para aprender de otra manera",
-        text: "La Maison du Savoir acompaña a los alumnos de primaria y colegio inscritos en CNED dentro de un entorno sereno, estimulante y personalizado.",
+        text: "La Maison du Savoir acompaña a los alumnos de primaria, colegio y liceo inscritos en CNED dentro de un entorno sereno, estimulante y personalizado.",
         checks: {
           one: "Acogida durante el día de lunes a viernes",
           two: "Equipo pedagógico cercano y atento",
@@ -871,12 +871,12 @@ export const siteTranslations = {
       hero: {
         eyebrow: "Quiénes somos",
         title: "Un lugar cálido para aprender de otra manera",
-        lead: "Acompañamos a los alumnos inscritos en CNED con atención, método y cercanía."
+        lead: "Acompañamos a los alumnos de primaria, colegio y liceo inscritos en CNED con atención, método y cercanía."
       },
       section: {
         eyebrow: "Quiénes somos",
         title: "Un acompañamiento humano, atento y estructurado",
-        text: "Nuestra misión es ofrecer a las familias un lugar de confianza donde los alumnos puedan seguir su escolaridad CNED con método, serenidad y motivación."
+        text: "Nuestra misión es ofrecer a las familias un lugar de confianza donde los alumnos de primaria, colegio y liceo puedan seguir su escolaridad CNED con método, serenidad y motivación."
       },
       photoAlt: "Niños aprendiendo juntos",
       includes: {
@@ -921,7 +921,7 @@ export const siteTranslations = {
       },
       section: {
         eyebrow: "Programas",
-        title: "Un acompañamiento adaptado a primaria y colegio",
+        title: "Un acompañamiento adaptado a primaria, colegio y liceo",
         text: "Cada jornada está pensada para ayudar a los alumnos a avanzar con regularidad, confianza y gusto por aprender."
       },
       cards: {
@@ -981,7 +981,7 @@ export const siteTranslations = {
       hero: {
         eyebrow: "Contacto",
         title: "Hablemos del recorrido de tu hijo",
-        lead: "Te recibimos en Ghazoua para presentarte nuestro acompañamiento CNED."
+        lead: "Te recibimos en Ghazoua para presentarte nuestro acompañamiento CNED desde primaria hasta liceo."
       },
       section: {
         eyebrow: "Contacto",
