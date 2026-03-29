@@ -53,7 +53,7 @@ const stats: Array<{ value: number; key: "one" | "two" | "three" | "four"; prefi
   { value: 100, key: "three", prefix: "+" },
   { value: 10, key: "four", prefix: "+" }
 ];
-const programIcons = ["🏫", "🤝", "✨"] as const;
+const programIcons = ["🏫", "📘", "🎓", "✨"] as const;
 const newsAccents = ["sunrise", "ocean", "meadow", "sunrise"] as const;
 
 const copyEnhancements: Record<LanguageCode, any> = {
@@ -100,7 +100,7 @@ const copyEnhancements: Record<LanguageCode, any> = {
         text: "Chaque journée est pensée pour aider les élèves du primaire, du collège et du lycée à progresser avec régularité, confiance et plaisir d'apprendre, du suivi CNED aux ateliers de langue et d'expression."
       },
       cards: {
-        three: {
+        four: {
           title: "Darija, poésie, peinture et dessin",
           text: "Des rendez-vous hebdomadaires inspirés de la vie du lieu : darija le mercredi, poésie et peinture le vendredi, dessin et pratique créative."
         }
@@ -178,7 +178,7 @@ const copyEnhancements: Record<LanguageCode, any> = {
         text: "Each day is designed to help primary, middle, and high school students progress with consistency, confidence, and joy in learning, from CNED follow-up to language and creative-expression workshops."
       },
       cards: {
-        three: {
+        four: {
           title: "Darija, poetry, painting, and drawing",
           text: "Weekly moments inspired by life at the center: Darija on Wednesdays, poetry and painting on Fridays, and creative drawing practice."
         }
@@ -256,7 +256,7 @@ const copyEnhancements: Record<LanguageCode, any> = {
         text: "كل يوم مُصمم لمساعدة تلاميذ الابتدائي والإعدادي والثانوي على التقدّم بثبات وثقة ومتعة في التعلّم، من متابعة CNED إلى ورشات اللغة والتعبير."
       },
       cards: {
-        three: {
+        four: {
           title: "الدارجة والشعر والتلوين والرسم",
           text: "مواعيد أسبوعية مستوحاة من حياة الفضاء: الدارجة يوم الأربعاء، والشعر والتلوين يوم الجمعة، والرسم والتجارب الإبداعية."
         }
@@ -334,7 +334,7 @@ const copyEnhancements: Record<LanguageCode, any> = {
         text: "Cada jornada está pensada para ayudar a los alumnos de primaria, colegio y liceo a avanzar con regularidad, confianza y gusto por aprender, desde el seguimiento CNED hasta los talleres de lengua y expresión."
       },
       cards: {
-        three: {
+        four: {
           title: "Darija, poesía, pintura y dibujo",
           text: "Encuentros semanales inspirados en la vida del lugar: darija los miércoles, poesía y pintura los viernes, dibujo y práctica creativa."
         }
@@ -924,7 +924,7 @@ function App() {
   const previewGalleryCards = galleryCards.slice(0, GALLERY_PREVIEW_COUNT);
   const visibleGalleryCards = showAllGalleryItems ? galleryCards : previewGalleryCards;
   const hasHiddenGalleryItems = galleryCards.length > GALLERY_PREVIEW_COUNT;
-  const programCards = [copy.programs.cards.one, copy.programs.cards.two, copy.programs.cards.three];
+  const programCards = [copy.programs.cards.one, copy.programs.cards.two, copy.programs.cards.three, copy.programs.cards.four];
   const stepCards = [extraCopy.steps.cards.one, extraCopy.steps.cards.two, extraCopy.steps.cards.three];
   const faqItems = extraCopy.faq.items as Array<{ q: string; a: string }>;
   const customAcupunctureNewsCard =

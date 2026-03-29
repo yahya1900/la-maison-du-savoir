@@ -189,6 +189,11 @@ export const siteTranslations = {
           text: "Organisation, soutien pédagogique, vérification des acquis et progression régulière tout au long de l'année."
         },
         three: {
+          badge: "Lycée",
+          title: "Accompagnement du lycée",
+          text: "Organisation des matières, autonomie, préparation aux évaluations et suivi CNED régulier pour avancer avec méthode."
+        },
+        four: {
           badge: "Ouverture",
           title: "Ateliers créatifs et expression",
           text: "Des temps complémentaires pour développer confiance, curiosité, langage et plaisir d'apprendre."
@@ -438,6 +443,11 @@ export const siteTranslations = {
           text: "Organization, educational support, skills review, and steady progress throughout the year."
         },
         three: {
+          badge: "High School",
+          title: "High school CNED guidance",
+          text: "Subject organization, independent study habits, assessment preparation, and steady CNED follow-up to keep progressing with confidence."
+        },
+        four: {
           badge: "Growth",
           title: "Creative workshops and expression",
           text: "Complementary moments to build confidence, curiosity, language, and the joy of learning."
@@ -687,6 +697,11 @@ export const siteTranslations = {
           text: "تنظيم، دعم تربوي، تتبّع للمكتسبات وتقدم منتظم طوال السنة."
         },
         three: {
+          badge: "الثانوي",
+          title: "مرافقة مخصصة للثانوي",
+          text: "تنظيم المواد، تنمية الاستقلالية، التحضير للتقييمات ومتابعة CNED بانتظام من أجل تقدّم واضح ومنهجي."
+        },
+        four: {
           badge: "انفتاح",
           title: "ورشات إبداعية وتعبير",
           text: "أوقات مكمّلة لتنمية الثقة والفضول واللغة ومتعة التعلّم."
@@ -936,6 +951,11 @@ export const siteTranslations = {
           text: "Organización, apoyo pedagógico, revisión de conocimientos y progreso constante a lo largo del año."
         },
         three: {
+          badge: "Liceo",
+          title: "Acompañamiento específico para liceo",
+          text: "Organización de materias, autonomía, preparación de evaluaciones y seguimiento CNED constante para avanzar con método."
+        },
+        four: {
           badge: "Apertura",
           title: "Talleres creativos y expresión",
           text: "Momentos complementarios para desarrollar confianza, curiosidad, lenguaje y gusto por aprender."
