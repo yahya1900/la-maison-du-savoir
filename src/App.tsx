@@ -26,7 +26,12 @@ const POETRY_POST_URL =
 const ASSET_BASE = import.meta.env.BASE_URL;
 const ABOUT_IMAGE_URL = `${ASSET_BASE}about-photo.jpeg`;
 const LOGO_URL = `${ASSET_BASE}logo.png`;
-const GALLERY_IMAGES = [`${ASSET_BASE}gallery-1.jpg`, `${ASSET_BASE}gallery-2.jpg`, `${ASSET_BASE}gallery-3.jpg`] as const;
+const GALLERY_IMAGES = [
+  `${ASSET_BASE}gallery-1.jpg`,
+  `${ASSET_BASE}gallery-2.jpg`,
+  `${ASSET_BASE}gallery-3.jpg`,
+  `${ASSET_BASE}gallery-4.jpg`
+] as const;
 const sections: SectionId[] = ["home", "about", "gallery", "programs", "news", "contact"];
 const stats: Array<{ value: number; key: "one" | "two" | "three" | "four"; prefix?: string }> = [
   { value: 2, key: "one" },
@@ -602,7 +607,9 @@ function App() {
     copy.about.includes.five
   ];
 
-  const galleryCards = [copy.gallery.cards.one, copy.gallery.cards.two, copy.gallery.cards.three];
+  const galleryCards = GALLERY_IMAGES.map((_, index) => ({
+    alt: `${copy.gallery.section.title} ${index + 1}`
+  }));
   const programCards = [copy.programs.cards.one, copy.programs.cards.two, copy.programs.cards.three];
   const newsCards = [
     { ...copy.news.cards.one },
@@ -844,11 +851,7 @@ function App() {
 
           <div className="shell gallery-grid">
             {galleryCards.map((card, index) => (
-              <article
-                key={card.alt}
-                className={`gallery-card ${index === 0 ? "gallery-card-feature" : "gallery-card-detail"}`}
-                data-reveal
-              >
+              <article key={card.alt} className="gallery-card" data-reveal>
                 <button
                   type="button"
                   className="gallery-open-button"
