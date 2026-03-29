@@ -1338,7 +1338,6 @@ function App() {
                   </div>
                 ) : null}
                 <div className="news-card-body">
-                  <span className="news-badge">{card.badge}</span>
                   <h3>{card.title}</h3>
                   <p>{card.text}</p>
                 </div>

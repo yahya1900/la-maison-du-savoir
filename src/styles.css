@@ -384,8 +384,7 @@ textarea:focus-visible {
 .intro-chip,
 .section-kicker,
 .panel-tag,
-.program-badge,
-.news-badge {
+.program-badge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -726,8 +725,7 @@ textarea:focus-visible {
   font-size: 26px;
 }
 
-.program-badge,
-.news-badge {
+.program-badge {
   margin-top: 18px;
   background: rgba(13, 70, 111, 0.08);
   color: var(--navy);
@@ -752,7 +750,6 @@ textarea:focus-visible {
   gap: 14px;
 }
 
-.news-card-body .news-badge,
 .news-card-body h3,
 .news-card-body p {
   margin: 0;
