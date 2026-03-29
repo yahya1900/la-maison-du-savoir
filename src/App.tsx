@@ -16,6 +16,7 @@ const PHONE = "0681222459";
 const CALL_LINK = "tel:+212681222459";
 const WHATSAPP_PRIMARY = "https://wa.me/212681222459";
 const WHATSAPP_CONTACT = "https://wa.me/212724191970";
+const LOGO_URL = `${import.meta.env.BASE_URL}logo.png`;
 const sections: SectionId[] = ["home", "about", "programs", "news", "contact"];
 const stats: Array<{ value: number; key: "one" | "two" | "three" | "four"; prefix?: string }> = [
   { value: 2, key: "one" },
@@ -277,7 +278,7 @@ function App() {
       <header className="main-nav">
         <div className="shell nav-row">
           <a className="brand" href="#home" onClick={() => setMenuOpen(false)}>
-            <img src="/logo.png" alt={common.brand.alt} />
+            <img src={LOGO_URL} alt={common.brand.alt} />
             <div className="brand-copy">
               <span className="brand-title">{common.brand.title}</span>
               <span className="brand-subtitle">{common.brand.subtitle}</span>
@@ -352,7 +353,7 @@ function App() {
               <div className="card-shell">
                 <span className="float-mark float-mark-one">❦</span>
                 <span className="float-mark float-mark-two">❦</span>
-                <img className="hero-logo" src="/logo.png" alt={common.hero.card.alt} />
+                <img className="hero-logo" src={LOGO_URL} alt={common.hero.card.alt} />
                 <div className="hero-card-label">{common.hero.card.location}</div>
                 <div className="hero-card-title">{common.hero.card.levels}</div>
                 <p>{common.hero.card.text}</p>
