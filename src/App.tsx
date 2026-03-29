@@ -20,10 +20,9 @@ const DRAWING_POST_URL =
   "https://web.facebook.com/61576992321051/posts/cours-de-dessin-%C3%A0-la-pause/122094291644899744/";
 const DARIJA_POST_URL =
   "https://web.facebook.com/61576992321051/posts/aji-t3alam-m3ana-darija-koul-larb3a-f-far-lma3rifa-f-ghazwa-km8-%EF%B8%8F-viens-apprendr/122159458256899744/";
-const POETRY_POST_URL =
-  "https://web.facebook.com/61576992321051/posts/cours-libre-de-po%C3%A9sie-et-peinture-du-vendredi-un-beau-moment-avec-les-enfants%EF%B8%8Fme/122153624432899744/";
 const ASSET_BASE = import.meta.env.BASE_URL;
 const ABOUT_IMAGE_URL = `${ASSET_BASE}about-photo.jpeg`;
+const DRAWING_NEWS_IMAGE = `${ASSET_BASE}news-drawing.jpeg`;
 const REGISTRATION_NEWS_IMAGE = `${ASSET_BASE}news-registration.jpeg`;
 const DARIJA_NEWS_IMAGE = `${ASSET_BASE}news-darija.jpeg`;
 const LOGO_URL = `${ASSET_BASE}logo.png`;
@@ -628,10 +627,37 @@ function App() {
   const visibleGalleryCards = showAllGalleryImages ? galleryCards : previewGalleryCards;
   const hasHiddenGalleryImages = galleryCards.length > GALLERY_PREVIEW_COUNT;
   const programCards = [copy.programs.cards.one, copy.programs.cards.two, copy.programs.cards.three];
+  const customCreativeNewsCard =
+    {
+      fr: {
+        badge: "Atelier créatif",
+        title: "Peinture et création en plein air",
+        text: "Un atelier créatif en plein air où les enfants peignent, décorent et expérimentent ensemble dans une ambiance calme et joyeuse."
+      },
+      en: {
+        badge: "Creative workshop",
+        title: "Outdoor painting and making",
+        text: "A hands-on outdoor creative workshop where children paint, decorate, and create together in a calm, joyful atmosphere."
+      },
+      ar: {
+        badge: "ورشة إبداعية",
+        title: "الرسم والتلوين في الهواء الطلق",
+        text: "ورشة إبداعية في الهواء الطلق حيث يرسم الأطفال ويلونون ويجرّبون معاً في أجواء هادئة وممتعة."
+      },
+      es: {
+        badge: "Taller creativo",
+        title: "Pintura y creación al aire libre",
+        text: "Un taller creativo al aire libre donde los niños pintan, decoran y crean juntos en un ambiente tranquilo y alegre."
+      }
+    }[language] ?? {
+      badge: "Creative workshop",
+      title: "Outdoor painting and making",
+      text: "A hands-on outdoor creative workshop where children paint, decorate, and create together in a calm, joyful atmosphere."
+    };
   const newsCards = [
     { ...copy.news.cards.one, image: REGISTRATION_NEWS_IMAGE },
-    { ...copy.news.cards.two, url: DRAWING_POST_URL },
-    { ...copy.news.cards.three, url: POETRY_POST_URL },
+    { ...copy.news.cards.two, url: DRAWING_POST_URL, image: DRAWING_NEWS_IMAGE },
+    { ...copy.news.cards.three, ...customCreativeNewsCard, image: DRAWING_NEWS_IMAGE, linkLabel: undefined, url: undefined },
     { ...copy.news.cards.four, url: DARIJA_POST_URL, image: DARIJA_NEWS_IMAGE }
   ];
   const activeGalleryCard = activeGalleryImage !== null ? galleryCards[activeGalleryImage] : null;
