@@ -539,7 +539,6 @@ function App() {
           <div>
             <h4>{common.footer.brandTitle}</h4>
             <p>{common.footer.subtitle}</p>
-            <p>{common.footer.ready}</p>
           </div>
           <div>
             <h4>{common.footer.contact}</h4>

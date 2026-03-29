@@ -49,7 +49,6 @@ export const siteTranslations = {
       footer: {
         brandTitle: "La Maison du Savoir - Ghazoua",
         subtitle: "Accompagnement CNED - Primaire & Collège",
-        ready: "Version statique prête pour Netlify drag-and-drop, sans GitHub ni build.",
         contact: "Contact",
         pages: "Pages"
       }
@@ -269,7 +268,6 @@ export const siteTranslations = {
       footer: {
         brandTitle: "La Maison du Savoir - Ghazoua",
         subtitle: "CNED support - Primary & Middle School",
-        ready: "Static version ready for Netlify drag-and-drop, with no GitHub or build step required.",
         contact: "Contact",
         pages: "Pages"
       }
@@ -489,7 +487,6 @@ export const siteTranslations = {
       footer: {
         brandTitle: "بيت المعرفة - غزوة",
         subtitle: "مرافقة CNED - الابتدائي والإعدادي",
-        ready: "نسخة ثابتة جاهزة للنشر على Netlify بالسحب والإفلات، من دون GitHub أو خطوة بناء.",
         contact: "تواصل",
         pages: "الصفحات"
       }
@@ -709,7 +706,6 @@ export const siteTranslations = {
       footer: {
         brandTitle: "La Maison du Savoir - Ghazoua",
         subtitle: "Acompañamiento CNED - Primaria y colegio",
-        ready: "Versión estática lista para Netlify con drag-and-drop, sin GitHub ni fase de compilación.",
         contact: "Contacto",
         pages: "Páginas"
       }
