@@ -836,6 +836,10 @@ textarea:focus-visible {
   margin-top: 22px;
 }
 
+.gallery-view-all-button {
+  min-width: 220px;
+}
+
 .gallery-lightbox {
   position: fixed;
   inset: 0;
@@ -903,6 +907,54 @@ textarea:focus-visible {
 
 .gallery-lightbox-close span:last-child {
   transform: rotate(-45deg);
+}
+
+.gallery-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  margin-top: -27px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(9, 47, 76, 0.68);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 16px 34px rgba(9, 47, 76, 0.22);
+}
+
+.gallery-lightbox-nav span {
+  font-size: 36px;
+  line-height: 1;
+  transform: translateY(-2px);
+}
+
+.gallery-lightbox-prev {
+  left: 18px;
+}
+
+.gallery-lightbox-next {
+  right: 18px;
+}
+
+.gallery-lightbox-count {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  z-index: 2;
+  min-width: 86px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(9, 47, 76, 0.68);
+  color: #fff;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+  transform: translateX(-50%);
 }
 
 .stat-card {
@@ -1051,6 +1103,16 @@ textarea:focus-visible {
 
 [dir="rtl"] .gallery-lightbox-close {
   left: 12px;
+  right: auto;
+}
+
+[dir="rtl"] .gallery-lightbox-prev {
+  right: 18px;
+  left: auto;
+}
+
+[dir="rtl"] .gallery-lightbox-next {
+  left: 18px;
   right: auto;
 }
 
@@ -1401,6 +1463,20 @@ textarea:focus-visible {
     border-radius: 18px;
   }
 
+  .gallery-lightbox-nav {
+    width: 46px;
+    height: 46px;
+    margin-top: -23px;
+  }
+
+  .gallery-lightbox-prev {
+    left: 10px;
+  }
+
+  .gallery-lightbox-next {
+    right: 10px;
+  }
+
 }
 
 @media (max-width: 720px) {
@@ -1449,6 +1525,15 @@ textarea:focus-visible {
 
   .hero-copy {
     font-size: 16px;
+  }
+
+  .gallery-actions {
+    justify-content: stretch;
+  }
+
+  .gallery-view-all-button {
+    width: 100%;
+    min-width: 0;
   }
 
   .hero-actions,

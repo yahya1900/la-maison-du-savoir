@@ -16,7 +16,6 @@ const PHONE = "0681222459";
 const CALL_LINK = "tel:+212681222459";
 const WHATSAPP_PRIMARY = "https://wa.me/212681222459";
 const WHATSAPP_CONTACT = "https://wa.me/212724191970";
-const FACEBOOK_PAGE = "https://web.facebook.com/people/La-maison-du-savoir/61576992321051/";
 const DRAWING_POST_URL =
   "https://web.facebook.com/61576992321051/posts/cours-de-dessin-%C3%A0-la-pause/122094291644899744/";
 const DARIJA_POST_URL =
@@ -30,8 +29,10 @@ const GALLERY_IMAGES = [
   `${ASSET_BASE}gallery-1.jpg`,
   `${ASSET_BASE}gallery-2.jpg`,
   `${ASSET_BASE}gallery-3.jpg`,
-  `${ASSET_BASE}gallery-4.jpg`
+  `${ASSET_BASE}gallery-4.jpg`,
+  `${ASSET_BASE}gallery-5.jpg`
 ] as const;
+const GALLERY_PREVIEW_COUNT = 4;
 const sections: SectionId[] = ["home", "about", "gallery", "programs", "news", "contact"];
 const stats: Array<{ value: number; key: "one" | "two" | "three" | "four"; prefix?: string }> = [
   { value: 2, key: "one" },
@@ -500,6 +501,16 @@ function App() {
 
         setMenuOpen(false);
       }
+
+      if (activeGalleryImage !== null && event.key === "ArrowRight") {
+        setActiveGalleryImage((current) => (current === null ? 0 : (current + 1) % GALLERY_IMAGES.length));
+      }
+
+      if (activeGalleryImage !== null && event.key === "ArrowLeft") {
+        setActiveGalleryImage((current) =>
+          current === null ? GALLERY_IMAGES.length - 1 : (current - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length
+        );
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -610,6 +621,7 @@ function App() {
   const galleryCards = GALLERY_IMAGES.map((_, index) => ({
     alt: `${copy.gallery.section.title} ${index + 1}`
   }));
+  const previewGalleryCards = galleryCards.slice(0, GALLERY_PREVIEW_COUNT);
   const programCards = [copy.programs.cards.one, copy.programs.cards.two, copy.programs.cards.three];
   const newsCards = [
     { ...copy.news.cards.one },
@@ -618,6 +630,13 @@ function App() {
     { ...copy.news.cards.four, url: DARIJA_POST_URL }
   ];
   const activeGalleryCard = activeGalleryImage !== null ? galleryCards[activeGalleryImage] : null;
+  const galleryViewAllLabel =
+    {
+      fr: "Voir toutes les photos",
+      en: "See all pictures",
+      ar: "عرض جميع الصور",
+      es: "Ver todas las fotos"
+    }[language] ?? "See all pictures";
 
   return (
     <div ref={rootRef} className="page-shell">
@@ -850,7 +869,7 @@ function App() {
           />
 
           <div className="shell gallery-grid">
-            {galleryCards.map((card, index) => (
+            {previewGalleryCards.map((card, index) => (
               <article key={card.alt} className="gallery-card" data-reveal>
                 <button
                   type="button"
@@ -870,9 +889,9 @@ function App() {
           </div>
 
           <div className="shell gallery-actions" data-reveal>
-            <a className="secondary-action" href={FACEBOOK_PAGE} target="_blank" rel="noreferrer">
-              {copy.gallery.section.cta}
-            </a>
+            <button type="button" className="secondary-action gallery-view-all-button" onClick={() => setActiveGalleryImage(0)}>
+              {galleryViewAllLabel}
+            </button>
           </div>
         </section>
 
@@ -1009,7 +1028,32 @@ function App() {
               <span />
               <span />
             </button>
+            <button
+              type="button"
+              className="gallery-lightbox-nav gallery-lightbox-prev"
+              aria-label="Previous image"
+              onClick={() =>
+                setActiveGalleryImage((current) =>
+                  current === null ? GALLERY_IMAGES.length - 1 : (current - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length
+                )
+              }
+            >
+              <span>&lsaquo;</span>
+            </button>
+            <button
+              type="button"
+              className="gallery-lightbox-nav gallery-lightbox-next"
+              aria-label="Next image"
+              onClick={() =>
+                setActiveGalleryImage((current) => (current === null ? 0 : (current + 1) % GALLERY_IMAGES.length))
+              }
+            >
+              <span>&rsaquo;</span>
+            </button>
             <img src={GALLERY_IMAGES[activeGalleryImage]} alt={activeGalleryCard?.alt ?? ""} />
+            <div className="gallery-lightbox-count">
+              {activeGalleryImage + 1} / {GALLERY_IMAGES.length}
+            </div>
           </div>
         </div>
       ) : null}
