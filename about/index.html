@@ -30,7 +30,7 @@
           <div class="brand-sub">« Nous plantons des graines pour le futur »</div>
         </div>
       </a>
-      <button class="menu-toggle" aria-label="Ouvrir le menu" onclick="toggleMobileMenu()">☰</button>
+      <button type="button" class="menu-toggle" aria-label="Ouvrir le menu" aria-controls="mobileMenu" aria-expanded="false" onclick="toggleMobileMenu()">&#9776;</button>
       <div class="links" id="mobileMenu"><a href="/index.html" class="">Accueil</a>
 <a href="/about/index.html" class="active">À propos</a>
 <a href="/programmes/index.html" class="">Programmes</a>
@@ -82,7 +82,7 @@
 
     <div class="grid-2" style="margin-top:34px">
       <div class="card reveal" style="padding:0;overflow:hidden">
-        <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1400&q=80" alt="Enfants en apprentissage" style="height:100%;min-height:420px;object-fit:cover;width:100%">
+        <img class="about-photo" src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1400&q=80" alt="Enfants en apprentissage" loading="lazy">
       </div>
       <div class="card reveal">
         <h3 style="margin-top:0">Notre accompagnement comprend</h3>
@@ -94,7 +94,7 @@
           <div>✓ Activités complémentaires : ateliers créatifs, jeux éducatifs, expression orale</div>
         </div>
 
-        <div class="grid-3" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-top:26px">
+        <div class="grid-3 stats-grid">
           <div class="card soft" style="padding:20px;box-shadow:none"><div style="font-size:32px;font-weight:900;color:var(--navy)">2</div><div>Années d’apprentissage joyeux</div></div>
           <div class="card soft" style="padding:20px;box-shadow:none"><div style="font-size:32px;font-weight:900;color:var(--navy)">3</div><div>Éducateurs et intervenants</div></div>
           <div class="card soft" style="padding:20px;box-shadow:none"><div style="font-size:32px;font-weight:900;color:var(--navy)">+100</div><div>Temps d’accompagnement</div></div>
