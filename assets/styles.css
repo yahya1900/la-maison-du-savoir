@@ -65,6 +65,38 @@ textarea:focus-visible{
   text-transform:uppercase;
   letter-spacing:.18em;
 }
+.lang-switcher{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  margin-inline-start:auto;
+  padding:4px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.16);
+  direction:ltr;
+}
+.lang-button{
+  border:none;
+  background:transparent;
+  color:#fff;
+  min-width:38px;
+  min-height:34px;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  cursor:pointer;
+  transition:background .25s ease, color .25s ease, transform .25s ease;
+}
+.lang-button:hover{
+  transform:translateY(-1px);
+}
+.lang-button.is-active{
+  background:#fff;
+  color:var(--navy);
+}
 .nav{
   position:sticky;
   top:0;
@@ -491,6 +523,9 @@ button.submit{
 body.menu-open{
   overflow:hidden;
 }
+body.is-rtl{
+  font-family:"Segoe UI", Tahoma, Arial, sans-serif;
+}
 .menu-toggle{
   display:none;
   width:48px;
@@ -518,6 +553,17 @@ body.menu-open{
 .mobile-cta-bar{
   display:none;
 }
+[dir="rtl"] .checks,
+[dir="rtl"] .contact-item{
+  direction:rtl;
+}
+[dir="rtl"] .links a,
+[dir="rtl"] .pill{
+  text-align:right;
+}
+[dir="rtl"] .hero-card-inner{
+  text-align:center;
+}
 @media (max-width:980px){
   .container{
     width:min(1180px, calc(100% - 24px));
@@ -527,6 +573,9 @@ body.menu-open{
     text-align:center;
     gap:8px;
     padding:12px 0;
+  }
+  .lang-switcher{
+    margin-inline-start:0;
   }
   .nav .container{
     display:grid;
@@ -581,6 +630,16 @@ body.menu-open{
     padding:14px 16px;
   }
   .links.open{
+    transform:translateX(0);
+  }
+  [dir="rtl"] .links{
+    right:auto;
+    left:0;
+    border-left:none;
+    border-right:1px solid rgba(14,75,123,.08);
+    transform:translateX(-110%);
+  }
+  [dir="rtl"] .links.open{
     transform:translateX(0);
   }
   .nav > .container > .cta{
@@ -693,6 +752,15 @@ body.menu-open{
     font-size:9px;
     letter-spacing:.14em;
     padding:4px 8px;
+  }
+  .lang-switcher{
+    flex-wrap:wrap;
+    justify-content:center;
+    width:100%;
+    max-width:100%;
+  }
+  .lang-button{
+    min-width:44px;
   }
   .nav .container{
     gap:10px;

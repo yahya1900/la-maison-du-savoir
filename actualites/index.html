@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Actualités | La Maison du Savoir Ghazoua</title>
-  <meta name="description" content="Actualités de La Maison du Savoir à Ghazoua : inscriptions, visites et nouveautés." />
-  <meta property="og:title" content="Actualités | La Maison du Savoir Ghazoua" />
-  <meta property="og:description" content="Actualités de La Maison du Savoir à Ghazoua : inscriptions, visites et nouveautés." />
+  <title data-i18n="meta.news.title">Actualités | La Maison du Savoir Ghazoua</title>
+  <meta name="description" data-i18n="meta.news.description" data-i18n-attr="content" content="Actualités de La Maison du Savoir à Ghazoua : inscriptions, visites et nouveautés." />
+  <meta property="og:title" data-i18n="meta.news.title" data-i18n-attr="content" content="Actualités | La Maison du Savoir Ghazoua" />
+  <meta property="og:description" data-i18n="meta.news.description" data-i18n-attr="content" content="Actualités de La Maison du Savoir à Ghazoua : inscriptions, visites et nouveautés." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/assets/og-image.svg" />
   <link rel="icon" href="/assets/logo.png" />
@@ -16,27 +16,30 @@
   <div class="topbar">
     <div class="container">
       <div>lamaisondusavoir2025@gmail.com · 0681222459</div>
-      <div><span class="badge">CNED</span> Primaire & Collège – accueil en journée à Ghazoua</div>
-      <div>Ghazoua – route de Sidi Kaouki</div>
+      <div><span class="badge">CNED</span> <span data-i18n="common.topbar.badgeLine">Primaire &amp; Collège - accueil en journée à Ghazoua</span></div>
+      <div data-i18n="common.topbar.location">Ghazoua - route de Sidi Kaouki</div>
+      <div class="lang-switcher" data-language-switcher></div>
     </div>
   </div>
 
   <div class="nav">
     <div class="container">
       <a href="/index.html" class="brand">
-        <img src="/assets/logo.png" alt="Logo La Maison du Savoir" />
+        <img src="/assets/logo.png" alt="Logo La Maison du Savoir" data-i18n="common.brand.alt" data-i18n-attr="alt" />
         <div>
-          <div class="brand-title">La Maison du Savoir</div>
-          <div class="brand-sub">« Nous plantons des graines pour le futur »</div>
+          <div class="brand-title" data-i18n="common.brand.title">La Maison du Savoir</div>
+          <div class="brand-sub" data-i18n="common.brand.subtitle">« Nous plantons des graines pour le futur »</div>
         </div>
       </a>
-      <button type="button" class="menu-toggle" aria-label="Ouvrir le menu" aria-controls="mobileMenu" aria-expanded="false" onclick="toggleMobileMenu()">&#9776;</button>
-      <div class="links" id="mobileMenu"><a href="/index.html" class="">Accueil</a>
-<a href="/about/index.html" class="">À propos</a>
-<a href="/programmes/index.html" class="">Programmes</a>
-<a href="/actualites/index.html" class="active">Actualités</a>
-<a href="/contact/index.html" class="">Contact</a></div>
-      <a class="cta" href="/contact/index.html">Nous contacter</a>
+      <button type="button" class="menu-toggle" aria-label="Ouvrir le menu" data-i18n="common.menuToggle" data-i18n-attr="aria-label" aria-controls="mobileMenu" aria-expanded="false" onclick="toggleMobileMenu()">&#9776;</button>
+      <div class="links" id="mobileMenu">
+        <a href="/index.html" data-i18n="common.nav.home">Accueil</a>
+        <a href="/about/index.html" data-i18n="common.nav.about">À propos</a>
+        <a href="/programmes/index.html" data-i18n="common.nav.programs">Programmes</a>
+        <a href="/actualites/index.html" class="active" data-i18n="common.nav.news">Actualités</a>
+        <a href="/contact/index.html" data-i18n="common.nav.contact">Contact</a>
+      </div>
+      <a class="cta" href="/contact/index.html" data-i18n="common.nav.cta">Nous contacter</a>
       <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
     </div>
   </div>
@@ -46,17 +49,17 @@
     <div class="leaf four">❦</div>
     <div class="container hero-grid">
       <div class="reveal">
-        <div class="eyebrow">Actualités</div>
-        <h1>Les nouvelles de La Maison du Savoir</h1>
-        <p class="lead">Retrouvez nos informations, inscriptions et temps forts de l’année.</p>
+        <div class="eyebrow" data-i18n="news.hero.eyebrow">Actualités</div>
+        <h1 data-i18n="news.hero.title">Les nouvelles de La Maison du Savoir</h1>
+        <p class="lead" data-i18n="news.hero.lead">Retrouvez nos informations, inscriptions et temps forts de l'année.</p>
         <div class="hero-actions">
-          <a class="cta" href="/contact/index.html">Contacter maintenant</a>
-          <a class="cta secondary" href="https://wa.me/212681222459">WhatsApp</a>
+          <a class="cta" href="/contact/index.html" data-i18n="common.hero.contactCta">Contacter maintenant</a>
+          <a class="cta secondary" href="https://wa.me/212681222459" data-i18n="common.hero.whatsapp">WhatsApp</a>
         </div>
         <div class="hero-pills">
-          <div class="pill">Cadre serein</div>
-          <div class="pill">Suivi individualisé</div>
-          <div class="pill">Primaire & Collège</div>
+          <div class="pill" data-i18n="common.hero.pills.calm">Cadre serein</div>
+          <div class="pill" data-i18n="common.hero.pills.personalized">Suivi individualisé</div>
+          <div class="pill" data-i18n="common.hero.pills.levels">Primaire &amp; Collège</div>
         </div>
       </div>
 
@@ -64,68 +67,67 @@
         <div class="leaf one">❦</div>
         <div class="leaf two">❦</div>
         <div class="hero-card-inner">
-          <img class="logo-float" src="/assets/logo.png" alt="Logo La Maison du Savoir Ghazoua" />
-          <div style="margin-top:18px;color:var(--orange);font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase">Ghazoua</div>
-          <div style="margin-top:10px;color:var(--navy);font-size:38px;font-weight:900">Primaire & Collège</div>
-          <p style="margin:18px auto 0;max-width:520px;line-height:1.85">Un lieu ouvert sur le monde, la nature et les savoirs. Accompagnement CNED dans un espace propice à la concentration et à l’épanouissement.</p>
+          <img class="logo-float" src="/assets/logo.png" alt="Logo La Maison du Savoir Ghazoua" data-i18n="common.hero.card.alt" data-i18n-attr="alt" />
+          <div style="margin-top:18px;color:var(--orange);font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase" data-i18n="common.hero.card.location">Ghazoua</div>
+          <div style="margin-top:10px;color:var(--navy);font-size:38px;font-weight:900" data-i18n="common.hero.card.levels">Primaire &amp; Collège</div>
+          <p style="margin:18px auto 0;max-width:520px;line-height:1.85" data-i18n="common.hero.card.text">Un lieu ouvert sur le monde, la nature et les savoirs. Accompagnement CNED dans un espace propice à la concentration et à l'épanouissement.</p>
         </div>
       </div>
     </div>
   </section>
 
-  
-<section class="section">
-  <div class="container">
-    <div class="heading-eyebrow reveal">Actualités</div>
-    <div class="heading-title reveal">Les informations utiles pour les familles</div>
-    <div class="heading-text reveal">Retrouvez ici les ouvertures d’inscriptions, visites et nouveautés de La Maison du Savoir.</div>
+  <section class="section">
+    <div class="container">
+      <div class="heading-eyebrow reveal" data-i18n="news.section.eyebrow">Actualités</div>
+      <div class="heading-title reveal" data-i18n="news.section.title">Les informations utiles pour les familles</div>
+      <div class="heading-text reveal" data-i18n="news.section.text">Retrouvez ici les ouvertures d'inscriptions, visites et nouveautés de La Maison du Savoir.</div>
 
-    <div class="grid-3" style="margin-top:34px">
-      <div class="card reveal">
-        <div class="news-badge">Information 1</div>
-        <h3>Les inscriptions sont ouvertes</h3>
-        <p>Prenez rendez-vous pour découvrir notre cadre d’accompagnement et nos modalités d’accueil à Ghazoua.</p>
-      </div>
-      <div class="card reveal">
-        <div class="news-badge">Information 2</div>
-        <h3>Visites sur rendez-vous</h3>
-        <p>Nous accueillons les familles pour présenter les espaces, l’équipe et l’organisation pédagogique.</p>
-      </div>
-      <div class="card reveal">
-        <div class="news-badge">Information 3</div>
-        <h3>Nouveaux ateliers complémentaires</h3>
-        <p>Des activités enrichissantes sont proposées pour soutenir la confiance, l’expression et la curiosité.</p>
+      <div class="grid-3" style="margin-top:34px">
+        <div class="card reveal">
+          <div class="news-badge" data-i18n="news.cards.one.badge">Information 1</div>
+          <h3 data-i18n="news.cards.one.title">Les inscriptions sont ouvertes</h3>
+          <p data-i18n="news.cards.one.text">Prenez rendez-vous pour découvrir notre cadre d'accompagnement et nos modalités d'accueil à Ghazoua.</p>
+        </div>
+        <div class="card reveal">
+          <div class="news-badge" data-i18n="news.cards.two.badge">Information 2</div>
+          <h3 data-i18n="news.cards.two.title">Visites sur rendez-vous</h3>
+          <p data-i18n="news.cards.two.text">Nous accueillons les familles pour présenter les espaces, l'équipe et l'organisation pédagogique.</p>
+        </div>
+        <div class="card reveal">
+          <div class="news-badge" data-i18n="news.cards.three.badge">Information 3</div>
+          <h3 data-i18n="news.cards.three.title">Nouveaux ateliers complémentaires</h3>
+          <p data-i18n="news.cards.three.text">Des activités enrichissantes sont proposées pour soutenir la confiance, l'expression et la curiosité.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
+  </section>
 
   <footer class="footer">
     <div class="container">
       <div>
-        <h4>La Maison du Savoir – Ghazoua</h4>
-        <p>Accompagnement CNED – Primaire & Collège</p>
-        <p>Version statique prête pour Netlify drag-and-drop, sans GitHub ni build.</p>
+        <h4 data-i18n="common.footer.brandTitle">La Maison du Savoir - Ghazoua</h4>
+        <p data-i18n="common.footer.subtitle">Accompagnement CNED - Primaire &amp; Collège</p>
+        <p data-i18n="common.footer.ready">Version statique prête pour Netlify drag-and-drop, sans GitHub ni build.</p>
       </div>
       <div>
-        <h4>Contact</h4>
+        <h4 data-i18n="common.footer.contact">Contact</h4>
         <div>0681222459</div>
         <div>lamaisondusavoir2025@gmail.com</div>
-        <div>Ghazoua – Km 8, route de Sidi Kaouki</div>
+        <div>Ghazoua - Km 8, route de Sidi Kaouki</div>
       </div>
       <div>
-        <h4>Pages</h4>
-        <div>Accueil</div>
-        <div>À propos</div>
-        <div>Programmes</div>
-        <div>Actualités</div>
-        <div>Contact</div>
+        <h4 data-i18n="common.footer.pages">Pages</h4>
+        <div data-i18n="common.nav.home">Accueil</div>
+        <div data-i18n="common.nav.about">À propos</div>
+        <div data-i18n="common.nav.programs">Programmes</div>
+        <div data-i18n="common.nav.news">Actualités</div>
+        <div data-i18n="common.nav.contact">Contact</div>
       </div>
     </div>
   </footer>
 
-  <a class="whatsapp" href="https://wa.me/212681222459">WhatsApp</a>
+  <a class="whatsapp" href="https://wa.me/212681222459" data-i18n="common.hero.whatsapp">WhatsApp</a>
+  <script src="/assets/translations.js"></script>
   <script src="/assets/script.js"></script>
 </body>
 </html>
