@@ -694,6 +694,26 @@ textarea:focus-visible {
   text-underline-offset: 4px;
 }
 
+.news-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  padding: 14px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(13, 70, 111, 0.08);
+  box-shadow: 0 14px 28px rgba(13, 70, 111, 0.08);
+}
+
+.news-media img {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: 18px;
+}
+
 .about-media {
   min-height: 100%;
 }

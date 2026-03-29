@@ -24,6 +24,7 @@ const POETRY_POST_URL =
   "https://web.facebook.com/61576992321051/posts/cours-libre-de-po%C3%A9sie-et-peinture-du-vendredi-un-beau-moment-avec-les-enfants%EF%B8%8Fme/122153624432899744/";
 const ASSET_BASE = import.meta.env.BASE_URL;
 const ABOUT_IMAGE_URL = `${ASSET_BASE}about-photo.jpeg`;
+const REGISTRATION_NEWS_IMAGE = `${ASSET_BASE}news-registration.jpeg`;
 const LOGO_URL = `${ASSET_BASE}logo.png`;
 const GALLERY_IMAGES = [
   `${ASSET_BASE}gallery-1.jpg`,
@@ -627,7 +628,7 @@ function App() {
   const hasHiddenGalleryImages = galleryCards.length > GALLERY_PREVIEW_COUNT;
   const programCards = [copy.programs.cards.one, copy.programs.cards.two, copy.programs.cards.three];
   const newsCards = [
-    { ...copy.news.cards.one },
+    { ...copy.news.cards.one, image: REGISTRATION_NEWS_IMAGE },
     { ...copy.news.cards.two, url: DRAWING_POST_URL },
     { ...copy.news.cards.three, url: POETRY_POST_URL },
     { ...copy.news.cards.four, url: DARIJA_POST_URL }
@@ -934,6 +935,11 @@ function App() {
           <div className="shell cards-grid">
             {newsCards.map((card, index) => (
               <article key={card.title} className={`news-card tone-${newsAccents[index]}`} data-reveal>
+                {card.image ? (
+                  <div className="news-media">
+                    <img src={card.image} alt={card.title} loading="lazy" />
+                  </div>
+                ) : null}
                 <span className="news-badge">{card.badge}</span>
                 <h3>{card.title}</h3>
                 <p>{card.text}</p>
