@@ -221,6 +221,12 @@ export const siteTranslations = {
           badge: "Information 3",
           title: "Nouveaux ateliers complémentaires",
           text: "Des activités enrichissantes sont proposées pour soutenir la confiance, l'expression et la curiosité."
+        },
+        four: {
+          badge: "Information 4",
+          title: "Atelier de darija chaque mercredi",
+          text: "Viens apprendre le darija avec nous chaque mercredi à La Maison du Savoir, Ghazoua Km 8.",
+          linkLabel: "Voir la publication Facebook"
         }
       }
     },
@@ -464,6 +470,12 @@ export const siteTranslations = {
           badge: "Update 3",
           title: "New complementary workshops",
           text: "Enriching activities are offered to support confidence, expression, and curiosity."
+        },
+        four: {
+          badge: "Update 4",
+          title: "Darija class every Wednesday",
+          text: "Join us every Wednesday to learn Darija at La Maison du Savoir, Ghazoua Km 8.",
+          linkLabel: "View the Facebook post"
         }
       }
     },
@@ -707,6 +719,12 @@ export const siteTranslations = {
           badge: "معلومة 3",
           title: "ورشات مكمّلة جديدة",
           text: "نقترح أنشطة غنية تدعم الثقة والتعبير والفضول."
+        },
+        four: {
+          badge: "معلومة 4",
+          title: "تعلّم الدارجة معنا كل أربعاء",
+          text: "انضم إلينا كل يوم أربعاء لتعلّم الدارجة في بيت المعرفة، غزوة كلم 8.",
+          linkLabel: "عرض منشور فيسبوك"
         }
       }
     },
@@ -950,6 +968,12 @@ export const siteTranslations = {
           badge: "Información 3",
           title: "Nuevos talleres complementarios",
           text: "Se proponen actividades enriquecedoras para reforzar la confianza, la expresión y la curiosidad."
+        },
+        four: {
+          badge: "Información 4",
+          title: "Taller de darija cada miércoles",
+          text: "Ven a aprender darija con nosotros cada miércoles en La Maison du Savoir, Ghazoua Km 8.",
+          linkLabel: "Ver la publicación en Facebook"
         }
       }
     },

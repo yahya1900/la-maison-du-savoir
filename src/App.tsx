@@ -17,6 +17,8 @@ const CALL_LINK = "tel:+212681222459";
 const WHATSAPP_PRIMARY = "https://wa.me/212681222459";
 const WHATSAPP_CONTACT = "https://wa.me/212724191970";
 const FACEBOOK_PAGE = "https://web.facebook.com/people/La-maison-du-savoir/61576992321051/";
+const DARIJA_POST_URL =
+  "https://web.facebook.com/61576992321051/posts/aji-t3alam-m3ana-darija-koul-larb3a-f-far-lma3rifa-f-ghazwa-km8-%EF%B8%8F-viens-apprendr/122159458256899744/";
 const ASSET_BASE = import.meta.env.BASE_URL;
 const LOGO_URL = `${ASSET_BASE}logo.png`;
 const GALLERY_IMAGES = [`${ASSET_BASE}gallery-1.jpg`, `${ASSET_BASE}gallery-2.jpg`, `${ASSET_BASE}gallery-3.jpg`] as const;
@@ -28,7 +30,7 @@ const stats: Array<{ value: number; key: "one" | "two" | "three" | "four"; prefi
   { value: 10, key: "four", prefix: "+" }
 ];
 const programIcons = ["🏫", "🤝", "✨"] as const;
-const newsAccents = ["sunrise", "ocean", "meadow"] as const;
+const newsAccents = ["sunrise", "ocean", "meadow", "sunrise"] as const;
 
 function getInitialLanguage(): LanguageCode {
   const fallback: LanguageCode = "fr";
@@ -242,7 +244,7 @@ function App() {
 
   const galleryCards = [copy.gallery.cards.one, copy.gallery.cards.two, copy.gallery.cards.three];
   const programCards = [copy.programs.cards.one, copy.programs.cards.two, copy.programs.cards.three];
-  const newsCards = [copy.news.cards.one, copy.news.cards.two, copy.news.cards.three];
+  const newsCards = [copy.news.cards.one, copy.news.cards.two, copy.news.cards.three, copy.news.cards.four];
 
   return (
     <div ref={rootRef} className="page-shell">
@@ -507,6 +509,11 @@ function App() {
                 <span className="news-badge">{card.badge}</span>
                 <h3>{card.title}</h3>
                 <p>{card.text}</p>
+                {card.linkLabel ? (
+                  <a className="news-link" href={DARIJA_POST_URL} target="_blank" rel="noreferrer">
+                    {card.linkLabel}
+                  </a>
+                ) : null}
               </article>
             ))}
           </div>

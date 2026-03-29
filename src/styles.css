@@ -694,6 +694,13 @@ textarea:focus-visible {
   font-weight: 800;
 }
 
+.news-link {
+  display: inline-flex;
+  margin-top: 16px;
+  color: var(--navy);
+  font-weight: 800;
+}
+
 .about-media {
   min-height: 100%;
 }
