@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState, useTransition } from "react";
+import { type FormEvent, useEffect, useLayoutEffect, useRef, useState, useTransition } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { siteLanguages, siteTranslations } from "../assets/translations.js";
@@ -669,6 +669,34 @@ function App() {
       ar: "عرض جميع الصور",
       es: "Ver todas las fotos"
     }[language] ?? "See all pictures";
+  const contactWhatsappIntro =
+    {
+      fr: "Bonjour, je souhaite obtenir plus d'informations.",
+      en: "Hello, I would like more information.",
+      ar: "مرحباً، أود الحصول على مزيد من المعلومات.",
+      es: "Hola, me gustaría recibir más información."
+    }[language] ?? "Hello, I would like more information.";
+
+  const handleContactWhatsappSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const parentName = String(formData.get("parentName") ?? "").trim();
+    const contactInfo = String(formData.get("contactInfo") ?? "").trim();
+    const studentLevel = String(formData.get("studentLevel") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
+
+    const whatsappMessage = [
+      contactWhatsappIntro,
+      "",
+      `${copy.contact.form.parent}: ${parentName}`,
+      `${copy.contact.form.contact}: ${contactInfo}`,
+      `${copy.contact.form.student}: ${studentLevel || "-"}`,
+      `${copy.contact.form.message}: ${message}`
+    ].join("\n");
+
+    window.open(`${WHATSAPP_CONTACT}?text=${encodeURIComponent(whatsappMessage)}`, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <div ref={rootRef} className="page-shell">
@@ -1010,14 +1038,9 @@ function App() {
 
             <form
               className="contact-form"
-              name="contact"
-              method="POST"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
               data-reveal
+              onSubmit={handleContactWhatsappSubmit}
             >
-              <input type="hidden" name="form-name" value="contact" />
-              <input type="hidden" name="bot-field" />
               <input name="parentName" placeholder={copy.contact.form.parent} required />
               <input name="contactInfo" placeholder={copy.contact.form.contact} required />
               <input className="full-width" name="studentLevel" placeholder={copy.contact.form.student} />
