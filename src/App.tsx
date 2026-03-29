@@ -16,7 +16,6 @@ const PHONE = "0681222459";
 const CALL_LINK = "tel:+212681222459";
 const WHATSAPP_PRIMARY = "https://wa.me/212681222459";
 const WHATSAPP_CONTACT = "https://wa.me/212724191970";
-const MAP_EMBED_URL = "https://www.google.com/maps?q=Ghazoua%20Route%20de%20Sidi%20Kaouki&output=embed";
 const MAP_DIRECTIONS_URL = "https://www.google.com/maps/search/?api=1&query=Ghazoua%20Route%20de%20Sidi%20Kaouki";
 const DRAWING_POST_URL =
   "https://web.facebook.com/61576992321051/posts/cours-de-dessin-%C3%A0-la-pause/122094291644899744/";
@@ -1152,14 +1151,6 @@ function App() {
                 </div>
 
                 <aside className="map-card" data-reveal>
-                  <div className="map-frame">
-                    <iframe
-                      title={extraCopy.steps.map.title}
-                      src={MAP_EMBED_URL}
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    />
-                  </div>
                   <div className="map-card-copy">
                     <span className="section-kicker">{extraCopy.steps.map.eyebrow}</span>
                     <h3>{extraCopy.steps.map.title}</h3>
