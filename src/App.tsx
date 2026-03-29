@@ -6,7 +6,7 @@ import { siteLanguages, siteTranslations } from "../assets/translations.js";
 gsap.registerPlugin(ScrollTrigger);
 
 type LanguageCode = "fr" | "en" | "ar" | "es";
-type SectionId = "home" | "about" | "gallery" | "programs" | "steps" | "news" | "faq" | "contact";
+type SectionId = "home" | "about" | "gallery" | "programs" | "news" | "contact";
 
 const languages = siteLanguages as Record<LanguageCode, { short: string; name: string; dir: "ltr" | "rtl" }>;
 const translations = siteTranslations as Record<LanguageCode, any>;
@@ -37,7 +37,7 @@ const GALLERY_IMAGES = [
   `${ASSET_BASE}gallery-5.jpg`
 ] as const;
 const GALLERY_PREVIEW_COUNT = 4;
-const sections: SectionId[] = ["home", "about", "gallery", "programs", "steps", "news", "faq", "contact"];
+const sections: SectionId[] = ["home", "about", "gallery", "programs", "news", "contact"];
 const stats: Array<{ value: number; key: "one" | "two" | "three" | "four"; prefix?: string }> = [
   { value: 2, key: "one" },
   { value: 3, key: "two" },
@@ -666,9 +666,7 @@ function App() {
     about: null,
     gallery: null,
     programs: null,
-    steps: null,
     news: null,
-    faq: null,
     contact: null
   });
 
@@ -861,9 +859,7 @@ function App() {
     { id: "about" as const, label: common.nav.about },
     { id: "gallery" as const, label: common.nav.gallery },
     { id: "programs" as const, label: common.nav.programs },
-    { id: "steps" as const, label: extraCopy.nav.steps },
     { id: "news" as const, label: common.nav.news },
-    { id: "faq" as const, label: extraCopy.nav.faq },
     { id: "contact" as const, label: common.nav.contact }
   ];
 
@@ -1135,6 +1131,73 @@ function App() {
               <p>{copy.home.cards.three.text}</p>
             </article>
           </div>
+
+          <div className="home-extras">
+            <div className="home-extra-block">
+              <SectionHeading
+                eyebrow={extraCopy.steps.section.eyebrow}
+                title={extraCopy.steps.section.title}
+                text={extraCopy.steps.section.text}
+              />
+
+              <div className="shell steps-layout">
+                <div className="steps-grid">
+                  {stepCards.map((card, index) => (
+                    <article key={card.title} className="step-card" data-reveal>
+                      <span className="step-number">{index + 1}</span>
+                      <h3>{card.title}</h3>
+                      <p>{card.text}</p>
+                    </article>
+                  ))}
+                </div>
+
+                <aside className="map-card" data-reveal>
+                  <div className="map-frame">
+                    <iframe
+                      title={extraCopy.steps.map.title}
+                      src={MAP_EMBED_URL}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                  </div>
+                  <div className="map-card-copy">
+                    <span className="section-kicker">{extraCopy.steps.map.eyebrow}</span>
+                    <h3>{extraCopy.steps.map.title}</h3>
+                    <p>{extraCopy.steps.map.text}</p>
+                    <div className="contact-lines">
+                      <span>{extraCopy.steps.map.location}</span>
+                      <span>{extraCopy.steps.map.hours}</span>
+                    </div>
+                    <div className="map-card-actions">
+                      <a className="primary-action" href={MAP_DIRECTIONS_URL} target="_blank" rel="noreferrer">
+                        {extraCopy.steps.map.directions}
+                      </a>
+                      <a className="secondary-action whatsapp-action" href={WHATSAPP_CONTACT} target="_blank" rel="noreferrer">
+                        {extraCopy.steps.map.contact}
+                      </a>
+                    </div>
+                  </div>
+                </aside>
+              </div>
+            </div>
+
+            <div className="home-extra-block">
+              <SectionHeading
+                eyebrow={extraCopy.faq.section.eyebrow}
+                title={extraCopy.faq.section.title}
+                text={extraCopy.faq.section.text}
+              />
+
+              <div className="shell faq-list">
+                {faqItems.map((item) => (
+                  <details key={item.q} className="faq-item" data-reveal>
+                    <summary>{item.q}</summary>
+                    <p className="faq-answer">{item.a}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </div>
         </section>
 
         <section id="about" ref={setSectionRef("about")} className="section-shell section-anchor">
@@ -1237,59 +1300,6 @@ function App() {
           </div>
         </section>
 
-        <section id="steps" ref={setSectionRef("steps")} className="section-shell section-anchor">
-          <SectionHeading
-            eyebrow={extraCopy.steps.section.eyebrow}
-            title={extraCopy.steps.section.title}
-            text={extraCopy.steps.section.text}
-          />
-
-          <div className="shell steps-layout">
-            <div className="steps-grid">
-              {stepCards.map((card, index) => (
-                <article key={card.title} className="step-card" data-reveal>
-                  <span className="step-number">{index + 1}</span>
-                  <h3>{card.title}</h3>
-                  <p>{card.text}</p>
-                </article>
-              ))}
-            </div>
-
-            <aside className="map-card" data-reveal>
-              <div className="map-frame">
-                <iframe
-                  title={extraCopy.steps.map.title}
-                  src={MAP_EMBED_URL}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-              <div className="map-card-copy">
-                <span className="section-kicker">{extraCopy.steps.map.eyebrow}</span>
-                <h3>{extraCopy.steps.map.title}</h3>
-                <p>{extraCopy.steps.map.text}</p>
-                <div className="contact-lines">
-                  <span>{extraCopy.steps.map.location}</span>
-                  <span>{extraCopy.steps.map.hours}</span>
-                </div>
-                <div className="map-card-actions">
-                  <a
-                    className="primary-action"
-                    href={MAP_DIRECTIONS_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {extraCopy.steps.map.directions}
-                  </a>
-                  <a className="secondary-action whatsapp-action" href={WHATSAPP_CONTACT} target="_blank" rel="noreferrer">
-                    {extraCopy.steps.map.contact}
-                  </a>
-                </div>
-              </div>
-            </aside>
-          </div>
-        </section>
-
         <section id="news" ref={setSectionRef("news")} className="section-shell section-anchor">
           <SectionHeading
             eyebrow={copy.news.section.eyebrow}
@@ -1314,23 +1324,6 @@ function App() {
                   </a>
                 ) : null}
               </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="faq" ref={setSectionRef("faq")} className="section-shell section-anchor">
-          <SectionHeading
-            eyebrow={extraCopy.faq.section.eyebrow}
-            title={extraCopy.faq.section.title}
-            text={extraCopy.faq.section.text}
-          />
-
-          <div className="shell faq-list">
-            {faqItems.map((item) => (
-              <details key={item.q} className="faq-item" data-reveal>
-                <summary>{item.q}</summary>
-                <p className="faq-answer">{item.a}</p>
-              </details>
             ))}
           </div>
         </section>
