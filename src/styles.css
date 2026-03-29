@@ -150,6 +150,10 @@ textarea:focus-visible {
   font-weight: 700;
 }
 
+.topbar-location {
+  margin-inline-start: auto;
+}
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -194,6 +198,22 @@ textarea:focus-visible {
 .language-chip.is-active {
   background: #fff;
   color: var(--navy);
+}
+
+.nav-language-group {
+  margin-inline-start: 12px;
+}
+
+.nav-language-group .language-chip {
+  min-height: 42px;
+  background: rgba(13, 70, 111, 0.06);
+  color: var(--navy);
+  border-color: rgba(13, 70, 111, 0.12);
+}
+
+.nav-language-group .language-chip.is-active {
+  background: var(--navy);
+  color: #fff;
 }
 
 .main-nav {
@@ -1072,6 +1092,12 @@ textarea:focus-visible {
     background: rgba(255, 255, 255, 0.8);
   }
 
+  .nav-language-group {
+    margin-inline-start: 0;
+    margin-top: 4px;
+    justify-content: center;
+  }
+
   .mobile-backdrop {
     position: fixed;
     inset: 0;
@@ -1150,6 +1176,10 @@ textarea:focus-visible {
     justify-content: center;
   }
 
+  .topbar-location {
+    margin-inline-start: 0;
+  }
+
   .brand img {
     width: 56px;
     height: 56px;
@@ -1161,6 +1191,17 @@ textarea:focus-visible {
 
   .brand-subtitle {
     font-size: 11px;
+  }
+
+  .nav-language-group {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .nav-language-group .language-chip {
+    width: 100%;
+    min-width: 0;
   }
 
   .hero-copy {

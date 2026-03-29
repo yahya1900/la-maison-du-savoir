@@ -263,21 +263,6 @@ function App() {
             <span>{common.topbar.badgeLine}</span>
           </div>
           <div className="topbar-location">{common.topbar.location}</div>
-          <div className="language-group" aria-label={common.languageSwitcher}>
-            {(Object.keys(languages) as LanguageCode[]).map((code) => (
-              <button
-                key={code}
-                type="button"
-                className={`language-chip ${language === code ? "is-active" : ""}`}
-                onClick={() => changeLanguage(code)}
-                aria-pressed={language === code}
-                lang={code}
-                title={languages[code].name}
-              >
-                {languages[code].short}
-              </button>
-            ))}
-          </div>
         </div>
       </div>
 
@@ -315,14 +300,22 @@ function App() {
                 {item.label}
               </a>
             ))}
-            <a className="nav-cta mobile-only" href="#contact" onClick={() => setMenuOpen(false)}>
-              {common.nav.cta}
-            </a>
+            <div className="language-group nav-language-group" aria-label={common.languageSwitcher}>
+              {(Object.keys(languages) as LanguageCode[]).map((code) => (
+                <button
+                  key={code}
+                  type="button"
+                  className={`language-chip ${language === code ? "is-active" : ""}`}
+                  onClick={() => changeLanguage(code)}
+                  aria-pressed={language === code}
+                  lang={code}
+                  title={languages[code].name}
+                >
+                  {languages[code].short}
+                </button>
+              ))}
+            </div>
           </nav>
-
-          <a className="nav-cta desktop-only" href="#contact">
-            {common.nav.cta}
-          </a>
         </div>
 
         <button
