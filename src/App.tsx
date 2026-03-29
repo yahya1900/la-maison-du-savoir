@@ -456,15 +456,12 @@ function App() {
           <div className="shell gallery-grid">
             {galleryCards.map((card, index) => (
               <article
-                key={card.label}
+                key={card.alt}
                 className={`gallery-card ${index === 0 ? "gallery-card-feature" : "gallery-card-detail"}`}
                 data-reveal
               >
                 <div className={`gallery-media gallery-media-${index + 1}`}>
                   <img src={GALLERY_IMAGES[index]} alt={card.alt} loading="lazy" />
-                </div>
-                <div className="gallery-copy">
-                  <span className="gallery-label">{card.label}</span>
                 </div>
               </article>
             ))}

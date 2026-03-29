@@ -156,15 +156,12 @@ export const siteTranslations = {
       },
       cards: {
         one: {
-          label: "Photo 01",
           alt: "Photo Facebook de La Maison du Savoir à Ghazoua"
         },
         two: {
-          label: "Photo 02",
           alt: "Détail d'une photo Facebook de La Maison du Savoir"
         },
         three: {
-          label: "Photo 03",
           alt: "Variation d'une photo Facebook de La Maison du Savoir"
         }
       }
@@ -402,15 +399,12 @@ export const siteTranslations = {
       },
       cards: {
         one: {
-          label: "Photo 01",
           alt: "Facebook photo of La Maison du Savoir in Ghazoua"
         },
         two: {
-          label: "Photo 02",
           alt: "Closer detail from a Facebook photo of La Maison du Savoir"
         },
         three: {
-          label: "Photo 03",
           alt: "Visual variation from a Facebook photo of La Maison du Savoir"
         }
       }
@@ -648,15 +642,12 @@ export const siteTranslations = {
       },
       cards: {
         one: {
-          label: "صورة 01",
           alt: "صورة من فيسبوك لبيت المعرفة في غزوة"
         },
         two: {
-          label: "صورة 02",
           alt: "تفصيل مقرب من صورة فيسبوك لبيت المعرفة"
         },
         three: {
-          label: "صورة 03",
           alt: "تنويع بصري من صورة فيسبوك لبيت المعرفة"
         }
       }
@@ -894,15 +885,12 @@ export const siteTranslations = {
       },
       cards: {
         one: {
-          label: "Foto 01",
           alt: "Foto de Facebook de La Maison du Savoir en Ghazoua"
         },
         two: {
-          label: "Foto 02",
           alt: "Detalle cercano de una foto de Facebook de La Maison du Savoir"
         },
         three: {
-          label: "Foto 03",
           alt: "Variación visual de una foto de Facebook de La Maison du Savoir"
         }
       }
