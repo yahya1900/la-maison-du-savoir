@@ -6,7 +6,7 @@ import { siteLanguages, siteTranslations } from "../assets/translations.js";
 gsap.registerPlugin(ScrollTrigger);
 
 type LanguageCode = "fr" | "en" | "ar" | "es";
-type SectionId = "home" | "about" | "gallery" | "programs" | "news" | "contact";
+type SectionId = "home" | "about" | "gallery" | "programs" | "steps" | "news" | "faq" | "contact";
 
 const languages = siteLanguages as Record<LanguageCode, { short: string; name: string; dir: "ltr" | "rtl" }>;
 const translations = siteTranslations as Record<LanguageCode, any>;
@@ -16,6 +16,8 @@ const PHONE = "0681222459";
 const CALL_LINK = "tel:+212681222459";
 const WHATSAPP_PRIMARY = "https://wa.me/212681222459";
 const WHATSAPP_CONTACT = "https://wa.me/212724191970";
+const MAP_EMBED_URL = "https://www.google.com/maps?q=Ghazoua%20Route%20de%20Sidi%20Kaouki&output=embed";
+const MAP_DIRECTIONS_URL = "https://www.google.com/maps/search/?api=1&query=Ghazoua%20Route%20de%20Sidi%20Kaouki";
 const DRAWING_POST_URL =
   "https://web.facebook.com/61576992321051/posts/cours-de-dessin-%C3%A0-la-pause/122094291644899744/";
 const DARIJA_POST_URL =
@@ -35,7 +37,7 @@ const GALLERY_IMAGES = [
   `${ASSET_BASE}gallery-5.jpg`
 ] as const;
 const GALLERY_PREVIEW_COUNT = 4;
-const sections: SectionId[] = ["home", "about", "gallery", "programs", "news", "contact"];
+const sections: SectionId[] = ["home", "about", "gallery", "programs", "steps", "news", "faq", "contact"];
 const stats: Array<{ value: number; key: "one" | "two" | "three" | "four"; prefix?: string }> = [
   { value: 2, key: "one" },
   { value: 3, key: "two" },
@@ -360,6 +362,253 @@ const copyEnhancements: Record<LanguageCode, any> = {
   }
 };
 
+const siteExtras: Record<LanguageCode, any> = {
+  fr: {
+    nav: {
+      steps: "Inscription",
+      faq: "FAQ"
+    },
+    steps: {
+      section: {
+        eyebrow: "Inscription",
+        title: "Comment s'inscrire en 3 étapes",
+        text: "Un parcours simple pour rencontrer l'équipe, visiter le lieu et confirmer la place de votre enfant."
+      },
+      cards: {
+        one: {
+          title: "Écrivez-nous sur WhatsApp",
+          text: "Partagez le niveau de votre enfant, vos attentes et vos disponibilités pour un premier échange rapide."
+        },
+        two: {
+          title: "Venez visiter le lieu",
+          text: "Découvrez les espaces, l'ambiance de travail et notre fonctionnement à Ghazoua avant de vous décider."
+        },
+        three: {
+          title: "Confirmez la place",
+          text: "Après l'échange, nous fixons ensemble les jours, le rythme et le démarrage de l'accompagnement."
+        }
+      },
+      map: {
+        eyebrow: "Nous trouver",
+        title: "La Maison du Savoir - Ghazoua",
+        text: "Le centre se situe route de Sidi Kaouki, à Ghazoua. Vous pouvez ouvrir l'itinéraire ou nous écrire avant votre visite.",
+        location: "Ghazoua - Km 8, route de Sidi Kaouki",
+        hours: "Visites sur rendez-vous",
+        directions: "Ouvrir l'itinéraire",
+        contact: "Écrire sur WhatsApp"
+      }
+    },
+    faq: {
+      section: {
+        eyebrow: "FAQ",
+        title: "Questions fréquentes",
+        text: "Les réponses rapides aux questions les plus posées par les familles."
+      },
+      items: [
+        {
+          q: "Quels niveaux accompagnez-vous ?",
+          a: "Nous accompagnons les élèves du primaire et du collège inscrits au CNED dans un cadre calme et structuré."
+        },
+        {
+          q: "Comment se passe l'inscription ?",
+          a: "L'inscription commence par un message WhatsApp, puis une visite du lieu, avant la confirmation de la place."
+        },
+        {
+          q: "Peut-on visiter avant de s'engager ?",
+          a: "Oui, les familles peuvent visiter sur rendez-vous pour découvrir les espaces, l'équipe et l'organisation."
+        },
+        {
+          q: "Y a-t-il des activités complémentaires ?",
+          a: "Oui, nous proposons aussi des temps de darija, de dessin et d'autres ateliers d'expression selon la période."
+        }
+      ]
+    }
+  },
+  en: {
+    nav: {
+      steps: "Steps",
+      faq: "FAQ"
+    },
+    steps: {
+      section: {
+        eyebrow: "Registration",
+        title: "How to register in 3 steps",
+        text: "A simple path to meet the team, visit the center, and confirm your child's place."
+      },
+      cards: {
+        one: {
+          title: "Message us on WhatsApp",
+          text: "Share your child's level, your expectations, and your availability for a quick first exchange."
+        },
+        two: {
+          title: "Come visit the center",
+          text: "Discover the rooms, the learning atmosphere, and how we work in Ghazoua before deciding."
+        },
+        three: {
+          title: "Confirm the place",
+          text: "After the discussion, we agree together on the days, rhythm, and start of the support."
+        }
+      },
+      map: {
+        eyebrow: "Find us",
+        title: "La Maison du Savoir - Ghazoua",
+        text: "The center is located on the Sidi Kaouki road in Ghazoua. You can open directions or message us before your visit.",
+        location: "Ghazoua - Km 8, Sidi Kaouki road",
+        hours: "Visits by appointment",
+        directions: "Open directions",
+        contact: "Message on WhatsApp"
+      }
+    },
+    faq: {
+      section: {
+        eyebrow: "FAQ",
+        title: "Frequently asked questions",
+        text: "Quick answers to the questions families ask most often."
+      },
+      items: [
+        {
+          q: "Which school levels do you support?",
+          a: "We support primary and middle school students enrolled in CNED in a calm and structured setting."
+        },
+        {
+          q: "How does registration work?",
+          a: "Registration starts with a WhatsApp message, then a visit to the center, followed by confirmation of the place."
+        },
+        {
+          q: "Can we visit before deciding?",
+          a: "Yes, families can visit by appointment to discover the rooms, the team, and the organization."
+        },
+        {
+          q: "Are there complementary activities?",
+          a: "Yes, we also offer Darija, drawing, and other expression workshops depending on the period."
+        }
+      ]
+    }
+  },
+  ar: {
+    nav: {
+      steps: "الخطوات",
+      faq: "الأسئلة"
+    },
+    steps: {
+      section: {
+        eyebrow: "التسجيل",
+        title: "كيف يتم التسجيل في 3 خطوات",
+        text: "مسار بسيط للتعرّف على الفريق وزيارة الفضاء ثم تأكيد مكان طفلكم."
+      },
+      cards: {
+        one: {
+          title: "راسلونا على واتساب",
+          text: "أرسلوا مستوى طفلكم واحتياجاته والأوقات المناسبة لكم من أجل أول تواصل سريع."
+        },
+        two: {
+          title: "زوروا الفضاء",
+          text: "اكتشفوا القاعات وأجواء العمل وطريقة التنظيم في غزوة قبل اتخاذ القرار."
+        },
+        three: {
+          title: "أكدوا المكان",
+          text: "بعد التواصل نحدد معاً الأيام والإيقاع وتاريخ انطلاق المرافقة."
+        }
+      },
+      map: {
+        eyebrow: "الموقع",
+        title: "بيت المعرفة - غزوة",
+        text: "يوجد المركز على طريق سيدي كاوكي في غزوة. يمكنكم فتح الاتجاهات أو مراسلتنا قبل الزيارة.",
+        location: "غزوة - كلم 8، طريق سيدي كاوكي",
+        hours: "الزيارات بموعد",
+        directions: "فتح الاتجاهات",
+        contact: "راسلونا على واتساب"
+      }
+    },
+    faq: {
+      section: {
+        eyebrow: "الأسئلة الشائعة",
+        title: "أسئلة متكررة",
+        text: "إجابات سريعة عن أكثر الأسئلة التي تطرحها الأسر."
+      },
+      items: [
+        {
+          q: "ما هي المستويات التي تواكبونها؟",
+          a: "نواكب تلاميذ الابتدائي والإعدادي المسجلين في CNED داخل فضاء هادئ ومنظم."
+        },
+        {
+          q: "كيف يتم التسجيل؟",
+          a: "يبدأ التسجيل برسالة واتساب ثم زيارة للفضاء وبعدها يتم تأكيد المكان."
+        },
+        {
+          q: "هل يمكن زيارة الفضاء قبل الالتزام؟",
+          a: "نعم، يمكن للأسر زيارة الفضاء بموعد مسبق للتعرّف على القاعات والفريق وطريقة العمل."
+        },
+        {
+          q: "هل توجد أنشطة مكمّلة؟",
+          a: "نعم، توجد أيضاً حصص في الدارجة والرسم وورشات للتعبير حسب الفترة."
+        }
+      ]
+    }
+  },
+  es: {
+    nav: {
+      steps: "Pasos",
+      faq: "FAQ"
+    },
+    steps: {
+      section: {
+        eyebrow: "Inscripción",
+        title: "Cómo inscribirse en 3 pasos",
+        text: "Un recorrido simple para conocer al equipo, visitar el centro y confirmar la plaza de tu hijo."
+      },
+      cards: {
+        one: {
+          title: "Escríbenos por WhatsApp",
+          text: "Comparte el nivel de tu hijo, tus necesidades y tu disponibilidad para un primer intercambio rápido."
+        },
+        two: {
+          title: "Ven a visitar el centro",
+          text: "Descubre los espacios, el ambiente de estudio y nuestra forma de trabajar en Ghazoua antes de decidir."
+        },
+        three: {
+          title: "Confirma la plaza",
+          text: "Después del intercambio, fijamos juntos los días, el ritmo y el inicio del acompañamiento."
+        }
+      },
+      map: {
+        eyebrow: "Ubicación",
+        title: "La Maison du Savoir - Ghazoua",
+        text: "El centro está situado en la carretera de Sidi Kaouki, en Ghazoua. Puedes abrir la ruta o escribirnos antes de tu visita.",
+        location: "Ghazoua - Km 8, carretera de Sidi Kaouki",
+        hours: "Visitas con cita previa",
+        directions: "Abrir ruta",
+        contact: "Escribir por WhatsApp"
+      }
+    },
+    faq: {
+      section: {
+        eyebrow: "FAQ",
+        title: "Preguntas frecuentes",
+        text: "Respuestas rápidas a las preguntas que más hacen las familias."
+      },
+      items: [
+        {
+          q: "¿Qué niveles acompañan?",
+          a: "Acompañamos a alumnos de primaria y colegio inscritos en CNED dentro de un entorno tranquilo y estructurado."
+        },
+        {
+          q: "¿Cómo funciona la inscripción?",
+          a: "La inscripción empieza con un mensaje por WhatsApp, luego una visita al centro y después la confirmación de la plaza."
+        },
+        {
+          q: "¿Podemos visitar antes de decidir?",
+          a: "Sí, las familias pueden visitar con cita previa para conocer los espacios, el equipo y la organización."
+        },
+        {
+          q: "¿Hay actividades complementarias?",
+          a: "Sí, también proponemos darija, dibujo y otros talleres de expresión según la temporada."
+        }
+      ]
+    }
+  }
+};
+
 function mergeCopy(base: any, overrides: any): any {
   if (!overrides) return base;
 
@@ -417,7 +666,9 @@ function App() {
     about: null,
     gallery: null,
     programs: null,
+    steps: null,
     news: null,
+    faq: null,
     contact: null
   });
 
@@ -430,9 +681,10 @@ function App() {
 
   const baseCopy = translations[language] ?? translations.fr;
   const copy = mergeCopy(baseCopy, copyEnhancements[language]);
+  const extraCopy = siteExtras[language] ?? siteExtras.fr;
   const common = copy.common;
   const isRtl = languages[language].dir === "rtl";
-  const activeMeta = copy.meta[activeSection] ?? copy.meta.home;
+  const activeMeta = copy.meta[activeSection] ?? copy.meta.contact ?? copy.meta.home;
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -609,7 +861,9 @@ function App() {
     { id: "about" as const, label: common.nav.about },
     { id: "gallery" as const, label: common.nav.gallery },
     { id: "programs" as const, label: common.nav.programs },
+    { id: "steps" as const, label: extraCopy.nav.steps },
     { id: "news" as const, label: common.nav.news },
+    { id: "faq" as const, label: extraCopy.nav.faq },
     { id: "contact" as const, label: common.nav.contact }
   ];
 
@@ -628,6 +882,8 @@ function App() {
   const visibleGalleryCards = showAllGalleryImages ? galleryCards : previewGalleryCards;
   const hasHiddenGalleryImages = galleryCards.length > GALLERY_PREVIEW_COUNT;
   const programCards = [copy.programs.cards.one, copy.programs.cards.two, copy.programs.cards.three];
+  const stepCards = [extraCopy.steps.cards.one, extraCopy.steps.cards.two, extraCopy.steps.cards.three];
+  const faqItems = extraCopy.faq.items as Array<{ q: string; a: string }>;
   const customAcupunctureNewsCard =
     {
       fr: {
@@ -981,6 +1237,59 @@ function App() {
           </div>
         </section>
 
+        <section id="steps" ref={setSectionRef("steps")} className="section-shell section-anchor">
+          <SectionHeading
+            eyebrow={extraCopy.steps.section.eyebrow}
+            title={extraCopy.steps.section.title}
+            text={extraCopy.steps.section.text}
+          />
+
+          <div className="shell steps-layout">
+            <div className="steps-grid">
+              {stepCards.map((card, index) => (
+                <article key={card.title} className="step-card" data-reveal>
+                  <span className="step-number">{index + 1}</span>
+                  <h3>{card.title}</h3>
+                  <p>{card.text}</p>
+                </article>
+              ))}
+            </div>
+
+            <aside className="map-card" data-reveal>
+              <div className="map-frame">
+                <iframe
+                  title={extraCopy.steps.map.title}
+                  src={MAP_EMBED_URL}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+              <div className="map-card-copy">
+                <span className="section-kicker">{extraCopy.steps.map.eyebrow}</span>
+                <h3>{extraCopy.steps.map.title}</h3>
+                <p>{extraCopy.steps.map.text}</p>
+                <div className="contact-lines">
+                  <span>{extraCopy.steps.map.location}</span>
+                  <span>{extraCopy.steps.map.hours}</span>
+                </div>
+                <div className="map-card-actions">
+                  <a
+                    className="primary-action"
+                    href={MAP_DIRECTIONS_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {extraCopy.steps.map.directions}
+                  </a>
+                  <a className="secondary-action whatsapp-action" href={WHATSAPP_CONTACT} target="_blank" rel="noreferrer">
+                    {extraCopy.steps.map.contact}
+                  </a>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
         <section id="news" ref={setSectionRef("news")} className="section-shell section-anchor">
           <SectionHeading
             eyebrow={copy.news.section.eyebrow}
@@ -1005,6 +1314,23 @@ function App() {
                   </a>
                 ) : null}
               </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="faq" ref={setSectionRef("faq")} className="section-shell section-anchor">
+          <SectionHeading
+            eyebrow={extraCopy.faq.section.eyebrow}
+            title={extraCopy.faq.section.title}
+            text={extraCopy.faq.section.text}
+          />
+
+          <div className="shell faq-list">
+            {faqItems.map((item) => (
+              <details key={item.q} className="faq-item" data-reveal>
+                <summary>{item.q}</summary>
+                <p className="faq-answer">{item.a}</p>
+              </details>
             ))}
           </div>
         </section>

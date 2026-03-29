@@ -777,6 +777,161 @@ textarea:focus-visible {
   margin-top: 26px;
 }
 
+.steps-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.steps-grid,
+.faq-list {
+  display: grid;
+  gap: 18px;
+}
+
+.faq-list {
+  max-width: 920px;
+}
+
+.step-card,
+.map-card,
+.faq-item {
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.66);
+  box-shadow: var(--shadow-soft);
+}
+
+.step-card {
+  position: relative;
+  overflow: hidden;
+  padding: 28px 28px 28px 96px;
+}
+
+.step-card::before {
+  content: "";
+  position: absolute;
+  inset: auto -36px -60px auto;
+  width: 180px;
+  height: 180px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(13, 70, 111, 0.12), transparent 70%);
+}
+
+.step-number {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--orange), var(--orange-soft));
+  color: #fff;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 28px;
+  font-weight: 700;
+  box-shadow: 0 16px 28px rgba(227, 131, 47, 0.22);
+}
+
+.step-card h3,
+.map-card h3,
+.faq-item summary {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 24px;
+}
+
+.step-card p,
+.map-card p,
+.faq-answer {
+  margin: 14px 0 0;
+  line-height: 1.8;
+}
+
+.map-card {
+  position: sticky;
+  top: calc(var(--nav-offset) + 18px);
+  overflow: hidden;
+}
+
+.map-frame {
+  border-bottom: 1px solid rgba(13, 70, 111, 0.08);
+  background: rgba(13, 70, 111, 0.04);
+}
+
+.map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 320px;
+  border: 0;
+}
+
+.map-card-copy {
+  padding: 24px;
+}
+
+.map-card-copy .section-kicker {
+  margin-bottom: 14px;
+}
+
+.map-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.map-card-actions > * {
+  flex: 1 1 220px;
+}
+
+.faq-item {
+  padding: 0;
+  overflow: hidden;
+}
+
+.faq-item summary {
+  position: relative;
+  display: block;
+  padding: 24px 72px 24px 24px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  margin-top: -18px;
+  border-radius: 999px;
+  background: rgba(13, 70, 111, 0.08);
+  color: var(--navy);
+  font-size: 28px;
+  line-height: 36px;
+  text-align: center;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+  background: rgba(227, 131, 47, 0.14);
+}
+
+.faq-answer {
+  padding: 0 24px 24px;
+}
+
 .gallery-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-auto-rows: minmax(280px, 1fr);
@@ -1086,6 +1241,7 @@ textarea:focus-visible {
 [dir="rtl"] .hero-grid,
 [dir="rtl"] .two-column-grid,
 [dir="rtl"] .about-grid,
+[dir="rtl"] .steps-layout,
 [dir="rtl"] .gallery-grid,
 [dir="rtl"] .contact-grid,
 [dir="rtl"] .footer-grid {
@@ -1100,6 +1256,9 @@ textarea:focus-visible {
 [dir="rtl"] .contact-form input,
 [dir="rtl"] .contact-form textarea,
 [dir="rtl"] .contact-lines,
+[dir="rtl"] .map-card,
+[dir="rtl"] .step-card,
+[dir="rtl"] .faq-item,
 [dir="rtl"] .section-heading,
 [dir="rtl"] .panel-card,
 [dir="rtl"] .about-content,
@@ -1118,6 +1277,24 @@ textarea:focus-visible {
 
 [dir="rtl"] .gallery-zoom-indicator {
   left: 18px;
+  right: auto;
+}
+
+[dir="rtl"] .step-card {
+  padding: 28px 96px 28px 28px;
+}
+
+[dir="rtl"] .step-number {
+  left: auto;
+  right: 24px;
+}
+
+[dir="rtl"] .faq-item summary {
+  padding: 24px 24px 24px 72px;
+}
+
+[dir="rtl"] .faq-item summary::after {
+  left: 24px;
   right: auto;
 }
 
@@ -1140,6 +1317,7 @@ textarea:focus-visible {
   .hero-grid,
   .two-column-grid,
   .about-grid,
+  .steps-layout,
   .contact-grid,
   .footer-grid,
   .highlights-grid,
@@ -1154,6 +1332,10 @@ textarea:focus-visible {
   .photo-frame {
     position: static;
     min-height: 380px;
+  }
+
+  .map-card {
+    position: static;
   }
 
   .photo-frame img {
@@ -1584,8 +1766,52 @@ textarea:focus-visible {
   .contact-panel,
   .contact-form,
   .program-card,
-  .news-card {
+  .news-card,
+  .step-card {
     padding: 22px;
+  }
+
+  .step-card,
+  [dir="rtl"] .step-card {
+    padding-inline-start: 84px;
+    padding-inline-end: 22px;
+  }
+
+  .step-number {
+    top: 18px;
+    left: 18px;
+    width: 48px;
+    height: 48px;
+  }
+
+  [dir="rtl"] .step-number {
+    left: auto;
+    right: 18px;
+  }
+
+  .map-card-copy {
+    padding: 22px;
+  }
+
+  .map-card-actions {
+    flex-direction: column;
+  }
+
+  .map-card-actions > * {
+    width: 100%;
+  }
+
+  .faq-item summary {
+    padding: 20px 62px 20px 20px;
+    font-size: 20px;
+  }
+
+  [dir="rtl"] .faq-item summary {
+    padding: 20px 20px 20px 62px;
+  }
+
+  .faq-answer {
+    padding: 0 20px 20px;
   }
 
   .floating-actions {
