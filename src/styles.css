@@ -684,16 +684,6 @@ textarea:focus-visible {
   font-weight: 800;
 }
 
-.news-link {
-  display: inline-flex;
-  margin-top: 16px;
-  color: var(--navy);
-  font-weight: 800;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-}
-
 .news-media {
   display: flex;
   align-items: center;

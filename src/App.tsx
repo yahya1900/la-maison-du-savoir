@@ -17,10 +17,6 @@ const CALL_LINK = "tel:+212681222459";
 const WHATSAPP_PRIMARY = "https://wa.me/212681222459";
 const WHATSAPP_CONTACT = "https://wa.me/212724191970";
 const MAP_DIRECTIONS_URL = "https://www.google.com/maps/search/?api=1&query=Ghazoua%20Route%20de%20Sidi%20Kaouki";
-const DRAWING_POST_URL =
-  "https://web.facebook.com/61576992321051/posts/cours-de-dessin-%C3%A0-la-pause/122094291644899744/";
-const DARIJA_POST_URL =
-  "https://web.facebook.com/61576992321051/posts/aji-t3alam-m3ana-darija-koul-larb3a-f-far-lma3rifa-f-ghazwa-km8-%EF%B8%8F-viens-apprendr/122159458256899744/";
 const ASSET_BASE = import.meta.env.BASE_URL;
 const ABOUT_IMAGE_URL = `${ASSET_BASE}about-photo.jpeg`;
 const DRAWING_NEWS_IMAGE = `${ASSET_BASE}news-drawing.jpeg`;
@@ -908,9 +904,9 @@ function App() {
     };
   const newsCards = [
     { ...copy.news.cards.one, image: REGISTRATION_NEWS_IMAGE },
-    { ...copy.news.cards.two, url: DRAWING_POST_URL, image: DRAWING_NEWS_IMAGE },
-    { ...copy.news.cards.three, ...customAcupunctureNewsCard, image: ACUPUNCTURE_NEWS_IMAGE, linkLabel: undefined, url: undefined },
-    { ...copy.news.cards.four, url: DARIJA_POST_URL, image: DARIJA_NEWS_IMAGE }
+    { ...copy.news.cards.two, image: DRAWING_NEWS_IMAGE },
+    { ...copy.news.cards.three, ...customAcupunctureNewsCard, image: ACUPUNCTURE_NEWS_IMAGE },
+    { ...copy.news.cards.four, image: DARIJA_NEWS_IMAGE }
   ];
   const activeGalleryCard = activeGalleryImage !== null ? galleryCards[activeGalleryImage] : null;
   const galleryViewAllLabel =
@@ -1309,11 +1305,6 @@ function App() {
                 <span className="news-badge">{card.badge}</span>
                 <h3>{card.title}</h3>
                 <p>{card.text}</p>
-                {card.linkLabel ? (
-                  <a className="news-link" href={card.url} target="_blank" rel="noreferrer">
-                    {card.linkLabel}
-                  </a>
-                ) : null}
               </article>
             ))}
           </div>
