@@ -23,6 +23,7 @@ const DARIJA_POST_URL =
 const ASSET_BASE = import.meta.env.BASE_URL;
 const ABOUT_IMAGE_URL = `${ASSET_BASE}about-photo.jpeg`;
 const DRAWING_NEWS_IMAGE = `${ASSET_BASE}news-drawing.jpeg`;
+const ACUPUNCTURE_NEWS_IMAGE = `${ASSET_BASE}news-acupuncture.jpeg`;
 const REGISTRATION_NEWS_IMAGE = `${ASSET_BASE}news-registration.jpeg`;
 const DARIJA_NEWS_IMAGE = `${ASSET_BASE}news-darija.jpeg`;
 const LOGO_URL = `${ASSET_BASE}logo.png`;
@@ -627,37 +628,37 @@ function App() {
   const visibleGalleryCards = showAllGalleryImages ? galleryCards : previewGalleryCards;
   const hasHiddenGalleryImages = galleryCards.length > GALLERY_PREVIEW_COUNT;
   const programCards = [copy.programs.cards.one, copy.programs.cards.two, copy.programs.cards.three];
-  const customCreativeNewsCard =
+  const customAcupunctureNewsCard =
     {
       fr: {
-        badge: "Atelier créatif",
-        title: "Peinture et création en plein air",
-        text: "Un atelier créatif en plein air où les enfants peignent, décorent et expérimentent ensemble dans une ambiance calme et joyeuse."
+        badge: "Bien-être",
+        title: "Séances d'acupuncture à Essaouira",
+        text: "Séances d'acupuncture à La Maison du Savoir - Ghazoua, du 27 mars au 3 avril, avec des créneaux variés pour le stress, le sommeil, la digestion, l'équilibre féminin et l'immunité."
       },
       en: {
-        badge: "Creative workshop",
-        title: "Outdoor painting and making",
-        text: "A hands-on outdoor creative workshop where children paint, decorate, and create together in a calm, joyful atmosphere."
+        badge: "Well-being",
+        title: "Acupuncture sessions in Essaouira",
+        text: "Acupuncture sessions at La Maison du Savoir - Ghazoua, from March 27 to April 3, with several time slots focused on stress relief, sleep, digestion, feminine balance, and immunity."
       },
       ar: {
-        badge: "ورشة إبداعية",
-        title: "الرسم والتلوين في الهواء الطلق",
-        text: "ورشة إبداعية في الهواء الطلق حيث يرسم الأطفال ويلونون ويجرّبون معاً في أجواء هادئة وممتعة."
+        badge: "العافية",
+        title: "جلسات الوخز بالإبر في الصويرة",
+        text: "جلسات وخز بالإبر في بيت المعرفة - غزوة من 27 مارس إلى 3 أبريل، مع مواعيد متنوعة لدعم التخفيف من التوتر والنوم والهضم والتوازن النسائي والمناعة."
       },
       es: {
-        badge: "Taller creativo",
-        title: "Pintura y creación al aire libre",
-        text: "Un taller creativo al aire libre donde los niños pintan, decoran y crean juntos en un ambiente tranquilo y alegre."
+        badge: "Bienestar",
+        title: "Sesiones de acupuntura en Essaouira",
+        text: "Sesiones de acupuntura en La Maison du Savoir - Ghazoua, del 27 de marzo al 3 de abril, con varios horarios orientados al estrés, el sueño, la digestión, el equilibrio femenino y la inmunidad."
       }
     }[language] ?? {
-      badge: "Creative workshop",
-      title: "Outdoor painting and making",
-      text: "A hands-on outdoor creative workshop where children paint, decorate, and create together in a calm, joyful atmosphere."
+      badge: "Well-being",
+      title: "Acupuncture sessions in Essaouira",
+      text: "Acupuncture sessions at La Maison du Savoir - Ghazoua, from March 27 to April 3, with several time slots focused on stress relief, sleep, digestion, feminine balance, and immunity."
     };
   const newsCards = [
     { ...copy.news.cards.one, image: REGISTRATION_NEWS_IMAGE },
     { ...copy.news.cards.two, url: DRAWING_POST_URL, image: DRAWING_NEWS_IMAGE },
-    { ...copy.news.cards.three, ...customCreativeNewsCard, image: DRAWING_NEWS_IMAGE, linkLabel: undefined, url: undefined },
+    { ...copy.news.cards.three, ...customAcupunctureNewsCard, image: ACUPUNCTURE_NEWS_IMAGE, linkLabel: undefined, url: undefined },
     { ...copy.news.cards.four, url: DARIJA_POST_URL, image: DARIJA_NEWS_IMAGE }
   ];
   const activeGalleryCard = activeGalleryImage !== null ? galleryCards[activeGalleryImage] : null;
