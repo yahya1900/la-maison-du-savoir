@@ -157,17 +157,14 @@ export const siteTranslations = {
       cards: {
         one: {
           label: "Photo 01",
-          text: "Vue principale issue de notre présence Facebook.",
           alt: "Photo Facebook de La Maison du Savoir à Ghazoua"
         },
         two: {
           label: "Photo 02",
-          text: "Cadrage rapproché pour mettre en valeur les détails.",
           alt: "Détail d'une photo Facebook de La Maison du Savoir"
         },
         three: {
           label: "Photo 03",
-          text: "Variation visuelle pour enrichir la galerie du site.",
           alt: "Variation d'une photo Facebook de La Maison du Savoir"
         }
       }
@@ -406,17 +403,14 @@ export const siteTranslations = {
       cards: {
         one: {
           label: "Photo 01",
-          text: "Main view taken from our public Facebook presence.",
           alt: "Facebook photo of La Maison du Savoir in Ghazoua"
         },
         two: {
           label: "Photo 02",
-          text: "A closer framing that highlights visual details.",
           alt: "Closer detail from a Facebook photo of La Maison du Savoir"
         },
         three: {
           label: "Photo 03",
-          text: "A visual variation to enrich the site's gallery.",
           alt: "Visual variation from a Facebook photo of La Maison du Savoir"
         }
       }
@@ -655,17 +649,14 @@ export const siteTranslations = {
       cards: {
         one: {
           label: "صورة 01",
-          text: "اللقطة الرئيسية المأخوذة من حضورنا العمومي على فيسبوك.",
           alt: "صورة من فيسبوك لبيت المعرفة في غزوة"
         },
         two: {
           label: "صورة 02",
-          text: "إطار أقرب لإبراز بعض التفاصيل البصرية.",
           alt: "تفصيل مقرب من صورة فيسبوك لبيت المعرفة"
         },
         three: {
           label: "صورة 03",
-          text: "تنويع بصري يمنح المعرض حضورا أغنى داخل الموقع.",
           alt: "تنويع بصري من صورة فيسبوك لبيت المعرفة"
         }
       }
@@ -904,17 +895,14 @@ export const siteTranslations = {
       cards: {
         one: {
           label: "Foto 01",
-          text: "Vista principal tomada de nuestra presencia pública en Facebook.",
           alt: "Foto de Facebook de La Maison du Savoir en Ghazoua"
         },
         two: {
           label: "Foto 02",
-          text: "Un encuadre más cercano para destacar los detalles visuales.",
           alt: "Detalle cercano de una foto de Facebook de La Maison du Savoir"
         },
         three: {
           label: "Foto 03",
-          text: "Una variación visual para enriquecer la galería del sitio.",
           alt: "Variación visual de una foto de Facebook de La Maison du Savoir"
         }
       }

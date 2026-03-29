@@ -472,7 +472,6 @@ function App() {
                 </div>
                 <div className="gallery-copy">
                   <span className="gallery-label">{card.label}</span>
-                  <p>{card.text}</p>
                 </div>
               </article>
             ))}
