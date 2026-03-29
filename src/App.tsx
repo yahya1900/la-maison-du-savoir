@@ -16,7 +16,6 @@ const PHONE = "0681222459";
 const CALL_LINK = "tel:+212681222459";
 const WHATSAPP_PRIMARY = "https://wa.me/212681222459";
 const WHATSAPP_CONTACT = "https://wa.me/212724191970";
-const MAP_DIRECTIONS_URL = "https://www.google.com/maps/search/?api=1&query=Ghazoua%20Route%20de%20Sidi%20Kaouki";
 const ASSET_BASE = import.meta.env.BASE_URL;
 const ABOUT_IMAGE_URL = `${ASSET_BASE}about-photo.jpeg`;
 const DRAWING_NEWS_IMAGE = `${ASSET_BASE}news-drawing.jpeg`;
@@ -1197,26 +1196,6 @@ function App() {
                     </article>
                   ))}
                 </div>
-
-                <aside className="map-card" data-reveal>
-                  <div className="map-card-copy">
-                    <span className="section-kicker">{extraCopy.steps.map.eyebrow}</span>
-                    <h3>{extraCopy.steps.map.title}</h3>
-                    <p>{extraCopy.steps.map.text}</p>
-                    <div className="contact-lines">
-                      <span>{extraCopy.steps.map.location}</span>
-                      <span>{extraCopy.steps.map.hours}</span>
-                    </div>
-                    <div className="map-card-actions">
-                      <a className="primary-action" href={MAP_DIRECTIONS_URL} target="_blank" rel="noreferrer">
-                        {extraCopy.steps.map.directions}
-                      </a>
-                      <a className="secondary-action whatsapp-action" href={WHATSAPP_CONTACT} target="_blank" rel="noreferrer">
-                        {extraCopy.steps.map.contact}
-                      </a>
-                    </div>
-                  </div>
-                </aside>
               </div>
             </div>
 
