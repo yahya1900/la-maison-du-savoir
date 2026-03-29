@@ -670,6 +670,7 @@ function App() {
   const [activeGalleryImage, setActiveGalleryImage] = useState<number | null>(null);
   const [showAllGalleryImages, setShowAllGalleryImages] = useState(false);
   const [activeSection, setActiveSection] = useState<SectionId>("home");
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [, startTransition] = useTransition();
 
   const baseCopy = translations[language] ?? translations.fr;
@@ -702,6 +703,34 @@ function App() {
     updateMetaTag('meta[property="og:title"]', activeMeta.title);
     updateMetaTag('meta[property="og:description"]', activeMeta.description);
   }, [activeMeta]);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const updateProgress = () => {
+      ticking = false;
+
+      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const nextProgress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+      setScrollProgress(Math.max(0, Math.min(1, nextProgress)));
+    };
+
+    const handleScroll = () => {
+      if (ticking) return;
+
+      ticking = true;
+      window.requestAnimationFrame(updateProgress);
+    };
+
+    updateProgress();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -923,6 +952,21 @@ function App() {
       ar: "مرحباً، أود الحصول على مزيد من المعلومات.",
       es: "Hola, me gustaría recibir más información."
     }[language] ?? "Hello, I would like more information.";
+  const backToTopLabel =
+    {
+      fr: "Haut de page",
+      en: "Back to top",
+      ar: "العودة إلى الأعلى",
+      es: "Volver arriba"
+    }[language] ?? "Back to top";
+  const contactFormNote =
+    {
+      fr: "Remplissez le formulaire et nous vous répondrons sur WhatsApp avec les informations utiles.",
+      en: "Fill in the form and we will reply on WhatsApp with the most useful information.",
+      ar: "املأوا الاستمارة وسنرد عليكم عبر واتساب بكل المعلومات المفيدة.",
+      es: "Complete el formulario y le responderemos por WhatsApp con la información más útil."
+    }[language] ?? "Fill in the form and we will reply on WhatsApp with the most useful information.";
+  const showBackToTop = scrollProgress > 0.16;
 
   const handleContactWhatsappSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -943,6 +987,10 @@ function App() {
     ].join("\n");
 
     window.open(`${WHATSAPP_CONTACT}?text=${encodeURIComponent(whatsappMessage)}`, "_blank", "noopener,noreferrer");
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -1037,6 +1085,10 @@ function App() {
               </a>
             </div>
           </nav>
+        </div>
+
+        <div className="scroll-progress" aria-hidden="true">
+          <span style={{ transform: `scaleX(${scrollProgress})` }} />
         </div>
 
         <button
@@ -1236,7 +1288,7 @@ function App() {
 
           <div className="shell gallery-grid">
             {visibleGalleryCards.map((card, index) => (
-              <article key={card.alt} className="gallery-card" data-reveal>
+              <article key={card.alt} className={`gallery-card ${index === 0 ? "is-featured" : ""}`} data-reveal>
                 <button
                   type="button"
                   className="gallery-open-button"
@@ -1296,15 +1348,21 @@ function App() {
 
           <div className="shell cards-grid">
             {newsCards.map((card, index) => (
-              <article key={card.title} className={`news-card tone-${newsAccents[index]}`} data-reveal>
+              <article
+                key={card.title}
+                className={`news-card tone-${newsAccents[index]} ${index === 0 ? "is-featured" : ""}`}
+                data-reveal
+              >
                 {card.image ? (
                   <div className="news-media">
                     <img src={card.image} alt={card.title} loading="lazy" />
                   </div>
                 ) : null}
-                <span className="news-badge">{card.badge}</span>
-                <h3>{card.title}</h3>
-                <p>{card.text}</p>
+                <div className="news-card-body">
+                  <span className="news-badge">{card.badge}</span>
+                  <h3>{card.title}</h3>
+                  <p>{card.text}</p>
+                </div>
               </article>
             ))}
           </div>
@@ -1342,10 +1400,23 @@ function App() {
               data-reveal
               onSubmit={handleContactWhatsappSubmit}
             >
-              <input name="parentName" placeholder={copy.contact.form.parent} required />
-              <input name="contactInfo" placeholder={copy.contact.form.contact} required />
-              <input className="full-width" name="studentLevel" placeholder={copy.contact.form.student} />
-              <textarea className="full-width" name="message" placeholder={copy.contact.form.message} required />
+              <p className="contact-form-note full-width">{contactFormNote}</p>
+              <label className="contact-field">
+                <span>{copy.contact.form.parent}</span>
+                <input name="parentName" required />
+              </label>
+              <label className="contact-field">
+                <span>{copy.contact.form.contact}</span>
+                <input name="contactInfo" required />
+              </label>
+              <label className="contact-field full-width">
+                <span>{copy.contact.form.student}</span>
+                <input name="studentLevel" />
+              </label>
+              <label className="contact-field full-width">
+                <span>{copy.contact.form.message}</span>
+                <textarea name="message" required />
+              </label>
               <button className="form-submit full-width" type="submit">
                 {copy.contact.form.submit}
               </button>
@@ -1426,6 +1497,11 @@ function App() {
       ) : null}
 
       <div className="floating-actions">
+        {showBackToTop ? (
+          <button type="button" className="secondary-action back-to-top-action" onClick={scrollToTop}>
+            {backToTopLabel}
+          </button>
+        ) : null}
         <a className="whatsapp-action" href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
           {common.hero.whatsapp}
         </a>
