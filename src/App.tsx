@@ -25,6 +25,7 @@ const POETRY_POST_URL =
 const ASSET_BASE = import.meta.env.BASE_URL;
 const ABOUT_IMAGE_URL = `${ASSET_BASE}about-photo.jpeg`;
 const REGISTRATION_NEWS_IMAGE = `${ASSET_BASE}news-registration.jpeg`;
+const DARIJA_NEWS_IMAGE = `${ASSET_BASE}news-darija.jpeg`;
 const LOGO_URL = `${ASSET_BASE}logo.png`;
 const GALLERY_IMAGES = [
   `${ASSET_BASE}gallery-1.jpg`,
@@ -631,7 +632,7 @@ function App() {
     { ...copy.news.cards.one, image: REGISTRATION_NEWS_IMAGE },
     { ...copy.news.cards.two, url: DRAWING_POST_URL },
     { ...copy.news.cards.three, url: POETRY_POST_URL },
-    { ...copy.news.cards.four, url: DARIJA_POST_URL }
+    { ...copy.news.cards.four, url: DARIJA_POST_URL, image: DARIJA_NEWS_IMAGE }
   ];
   const activeGalleryCard = activeGalleryImage !== null ? galleryCards[activeGalleryImage] : null;
   const galleryViewAllLabel =
