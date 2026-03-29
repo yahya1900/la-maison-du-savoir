@@ -17,8 +17,12 @@ const CALL_LINK = "tel:+212681222459";
 const WHATSAPP_PRIMARY = "https://wa.me/212681222459";
 const WHATSAPP_CONTACT = "https://wa.me/212724191970";
 const FACEBOOK_PAGE = "https://web.facebook.com/people/La-maison-du-savoir/61576992321051/";
+const DRAWING_POST_URL =
+  "https://web.facebook.com/61576992321051/posts/cours-de-dessin-%C3%A0-la-pause/122094291644899744/";
 const DARIJA_POST_URL =
   "https://web.facebook.com/61576992321051/posts/aji-t3alam-m3ana-darija-koul-larb3a-f-far-lma3rifa-f-ghazwa-km8-%EF%B8%8F-viens-apprendr/122159458256899744/";
+const POETRY_POST_URL =
+  "https://web.facebook.com/61576992321051/posts/cours-libre-de-po%C3%A9sie-et-peinture-du-vendredi-un-beau-moment-avec-les-enfants%EF%B8%8Fme/122153624432899744/";
 const ASSET_BASE = import.meta.env.BASE_URL;
 const LOGO_URL = `${ASSET_BASE}logo.png`;
 const GALLERY_IMAGES = [`${ASSET_BASE}gallery-1.jpg`, `${ASSET_BASE}gallery-2.jpg`, `${ASSET_BASE}gallery-3.jpg`] as const;
@@ -31,6 +35,338 @@ const stats: Array<{ value: number; key: "one" | "two" | "three" | "four"; prefi
 ];
 const programIcons = ["🏫", "🤝", "✨"] as const;
 const newsAccents = ["sunrise", "ocean", "meadow", "sunrise"] as const;
+
+const copyEnhancements: Record<LanguageCode, any> = {
+  fr: {
+    common: {
+      topbar: {
+        badgeLine: "Lieu associatif d'apprentissage, CNED et ateliers à Ghazoua"
+      },
+      hero: {
+        card: {
+          text: "Lieu associatif d'apprentissage et de partage à Ghazoua. Accompagnement CNED en journée, ateliers de darija, dessin, poésie et peinture dans un cadre attentif."
+        }
+      }
+    },
+    home: {
+      section: {
+        text: "La Maison du Savoir accompagne les élèves du primaire et du collège inscrits au CNED dans un lieu associatif d'apprentissage et de partage, serein, stimulant et personnalisé."
+      },
+      info: {
+        text: "Située à Ghazoua, route de Sidi Kaouki, La Maison du Savoir est un espace pensé pour la concentration, le partage et la progression de chaque enfant, avec des temps CNED et des ateliers créatifs."
+      },
+      cards: {
+        three: {
+          title: "Darija, dessin et expression",
+          text: "Cours de dessin à la pause, darija chaque mercredi, poésie et peinture le vendredi, avec l'envie d'ouvrir aussi des temps de dessin le samedi."
+        }
+      }
+    },
+    about: {
+      section: {
+        text: "Notre mission est d'offrir aux familles un lieu associatif de confiance où les élèves peuvent suivre leur scolarité CNED avec méthode, sérénité, partage et motivation."
+      },
+      includes: {
+        five: "Activités complémentaires : darija le mercredi, poésie et peinture le vendredi, ateliers créatifs et pratique du dessin"
+      }
+    },
+    gallery: {
+      section: {
+        text: "Une galerie inspirée des images partagées sur Facebook, entre dessin, ateliers et moments de vie à La Maison du Savoir."
+      }
+    },
+    programs: {
+      section: {
+        text: "Chaque journée est pensée pour aider les élèves à progresser avec régularité, confiance et plaisir d'apprendre, du suivi CNED aux ateliers de langue et d'expression."
+      },
+      cards: {
+        three: {
+          title: "Darija, poésie, peinture et dessin",
+          text: "Des rendez-vous hebdomadaires inspirés de la vie du lieu : darija le mercredi, poésie et peinture le vendredi, dessin et pratique créative."
+        }
+      }
+    },
+    news: {
+      section: {
+        text: "Retrouvez ici les ouvertures d'inscriptions, visites, cours de dessin, darija et autres nouveautés de La Maison du Savoir."
+      },
+      cards: {
+        two: {
+          badge: "Atelier dessin",
+          title: "Cours de dessin à la pause",
+          text: "Un moment créatif partagé pendant la pause pour observer, imaginer et dessiner ensemble.",
+          linkLabel: "Voir la publication Facebook"
+        },
+        three: {
+          badge: "Vendredi créatif",
+          title: "Poésie et peinture avec les enfants",
+          text: "Le vendredi, un cours libre réunit les enfants autour de la poésie, de la peinture et d'un beau temps de partage.",
+          linkLabel: "Voir la publication Facebook"
+        },
+        four: {
+          badge: "Chaque mercredi",
+          text: "Viens apprendre le darija avec nous chaque mercredi à La Maison du Savoir, Ghazoua Km 8."
+        }
+      }
+    },
+    contact: {
+      section: {
+        text: "Nous serons heureux d'échanger avec vous sur le parcours de votre enfant, ses besoins, son rythme d'apprentissage et les ateliers proposés à Ghazoua."
+      }
+    }
+  },
+  en: {
+    common: {
+      topbar: {
+        badgeLine: "Associative learning space, CNED and workshops in Ghazoua"
+      },
+      hero: {
+        card: {
+          text: "An associative place for learning and sharing in Ghazoua. Daytime CNED support, Darija workshops, drawing, poetry, and painting in a caring setting."
+        }
+      }
+    },
+    home: {
+      section: {
+        text: "La Maison du Savoir supports primary and middle school students enrolled in CNED in an associative space for learning and sharing: calm, stimulating, and personalized."
+      },
+      info: {
+        text: "Located in Ghazoua on the road to Sidi Kaouki, La Maison du Savoir is a space designed for focus, sharing, and each child's progress, with CNED guidance and creative workshops."
+      },
+      cards: {
+        three: {
+          title: "Darija, drawing, and expression",
+          text: "Drawing classes during the break, Darija every Wednesday, poetry and painting on Fridays, with the wish to open drawing practice on Saturdays too."
+        }
+      }
+    },
+    about: {
+      section: {
+        text: "Our mission is to offer families a trusted associative place where students can follow their CNED schooling with method, calm, shared learning, and motivation."
+      },
+      includes: {
+        five: "Complementary activities: Darija on Wednesdays, poetry and painting on Fridays, creative workshops, and drawing practice"
+      }
+    },
+    gallery: {
+      section: {
+        text: "A gallery inspired by the images shared on Facebook, featuring drawing, workshops, and daily moments at La Maison du Savoir."
+      }
+    },
+    programs: {
+      section: {
+        text: "Each day is designed to help students progress with consistency, confidence, and joy in learning, from CNED follow-up to language and creative-expression workshops."
+      },
+      cards: {
+        three: {
+          title: "Darija, poetry, painting, and drawing",
+          text: "Weekly moments inspired by life at the center: Darija on Wednesdays, poetry and painting on Fridays, and creative drawing practice."
+        }
+      }
+    },
+    news: {
+      section: {
+        text: "Find registration openings, visits, drawing classes, Darija sessions, and new updates from La Maison du Savoir here."
+      },
+      cards: {
+        two: {
+          badge: "Drawing",
+          title: "Drawing class during the break",
+          text: "A shared creative moment during the break to observe, imagine, and draw together.",
+          linkLabel: "View the Facebook post"
+        },
+        three: {
+          badge: "Friday",
+          title: "Poetry and painting with the children",
+          text: "On Fridays, a free session brings children together around poetry, painting, and a beautiful shared moment.",
+          linkLabel: "View the Facebook post"
+        },
+        four: {
+          badge: "Every Wednesday",
+          text: "Join us every Wednesday to learn Darija at La Maison du Savoir, Ghazoua Km 8."
+        }
+      }
+    },
+    contact: {
+      section: {
+        text: "We would be delighted to talk with you about your child's path, learning rhythm, CNED follow-up, and the workshops offered in Ghazoua."
+      }
+    }
+  },
+  ar: {
+    common: {
+      topbar: {
+        badgeLine: "فضاء جمعوي للتعلّم، ومرافقة CNED وورشات في غزوة"
+      },
+      hero: {
+        card: {
+          text: "فضاء جمعوي للتعلّم والتشارك في غزوة. مرافقة CNED نهاراً مع ورشات في الدارجة والرسم والشعر والتلوين داخل أجواء مليئة بالعناية."
+        }
+      }
+    },
+    home: {
+      section: {
+        text: "يرافق بيت المعرفة تلاميذ الابتدائي والإعدادي المسجلين في CNED داخل فضاء جمعوي للتعلّم والتشارك، هادئ ومحفّز ومخصّص لكل متعلّم."
+      },
+      info: {
+        text: "يقع بيت المعرفة في غزوة على طريق سيدي كاوكي، وهو فضاء صُمم للتركيز والتشارك وتقدّم كل طفل، مع أوقات CNED وورشات إبداعية."
+      },
+      cards: {
+        three: {
+          title: "الدارجة والرسم والتعبير",
+          text: "دروس رسم خلال الاستراحة، ودارجة كل أربعاء، وشعر وتلوين يوم الجمعة، مع الرغبة في تخصيص أوقات للرسم يوم السبت أيضاً."
+        }
+      }
+    },
+    about: {
+      section: {
+        text: "مهمتنا هي أن نقدم للأسر فضاءً جمعوياً موثوقاً يتيح للتلاميذ متابعة دراستهم مع CNED بمنهجية وطمأنينة وروح مشاركة وتحفيز."
+      },
+      includes: {
+        five: "أنشطة مكمّلة: الدارجة يوم الأربعاء، والشعر والتلوين يوم الجمعة، وورشات إبداعية وممارسة الرسم"
+      }
+    },
+    gallery: {
+      section: {
+        text: "معرض مستوحى من الصور التي نشاركها على فيسبوك، بين الرسم والورشات ولحظات الحياة داخل بيت المعرفة."
+      }
+    },
+    programs: {
+      section: {
+        text: "كل يوم مُصمم لمساعدة التلاميذ على التقدّم بثبات وثقة ومتعة في التعلّم، من متابعة CNED إلى ورشات اللغة والتعبير."
+      },
+      cards: {
+        three: {
+          title: "الدارجة والشعر والتلوين والرسم",
+          text: "مواعيد أسبوعية مستوحاة من حياة الفضاء: الدارجة يوم الأربعاء، والشعر والتلوين يوم الجمعة، والرسم والتجارب الإبداعية."
+        }
+      }
+    },
+    news: {
+      section: {
+        text: "هنا تجد مواعيد التسجيل والزيارات ودروس الرسم وحصص الدارجة وآخر مستجدات بيت المعرفة."
+      },
+      cards: {
+        two: {
+          badge: "الرسم",
+          title: "درس الرسم أثناء الاستراحة",
+          text: "لحظة إبداعية مشتركة خلال الاستراحة لملاحظة الأشياء والتخيل والرسم معاً.",
+          linkLabel: "عرض منشور فيسبوك"
+        },
+        three: {
+          badge: "الجمعة",
+          title: "الشعر والتلوين مع الأطفال",
+          text: "يوم الجمعة يجمع درس حر الأطفال حول الشعر والتلوين ولحظة جميلة من المشاركة.",
+          linkLabel: "عرض منشور فيسبوك"
+        },
+        four: {
+          badge: "كل أربعاء",
+          text: "انضم إلينا كل يوم أربعاء لتعلّم الدارجة في بيت المعرفة، غزوة كلم 8."
+        }
+      }
+    },
+    contact: {
+      section: {
+        text: "يسعدنا أن نتحدث معكم حول مسار طفلكم وإيقاع تعلّمه ومرافقة CNED والورشات المقترحة في غزوة."
+      }
+    }
+  },
+  es: {
+    common: {
+      topbar: {
+        badgeLine: "Espacio asociativo de aprendizaje, CNED y talleres en Ghazoua"
+      },
+      hero: {
+        card: {
+          text: "Un espacio asociativo de aprendizaje y de compartir en Ghazoua. Acompañamiento CNED durante el día con talleres de darija, dibujo, poesía y pintura en un entorno atento."
+        }
+      }
+    },
+    home: {
+      section: {
+        text: "La Maison du Savoir acompaña a los alumnos de primaria y colegio inscritos en CNED dentro de un espacio asociativo de aprendizaje y de compartir, sereno, estimulante y personalizado."
+      },
+      info: {
+        text: "Situada en Ghazoua, en la carretera de Sidi Kaouki, La Maison du Savoir es un espacio pensado para la concentración, el intercambio y el progreso de cada niño, con tiempos CNED y talleres creativos."
+      },
+      cards: {
+        three: {
+          title: "Darija, dibujo y expresión",
+          text: "Clases de dibujo en la pausa, darija cada miércoles, poesía y pintura los viernes, con ganas de abrir también momentos de dibujo los sábados."
+        }
+      }
+    },
+    about: {
+      section: {
+        text: "Nuestra misión es ofrecer a las familias un lugar asociativo de confianza donde los alumnos puedan seguir su escolaridad CNED con método, serenidad, intercambio y motivación."
+      },
+      includes: {
+        five: "Actividades complementarias: darija los miércoles, poesía y pintura los viernes, talleres creativos y práctica de dibujo"
+      }
+    },
+    gallery: {
+      section: {
+        text: "Una galería inspirada en las imágenes compartidas en Facebook, entre dibujo, talleres y momentos de vida en La Maison du Savoir."
+      }
+    },
+    programs: {
+      section: {
+        text: "Cada jornada está pensada para ayudar a los alumnos a avanzar con regularidad, confianza y gusto por aprender, desde el seguimiento CNED hasta los talleres de lengua y expresión."
+      },
+      cards: {
+        three: {
+          title: "Darija, poesía, pintura y dibujo",
+          text: "Encuentros semanales inspirados en la vida del lugar: darija los miércoles, poesía y pintura los viernes, dibujo y práctica creativa."
+        }
+      }
+    },
+    news: {
+      section: {
+        text: "Encuentra aquí aperturas de inscripción, visitas, clases de dibujo, sesiones de darija y otras novedades de La Maison du Savoir."
+      },
+      cards: {
+        two: {
+          badge: "Dibujo",
+          title: "Clase de dibujo en la pausa",
+          text: "Un momento creativo compartido durante la pausa para observar, imaginar y dibujar juntos.",
+          linkLabel: "Ver la publicación en Facebook"
+        },
+        three: {
+          badge: "Viernes",
+          title: "Poesía y pintura con los niños",
+          text: "Los viernes, una sesión libre reúne a los niños alrededor de la poesía, la pintura y un bello momento compartido.",
+          linkLabel: "Ver la publicación en Facebook"
+        },
+        four: {
+          badge: "Cada miércoles",
+          text: "Ven a aprender darija con nosotros cada miércoles en La Maison du Savoir, Ghazoua Km 8."
+        }
+      }
+    },
+    contact: {
+      section: {
+        text: "Estaremos encantados de hablar contigo sobre el recorrido de tu hijo, su ritmo de aprendizaje, el seguimiento CNED y los talleres propuestos en Ghazoua."
+      }
+    }
+  }
+};
+
+function mergeCopy(base: any, overrides: any): any {
+  if (!overrides) return base;
+
+  const result = Array.isArray(base) ? [...base] : { ...base };
+
+  Object.entries(overrides).forEach(([key, value]) => {
+    if (value && typeof value === "object" && !Array.isArray(value)) {
+      result[key] = mergeCopy(result[key] ?? {}, value);
+      return;
+    }
+
+    result[key] = value;
+  });
+
+  return result;
+}
 
 function getInitialLanguage(): LanguageCode {
   const fallback: LanguageCode = "fr";
@@ -81,7 +417,8 @@ function App() {
   const [activeSection, setActiveSection] = useState<SectionId>("home");
   const [, startTransition] = useTransition();
 
-  const copy = translations[language] ?? translations.fr;
+  const baseCopy = translations[language] ?? translations.fr;
+  const copy = mergeCopy(baseCopy, copyEnhancements[language]);
   const common = copy.common;
   const isRtl = languages[language].dir === "rtl";
   const activeMeta = copy.meta[activeSection] ?? copy.meta.home;
@@ -244,7 +581,12 @@ function App() {
 
   const galleryCards = [copy.gallery.cards.one, copy.gallery.cards.two, copy.gallery.cards.three];
   const programCards = [copy.programs.cards.one, copy.programs.cards.two, copy.programs.cards.three];
-  const newsCards = [copy.news.cards.one, copy.news.cards.two, copy.news.cards.three, copy.news.cards.four];
+  const newsCards = [
+    { ...copy.news.cards.one },
+    { ...copy.news.cards.two, url: DRAWING_POST_URL },
+    { ...copy.news.cards.three, url: POETRY_POST_URL },
+    { ...copy.news.cards.four, url: DARIJA_POST_URL }
+  ];
 
   return (
     <div ref={rootRef} className="page-shell">
@@ -339,7 +681,7 @@ function App() {
                 <a className="primary-action" href="#contact">
                   {common.hero.contactCta}
                 </a>
-                <a className="secondary-action" href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
+                <a className="secondary-action whatsapp-action" href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
                   {common.hero.whatsapp}
                 </a>
               </div>
@@ -510,7 +852,7 @@ function App() {
                 <h3>{card.title}</h3>
                 <p>{card.text}</p>
                 {card.linkLabel ? (
-                  <a className="news-link" href={DARIJA_POST_URL} target="_blank" rel="noreferrer">
+                  <a className="news-link" href={card.url} target="_blank" rel="noreferrer">
                     {card.linkLabel}
                   </a>
                 ) : null}
@@ -537,7 +879,7 @@ function App() {
                 <span>{copy.contact.panel.schedule}</span>
               </div>
               <div className="contact-actions">
-                <a className="primary-action" href={WHATSAPP_CONTACT} target="_blank" rel="noreferrer">
+                <a className="primary-action whatsapp-action" href={WHATSAPP_CONTACT} target="_blank" rel="noreferrer">
                   {common.hero.whatsapp}
                 </a>
                 <a className="secondary-action on-dark" href={CALL_LINK}>
@@ -592,7 +934,7 @@ function App() {
       </footer>
 
       <div className="floating-actions">
-        <a href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
+        <a className="whatsapp-action" href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
           {common.hero.whatsapp}
         </a>
         <a href={CALL_LINK}>{common.actions.call}</a>
