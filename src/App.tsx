@@ -619,20 +619,6 @@ function App() {
         <div className="hero-orb hero-orb-three parallax-orb" />
       </div>
 
-      <div className="topbar">
-        <div className="shell">
-          <div className="topbar-meta">
-            <span>{EMAIL}</span>
-            <span>{PHONE}</span>
-          </div>
-          <div className="topbar-banner">
-            <span className="badge">CNED</span>
-            <span>{common.topbar.badgeLine}</span>
-          </div>
-          <div className="topbar-location">{common.topbar.location}</div>
-        </div>
-      </div>
-
       <header className="main-nav">
         <div className="shell nav-row">
           <a className="brand" href="#home" onClick={() => setMenuOpen(false)}>
@@ -661,7 +647,6 @@ function App() {
               <div className="mobile-nav-brand">
                 <img src={LOGO_URL} alt={common.brand.alt} />
                 <div className="mobile-nav-brand-copy">
-                  <span className="mobile-nav-location">{common.topbar.location}</span>
                   <span className="mobile-nav-title">{common.brand.title}</span>
                 </div>
               </div>
@@ -674,10 +659,6 @@ function App() {
                 <span />
                 <span />
               </button>
-            </div>
-            <div className="mobile-nav-meta">
-              <span className="badge">CNED</span>
-              <span>{common.topbar.badgeLine}</span>
             </div>
             {navItems.map((item) => (
               <a
