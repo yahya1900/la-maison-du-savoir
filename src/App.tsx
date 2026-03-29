@@ -481,6 +481,19 @@ function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [menuOpen]);
+
   useLayoutEffect(() => {
     if (!rootRef.current) return;
 
@@ -559,6 +572,9 @@ function App() {
   const changeLanguage = (nextLanguage: LanguageCode) => {
     startTransition(() => {
       setLanguage(nextLanguage);
+      if (window.innerWidth <= 920) {
+        setMenuOpen(false);
+      }
     });
   };
 
@@ -622,7 +638,7 @@ function App() {
 
           <button
             type="button"
-            className="mobile-menu-button"
+            className={`mobile-menu-button ${menuOpen ? "is-open" : ""}`}
             aria-expanded={menuOpen}
             aria-controls="site-navigation"
             aria-label={common.menuToggle}
@@ -634,6 +650,28 @@ function App() {
           </button>
 
           <nav id="site-navigation" className={`nav-links ${menuOpen ? "is-open" : ""}`}>
+            <div className="mobile-nav-header">
+              <div className="mobile-nav-brand">
+                <img src={LOGO_URL} alt={common.brand.alt} />
+                <div className="mobile-nav-brand-copy">
+                  <span className="mobile-nav-location">{common.topbar.location}</span>
+                  <span className="mobile-nav-title">{common.brand.title}</span>
+                </div>
+              </div>
+              <button
+                type="button"
+                className="mobile-close-button"
+                aria-label={common.menuToggle}
+                onClick={() => setMenuOpen(false)}
+              >
+                <span />
+                <span />
+              </button>
+            </div>
+            <div className="mobile-nav-meta">
+              <span className="badge">CNED</span>
+              <span>{common.topbar.badgeLine}</span>
+            </div>
             {navItems.map((item) => (
               <a
                 key={item.id}
@@ -644,20 +682,37 @@ function App() {
                 {item.label}
               </a>
             ))}
-            <div className="language-group nav-language-group" aria-label={common.languageSwitcher}>
-              {(Object.keys(languages) as LanguageCode[]).map((code) => (
-                <button
-                  key={code}
-                  type="button"
-                  className={`language-chip ${language === code ? "is-active" : ""}`}
-                  onClick={() => changeLanguage(code)}
-                  aria-pressed={language === code}
-                  lang={code}
-                  title={languages[code].name}
-                >
-                  {languages[code].short}
-                </button>
-              ))}
+            <div className="mobile-nav-section">
+              <span className="mobile-nav-section-title">{common.languageSwitcher}</span>
+              <div className="language-group nav-language-group" aria-label={common.languageSwitcher}>
+                {(Object.keys(languages) as LanguageCode[]).map((code) => (
+                  <button
+                    key={code}
+                    type="button"
+                    className={`language-chip ${language === code ? "is-active" : ""}`}
+                    onClick={() => changeLanguage(code)}
+                    aria-pressed={language === code}
+                    lang={code}
+                    title={languages[code].name}
+                  >
+                    {languages[code].short}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="mobile-nav-actions">
+              <a
+                className="secondary-action whatsapp-action"
+                href={WHATSAPP_PRIMARY}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setMenuOpen(false)}
+              >
+                {common.hero.whatsapp}
+              </a>
+              <a className="secondary-action" href={CALL_LINK} onClick={() => setMenuOpen(false)}>
+                {common.actions.call}
+              </a>
             </div>
           </nav>
         </div>
