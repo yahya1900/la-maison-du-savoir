@@ -1895,6 +1895,10 @@ textarea:focus-visible {
     min-width: 0;
   }
 
+  .desktop-language-group {
+    display: none !important;
+  }
+
   .nav-links {
     width: min(100vw, 100%);
   }
