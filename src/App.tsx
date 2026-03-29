@@ -24,6 +24,7 @@ const DARIJA_POST_URL =
 const POETRY_POST_URL =
   "https://web.facebook.com/61576992321051/posts/cours-libre-de-po%C3%A9sie-et-peinture-du-vendredi-un-beau-moment-avec-les-enfants%EF%B8%8Fme/122153624432899744/";
 const ASSET_BASE = import.meta.env.BASE_URL;
+const ABOUT_IMAGE_URL = `${ASSET_BASE}about-photo.jpeg`;
 const LOGO_URL = `${ASSET_BASE}logo.png`;
 const GALLERY_IMAGES = [`${ASSET_BASE}gallery-1.jpg`, `${ASSET_BASE}gallery-2.jpg`, `${ASSET_BASE}gallery-3.jpg`] as const;
 const sections: SectionId[] = ["home", "about", "gallery", "programs", "news", "contact"];
@@ -805,7 +806,8 @@ function App() {
             <div className="about-media" data-reveal>
               <div className="photo-frame">
                 <img
-                  src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1400&q=80"
+                  className="about-photo-illustration"
+                  src={ABOUT_IMAGE_URL}
                   alt={copy.about.photoAlt}
                 />
               </div>

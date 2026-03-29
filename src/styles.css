@@ -701,8 +701,12 @@ textarea:focus-visible {
 .photo-frame {
   position: sticky;
   top: calc(var(--nav-offset) + 18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(244, 234, 217, 0.94));
   box-shadow: var(--shadow-strong);
   min-height: 520px;
 }
@@ -712,6 +716,13 @@ textarea:focus-visible {
   height: 100%;
   min-height: 520px;
   object-fit: cover;
+}
+
+.about-photo-illustration {
+  min-height: 0 !important;
+  padding: 22px;
+  object-fit: contain !important;
+  object-position: center;
 }
 
 .about-content,
@@ -1087,6 +1098,11 @@ textarea:focus-visible {
 
   .photo-frame img {
     min-height: 380px;
+  }
+
+  .about-photo-illustration {
+    padding: 16px;
+    min-height: 0 !important;
   }
 
   .hero-grid {
