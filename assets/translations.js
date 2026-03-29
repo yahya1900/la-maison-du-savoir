@@ -22,6 +22,7 @@ export const siteTranslations = {
       nav: {
         home: "Accueil",
         about: "À propos",
+        gallery: "Galerie",
         programs: "Programmes",
         news: "Actualités",
         contact: "Contact",
@@ -61,6 +62,10 @@ export const siteTranslations = {
       about: {
         title: "À propos | La Maison du Savoir Ghazoua",
         description: "Découvrez La Maison du Savoir à Ghazoua : un lieu de confiance pour accompagner les élèves inscrits au CNED."
+      },
+      gallery: {
+        title: "Galerie | La Maison du Savoir Ghazoua",
+        description: "Découvrez en images l'univers de La Maison du Savoir à Ghazoua à travers notre galerie inspirée de la page Facebook."
       },
       programs: {
         title: "Programmes | La Maison du Savoir Ghazoua",
@@ -140,6 +145,31 @@ export const siteTranslations = {
         two: "Éducateurs et intervenants",
         three: "Temps d'accompagnement",
         four: "Programmes et ateliers"
+      }
+    },
+    gallery: {
+      section: {
+        eyebrow: "Galerie",
+        title: "Trois regards sur La Maison du Savoir",
+        text: "Une galerie courte inspirée des visuels partagés sur notre page Facebook pour donner un aperçu sensible du lieu et de son identité.",
+        cta: "Voir la page Facebook"
+      },
+      cards: {
+        one: {
+          label: "Photo 01",
+          text: "Vue principale issue de notre présence Facebook.",
+          alt: "Photo Facebook de La Maison du Savoir à Ghazoua"
+        },
+        two: {
+          label: "Photo 02",
+          text: "Cadrage rapproché pour mettre en valeur les détails.",
+          alt: "Détail d'une photo Facebook de La Maison du Savoir"
+        },
+        three: {
+          label: "Photo 03",
+          text: "Variation visuelle pour enrichir la galerie du site.",
+          alt: "Variation d'une photo Facebook de La Maison du Savoir"
+        }
       }
     },
     programs: {
@@ -241,6 +271,7 @@ export const siteTranslations = {
       nav: {
         home: "Home",
         about: "About",
+        gallery: "Gallery",
         programs: "Programs",
         news: "News",
         contact: "Contact",
@@ -280,6 +311,10 @@ export const siteTranslations = {
       about: {
         title: "About | La Maison du Savoir Ghazoua",
         description: "Discover La Maison du Savoir in Ghazoua: a trusted place to support students enrolled in CNED."
+      },
+      gallery: {
+        title: "Gallery | La Maison du Savoir Ghazoua",
+        description: "Explore La Maison du Savoir in Ghazoua through a compact gallery inspired by the public visuals shared on Facebook."
       },
       programs: {
         title: "Programs | La Maison du Savoir Ghazoua",
@@ -359,6 +394,31 @@ export const siteTranslations = {
         two: "Educators and contributors",
         three: "Hours of support",
         four: "Programs and workshops"
+      }
+    },
+    gallery: {
+      section: {
+        eyebrow: "Gallery",
+        title: "Three views of La Maison du Savoir",
+        text: "A short gallery inspired by the visuals shared on our Facebook page to give families a quick feel for the place and its identity.",
+        cta: "View the Facebook page"
+      },
+      cards: {
+        one: {
+          label: "Photo 01",
+          text: "Main view taken from our public Facebook presence.",
+          alt: "Facebook photo of La Maison du Savoir in Ghazoua"
+        },
+        two: {
+          label: "Photo 02",
+          text: "A closer framing that highlights visual details.",
+          alt: "Closer detail from a Facebook photo of La Maison du Savoir"
+        },
+        three: {
+          label: "Photo 03",
+          text: "A visual variation to enrich the site's gallery.",
+          alt: "Visual variation from a Facebook photo of La Maison du Savoir"
+        }
       }
     },
     programs: {
@@ -460,6 +520,7 @@ export const siteTranslations = {
       nav: {
         home: "الرئيسية",
         about: "من نحن",
+        gallery: "الصور",
         programs: "البرامج",
         news: "الأخبار",
         contact: "تواصل",
@@ -499,6 +560,10 @@ export const siteTranslations = {
       about: {
         title: "من نحن | بيت المعرفة غزوة",
         description: "اكتشف بيت المعرفة في غزوة: فضاء موثوق لمرافقة التلاميذ المسجلين في CNED."
+      },
+      gallery: {
+        title: "الصور | بيت المعرفة غزوة",
+        description: "اكتشف بيت المعرفة في غزوة من خلال معرض صور صغير مستوحى من الصور العمومية المنشورة على صفحتنا في فيسبوك."
       },
       programs: {
         title: "البرامج | بيت المعرفة غزوة",
@@ -578,6 +643,31 @@ export const siteTranslations = {
         two: "مربون ومتدخلون",
         three: "ساعات من المرافقة",
         four: "برامج وورشات"
+      }
+    },
+    gallery: {
+      section: {
+        eyebrow: "الصور",
+        title: "ثلاث لقطات من بيت المعرفة",
+        text: "معرض قصير مستوحى من الصور التي نشاركها على صفحتنا في فيسبوك ليمنح الأسر لمحة سريعة عن المكان وهويته.",
+        cta: "زيارة صفحة فيسبوك"
+      },
+      cards: {
+        one: {
+          label: "صورة 01",
+          text: "اللقطة الرئيسية المأخوذة من حضورنا العمومي على فيسبوك.",
+          alt: "صورة من فيسبوك لبيت المعرفة في غزوة"
+        },
+        two: {
+          label: "صورة 02",
+          text: "إطار أقرب لإبراز بعض التفاصيل البصرية.",
+          alt: "تفصيل مقرب من صورة فيسبوك لبيت المعرفة"
+        },
+        three: {
+          label: "صورة 03",
+          text: "تنويع بصري يمنح المعرض حضورا أغنى داخل الموقع.",
+          alt: "تنويع بصري من صورة فيسبوك لبيت المعرفة"
+        }
       }
     },
     programs: {
@@ -679,6 +769,7 @@ export const siteTranslations = {
       nav: {
         home: "Inicio",
         about: "Quiénes somos",
+        gallery: "Galería",
         programs: "Programas",
         news: "Noticias",
         contact: "Contacto",
@@ -718,6 +809,10 @@ export const siteTranslations = {
       about: {
         title: "Quiénes somos | La Maison du Savoir Ghazoua",
         description: "Descubre La Maison du Savoir en Ghazoua: un lugar de confianza para acompañar a los alumnos inscritos en CNED."
+      },
+      gallery: {
+        title: "Galería | La Maison du Savoir Ghazoua",
+        description: "Descubre La Maison du Savoir en Ghazoua a través de una galería breve inspirada en las imágenes públicas compartidas en Facebook."
       },
       programs: {
         title: "Programas | La Maison du Savoir Ghazoua",
@@ -797,6 +892,31 @@ export const siteTranslations = {
         two: "Educadores y colaboradores",
         three: "Horas de acompañamiento",
         four: "Programas y talleres"
+      }
+    },
+    gallery: {
+      section: {
+        eyebrow: "Galería",
+        title: "Tres miradas sobre La Maison du Savoir",
+        text: "Una galería breve inspirada en las imágenes compartidas en nuestra página de Facebook para transmitir rápidamente la identidad del lugar.",
+        cta: "Ver la página de Facebook"
+      },
+      cards: {
+        one: {
+          label: "Foto 01",
+          text: "Vista principal tomada de nuestra presencia pública en Facebook.",
+          alt: "Foto de Facebook de La Maison du Savoir en Ghazoua"
+        },
+        two: {
+          label: "Foto 02",
+          text: "Un encuadre más cercano para destacar los detalles visuales.",
+          alt: "Detalle cercano de una foto de Facebook de La Maison du Savoir"
+        },
+        three: {
+          label: "Foto 03",
+          text: "Una variación visual para enriquecer la galería del sitio.",
+          alt: "Variación visual de una foto de Facebook de La Maison du Savoir"
+        }
       }
     },
     programs: {

@@ -6,7 +6,7 @@ import { siteLanguages, siteTranslations } from "../assets/translations.js";
 gsap.registerPlugin(ScrollTrigger);
 
 type LanguageCode = "fr" | "en" | "ar" | "es";
-type SectionId = "home" | "about" | "programs" | "news" | "contact";
+type SectionId = "home" | "about" | "gallery" | "programs" | "news" | "contact";
 
 const languages = siteLanguages as Record<LanguageCode, { short: string; name: string; dir: "ltr" | "rtl" }>;
 const translations = siteTranslations as Record<LanguageCode, any>;
@@ -16,8 +16,11 @@ const PHONE = "0681222459";
 const CALL_LINK = "tel:+212681222459";
 const WHATSAPP_PRIMARY = "https://wa.me/212681222459";
 const WHATSAPP_CONTACT = "https://wa.me/212724191970";
-const LOGO_URL = `${import.meta.env.BASE_URL}logo.png`;
-const sections: SectionId[] = ["home", "about", "programs", "news", "contact"];
+const FACEBOOK_PAGE = "https://web.facebook.com/people/La-maison-du-savoir/61576992321051/";
+const ASSET_BASE = import.meta.env.BASE_URL;
+const LOGO_URL = `${ASSET_BASE}logo.png`;
+const GALLERY_IMAGES = [`${ASSET_BASE}gallery-1.jpg`, `${ASSET_BASE}gallery-2.jpg`, `${ASSET_BASE}gallery-3.jpg`] as const;
+const sections: SectionId[] = ["home", "about", "gallery", "programs", "news", "contact"];
 const stats: Array<{ value: number; key: "one" | "two" | "three" | "four"; prefix?: string }> = [
   { value: 2, key: "one" },
   { value: 3, key: "two" },
@@ -65,6 +68,7 @@ function App() {
   const sectionRefs = useRef<Record<SectionId, HTMLElement | null>>({
     home: null,
     about: null,
+    gallery: null,
     programs: null,
     news: null,
     contact: null
@@ -222,6 +226,7 @@ function App() {
   const navItems = [
     { id: "home" as const, label: common.nav.home },
     { id: "about" as const, label: common.nav.about },
+    { id: "gallery" as const, label: common.nav.gallery },
     { id: "programs" as const, label: common.nav.programs },
     { id: "news" as const, label: common.nav.news },
     { id: "contact" as const, label: common.nav.contact }
@@ -235,6 +240,7 @@ function App() {
     copy.about.includes.five
   ];
 
+  const galleryCards = [copy.gallery.cards.one, copy.gallery.cards.two, copy.gallery.cards.three];
   const programCards = [copy.programs.cards.one, copy.programs.cards.two, copy.programs.cards.three];
   const newsCards = [copy.news.cards.one, copy.news.cards.two, copy.news.cards.three];
 
@@ -444,6 +450,38 @@ function App() {
                 ))}
               </div>
             </div>
+          </div>
+        </section>
+
+        <section id="gallery" ref={setSectionRef("gallery")} className="section-shell section-anchor">
+          <SectionHeading
+            eyebrow={copy.gallery.section.eyebrow}
+            title={copy.gallery.section.title}
+            text={copy.gallery.section.text}
+          />
+
+          <div className="shell gallery-grid">
+            {galleryCards.map((card, index) => (
+              <article
+                key={card.label}
+                className={`gallery-card ${index === 0 ? "gallery-card-feature" : "gallery-card-detail"}`}
+                data-reveal
+              >
+                <div className={`gallery-media gallery-media-${index + 1}`}>
+                  <img src={GALLERY_IMAGES[index]} alt={card.alt} loading="lazy" />
+                </div>
+                <div className="gallery-copy">
+                  <span className="gallery-label">{card.label}</span>
+                  <p>{card.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="shell gallery-actions" data-reveal>
+            <a className="secondary-action" href={FACEBOOK_PAGE} target="_blank" rel="noreferrer">
+              {copy.gallery.section.cta}
+            </a>
           </div>
         </section>
 
