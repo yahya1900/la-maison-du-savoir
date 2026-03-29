@@ -414,6 +414,7 @@ function App() {
 
   const [language, setLanguage] = useState<LanguageCode>(getInitialLanguage);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeGalleryImage, setActiveGalleryImage] = useState<number | null>(null);
   const [activeSection, setActiveSection] = useState<SectionId>("home");
   const [, startTransition] = useTransition();
 
@@ -427,7 +428,7 @@ function App() {
     document.documentElement.lang = language;
     document.documentElement.dir = languages[language].dir;
     document.body.classList.toggle("is-rtl", isRtl);
-    document.body.classList.toggle("menu-open", menuOpen);
+    document.body.classList.toggle("menu-open", menuOpen || activeGalleryImage !== null);
 
     try {
       window.localStorage.setItem("la-maison-language", language);
@@ -438,7 +439,7 @@ function App() {
     return () => {
       document.body.classList.remove("menu-open");
     };
-  }, [isRtl, language, menuOpen]);
+  }, [activeGalleryImage, isRtl, language, menuOpen]);
 
   useEffect(() => {
     document.title = activeMeta.title;
@@ -482,17 +483,22 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (!menuOpen) return;
+    if (!menuOpen && activeGalleryImage === null) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        if (activeGalleryImage !== null) {
+          setActiveGalleryImage(null);
+          return;
+        }
+
         setMenuOpen(false);
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [menuOpen]);
+  }, [activeGalleryImage, menuOpen]);
 
   useLayoutEffect(() => {
     if (!rootRef.current) return;
@@ -603,6 +609,7 @@ function App() {
     { ...copy.news.cards.three, url: POETRY_POST_URL },
     { ...copy.news.cards.four, url: DARIJA_POST_URL }
   ];
+  const activeGalleryCard = activeGalleryImage !== null ? galleryCards[activeGalleryImage] : null;
 
   return (
     <div ref={rootRef} className="page-shell">
@@ -859,9 +866,19 @@ function App() {
                 className={`gallery-card ${index === 0 ? "gallery-card-feature" : "gallery-card-detail"}`}
                 data-reveal
               >
-                <div className={`gallery-media gallery-media-${index + 1}`}>
-                  <img src={GALLERY_IMAGES[index]} alt={card.alt} loading="lazy" />
-                </div>
+                <button
+                  type="button"
+                  className="gallery-open-button"
+                  aria-label={card.alt}
+                  onClick={() => setActiveGalleryImage(index)}
+                >
+                  <div className={`gallery-media gallery-media-${index + 1}`}>
+                    <img src={GALLERY_IMAGES[index]} alt={card.alt} loading="lazy" />
+                  </div>
+                  <span className="gallery-zoom-indicator" aria-hidden="true">
+                    +
+                  </span>
+                </button>
               </article>
             ))}
           </div>
@@ -988,11 +1005,33 @@ function App() {
         </div>
       </footer>
 
+      {activeGalleryImage !== null ? (
+        <div className="gallery-lightbox" role="dialog" aria-modal="true" aria-label={activeGalleryCard?.alt ?? "Gallery image"}>
+          <button
+            type="button"
+            className="gallery-lightbox-backdrop"
+            aria-label="Close image"
+            onClick={() => setActiveGalleryImage(null)}
+          />
+          <div className="gallery-lightbox-shell">
+            <button
+              type="button"
+              className="gallery-lightbox-close"
+              aria-label="Close image"
+              onClick={() => setActiveGalleryImage(null)}
+            >
+              <span />
+              <span />
+            </button>
+            <img src={GALLERY_IMAGES[activeGalleryImage]} alt={activeGalleryCard?.alt ?? ""} />
+          </div>
+        </div>
+      ) : null}
+
       <div className="floating-actions">
         <a className="whatsapp-action" href={WHATSAPP_PRIMARY} target="_blank" rel="noreferrer">
           {common.hero.whatsapp}
         </a>
-        <a href={CALL_LINK}>{common.actions.call}</a>
       </div>
     </div>
   );
