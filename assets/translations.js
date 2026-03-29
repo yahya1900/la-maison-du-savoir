@@ -1,11 +1,11 @@
-window.SITE_LANGUAGES = {
+export const siteLanguages = {
   fr: { short: "FR", name: "Français", dir: "ltr" },
   en: { short: "EN", name: "English", dir: "ltr" },
   ar: { short: "AR", name: "العربية", dir: "rtl" },
   es: { short: "ES", name: "Español", dir: "ltr" }
 };
 
-window.SITE_TRANSLATIONS = {
+export const siteTranslations = {
   fr: {
     common: {
       languageSwitcher: "Choisir la langue",

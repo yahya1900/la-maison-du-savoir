@@ -1,22 +1,25 @@
-LA MAISON DU SAVOIR - STATIC SAME DESIGN
+LA MAISON DU SAVOIR - REACT / VITE / TYPESCRIPT
 
-Cette version garde le même style visuel :
-- hero animé
-- pages Accueil / À propos / Programmes / Actualités / Contact
-- logo réel
-- couleurs et ambiance proches du design précédent
+This project is now a single-page React app built with Vite and TypeScript.
 
-POUR HEBERGER SANS GITHUB :
-1. Dézippez le dossier
-2. Ouvrez https://app.netlify.com/drop
-3. Glissez-déposez le dossier complet
-4. Le site sera en ligne
+Included:
+- one-page layout for Home / About / Programs / News / Contact
+- multilingual support: French, English, Arabic, Spanish
+- GSAP-based intro, scroll reveal, parallax, and stat counter animations
+- responsive navigation and mobile contact actions
+- Netlify-compatible contact form markup
 
-Le formulaire de contact est compatible Netlify Forms.
-Après déploiement sur Netlify, les messages apparaîtront dans :
-Netlify > Site > Forms
+Local commands:
+1. `npm install`
+2. `npm run dev`
+3. `npm run build`
+4. `npm run preview`
 
+Static deployment:
+- build output is generated in `dist/`
+- `public/robots.txt` and `public/sitemap.xml` are included for deployment
 
-FIX APPLIED:
-- Navbar now shows on mobile/telephone.
-- Menu items are displayed in a 2-column grid under the logo.
+Main source files:
+- `src/App.tsx`
+- `src/styles.css`
+- `assets/translations.js`
