@@ -1,6 +1,7 @@
 import { type FormEvent, useEffect, useLayoutEffect, useRef, useState, useTransition } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { syncSeo, syncStructuredData } from "./seo";
 import { siteLanguages, siteTranslations } from "../assets/translations.js";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -651,11 +652,6 @@ function getInitialLanguage(): LanguageCode {
   return browserLanguage in languages ? browserLanguage : fallback;
 }
 
-function updateMetaTag(selector: string, value: string) {
-  const element = document.querySelector(selector);
-  if (element instanceof HTMLMetaElement) element.content = value;
-}
-
 type HeadingProps = { eyebrow: string; title: string; text: string };
 
 function SectionHeading({ eyebrow, title, text }: HeadingProps) {
@@ -664,6 +660,44 @@ function SectionHeading({ eyebrow, title, text }: HeadingProps) {
       <span className="section-kicker">{eyebrow}</span>
       <h2>{title}</h2>
       <p>{text}</p>
+    </div>
+  );
+}
+
+type ProtectedGalleryMediaProps = {
+  type: GalleryMediaType;
+  src: string;
+  alt: string;
+  privacyLabel: string;
+  mode: "card" | "lightbox";
+};
+
+function ProtectedGalleryMedia({ type, src, alt, privacyLabel, mode }: ProtectedGalleryMediaProps) {
+  const isCard = mode === "card";
+
+  return (
+    <div className={`gallery-privacy-frame gallery-privacy-frame-${mode}`}>
+      {type === "video" ? (
+        isCard ? (
+          <video
+            className="gallery-media-asset"
+            src={src}
+            muted
+            loop
+            playsInline
+            autoPlay
+            preload="metadata"
+            aria-hidden="true"
+          />
+        ) : (
+          <video className="gallery-media-asset" src={src} controls autoPlay playsInline />
+        )
+      ) : (
+        <img className="gallery-media-asset" src={src} alt={alt} loading={isCard ? "lazy" : undefined} />
+      )}
+      <span className={`gallery-privacy-badge gallery-privacy-badge-${mode}`} aria-hidden="true">
+        {privacyLabel}
+      </span>
     </div>
   );
 }
@@ -692,7 +726,7 @@ function App() {
   const extraCopy = siteExtras[language] ?? siteExtras.fr;
   const common = copy.common;
   const isRtl = languages[language].dir === "rtl";
-  const activeMeta = copy.meta[activeSection] ?? copy.meta.contact ?? copy.meta.home;
+  const seoMeta = copy.meta.home ?? copy.meta.contact;
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -712,11 +746,16 @@ function App() {
   }, [activeGalleryItem, isRtl, language, menuOpen]);
 
   useEffect(() => {
-    document.title = activeMeta.title;
-    updateMetaTag('meta[name="description"]', activeMeta.description);
-    updateMetaTag('meta[property="og:title"]', activeMeta.title);
-    updateMetaTag('meta[property="og:description"]', activeMeta.description);
-  }, [activeMeta]);
+    syncSeo({
+      title: seoMeta.title,
+      description: seoMeta.description,
+      language
+    });
+    syncStructuredData({
+      description: seoMeta.description,
+      language
+    });
+  }, [language, seoMeta.description, seoMeta.title]);
 
   useEffect(() => {
     let ticking = false;
@@ -916,6 +955,13 @@ function App() {
       ar: "فيديو",
       es: "Video"
     }[language] ?? "Video";
+  const galleryPrivacyLabel =
+    {
+      fr: "Visages proteges",
+      en: "Faces protected",
+      ar: "\u062a\u0645 \u0625\u062e\u0641\u0627\u0621 \u0627\u0644\u0648\u062c\u0648\u0647",
+      es: "Rostros protegidos"
+    }[language] ?? "Faces protected";
   const galleryCards = GALLERY_MEDIA.map((media, index) => ({
     ...media,
     index,
@@ -1311,15 +1357,21 @@ function App() {
                 <button
                   type="button"
                   className="gallery-open-button"
-                  aria-label={card.type === "video" ? `${card.alt} (${galleryVideoLabel})` : card.alt}
+                  aria-label={
+                    card.type === "video"
+                      ? `${card.alt} (${galleryVideoLabel}, ${galleryPrivacyLabel})`
+                      : `${card.alt} (${galleryPrivacyLabel})`
+                  }
                   onClick={() => setActiveGalleryItem(card.index)}
                 >
                   <div className={`gallery-media gallery-media-${card.index + 1}`}>
-                    {card.type === "video" ? (
-                      <video src={card.src} muted loop playsInline autoPlay preload="metadata" aria-hidden="true" />
-                    ) : (
-                      <img src={card.src} alt={card.alt} loading="lazy" />
-                    )}
+                    <ProtectedGalleryMedia
+                      type={card.type}
+                      src={card.src}
+                      alt={card.alt}
+                      privacyLabel={galleryPrivacyLabel}
+                      mode="card"
+                    />
                   </div>
                   <span className={`gallery-zoom-indicator ${card.type === "video" ? "is-video" : ""}`} aria-hidden="true">
                     {card.type === "video" ? galleryVideoLabel : "+"}
@@ -1510,11 +1562,15 @@ function App() {
             >
               <span>&rsaquo;</span>
             </button>
-            {activeGalleryCard?.type === "video" ? (
-              <video src={activeGalleryCard.src} controls autoPlay playsInline />
-            ) : (
-              <img src={activeGalleryCard?.src ?? ""} alt={activeGalleryCard?.alt ?? ""} />
-            )}
+            {activeGalleryCard ? (
+              <ProtectedGalleryMedia
+                type={activeGalleryCard.type}
+                src={activeGalleryCard.src}
+                alt={activeGalleryCard.alt}
+                privacyLabel={galleryPrivacyLabel}
+                mode="lightbox"
+              />
+            ) : null}
             <div className="gallery-lightbox-count">
               {activeGalleryItem + 1} / {GALLERY_MEDIA.length}
             </div>

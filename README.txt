@@ -17,7 +17,13 @@ Local commands:
 
 Static deployment:
 - build output is generated in `dist/`
-- `public/robots.txt` and `public/sitemap.xml` are included for deployment
+- SEO files (`robots.txt` and `sitemap.xml`) are generated at build time
+
+Google / SEO configuration:
+- copy `.env.example` to `.env` when you want to override production settings
+- `VITE_SITE_URL` sets the public canonical URL used for sitemap, robots, and metadata
+- `VITE_GOOGLE_SITE_VERIFICATION` adds the Search Console verification meta tag
+- `VITE_GA_MEASUREMENT_ID` adds the Google Analytics 4 tag
 
 Main source files:
 - `src/App.tsx`
