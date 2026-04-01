@@ -1082,15 +1082,15 @@ textarea:focus-visible {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(9, 47, 76, 0.02), rgba(9, 47, 76, 0.32));
+  background: linear-gradient(180deg, rgba(9, 47, 76, 0.015), rgba(9, 47, 76, 0.24));
 }
 
 .gallery-media-asset {
   display: block;
   object-fit: cover;
   object-position: center center;
-  transform: scale(1.04);
-  filter: blur(5px) saturate(0.94) brightness(0.98);
+  transform: scale(1.02);
+  filter: blur(3px) saturate(0.97) brightness(0.99);
   transition: transform 0.7s ease, filter 0.7s ease;
 }
 
@@ -1098,7 +1098,7 @@ textarea:focus-visible {
   max-height: calc(100dvh - 68px);
   object-fit: contain;
   transform: scale(1.01);
-  filter: blur(6px) brightness(0.93);
+  filter: blur(4px) brightness(0.96);
   border-radius: 22px;
   background: #000;
 }
@@ -1108,7 +1108,7 @@ textarea:focus-visible {
 }
 
 .gallery-card:hover .gallery-media-asset {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 .gallery-privacy-badge {
