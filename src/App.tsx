@@ -674,9 +674,27 @@ type ProtectedGalleryMediaProps = {
 
 function ProtectedGalleryMedia({ type, src, alt, privacyLabel, mode }: ProtectedGalleryMediaProps) {
   const isCard = mode === "card";
+  const [isVideoRevealWindow, setIsVideoRevealWindow] = useState(false);
+
+  useEffect(() => {
+    setIsVideoRevealWindow(false);
+  }, [src, type]);
+
+  const syncVideoRevealWindow = (video: HTMLVideoElement) => {
+    const duration = video.duration;
+
+    if (!Number.isFinite(duration) || duration <= 0) {
+      setIsVideoRevealWindow(false);
+      return;
+    }
+
+    const shouldReveal = duration - video.currentTime <= 10;
+    setIsVideoRevealWindow((current) => (current === shouldReveal ? current : shouldReveal));
+  };
+  const showUnblurredVideo = type === "video" && isVideoRevealWindow;
 
   return (
-    <div className={`gallery-privacy-frame gallery-privacy-frame-${mode}`}>
+    <div className={`gallery-privacy-frame gallery-privacy-frame-${mode} ${showUnblurredVideo ? "is-clear" : ""}`}>
       {type === "video" ? (
         isCard ? (
           <video
@@ -687,10 +705,22 @@ function ProtectedGalleryMedia({ type, src, alt, privacyLabel, mode }: Protected
             playsInline
             autoPlay
             preload="metadata"
+            onLoadedMetadata={(event) => syncVideoRevealWindow(event.currentTarget)}
+            onTimeUpdate={(event) => syncVideoRevealWindow(event.currentTarget)}
+            onSeeked={(event) => syncVideoRevealWindow(event.currentTarget)}
             aria-hidden="true"
           />
         ) : (
-          <video className="gallery-media-asset" src={src} controls autoPlay playsInline />
+          <video
+            className="gallery-media-asset"
+            src={src}
+            controls
+            autoPlay
+            playsInline
+            onLoadedMetadata={(event) => syncVideoRevealWindow(event.currentTarget)}
+            onTimeUpdate={(event) => syncVideoRevealWindow(event.currentTarget)}
+            onSeeked={(event) => syncVideoRevealWindow(event.currentTarget)}
+          />
         )
       ) : (
         <img className="gallery-media-asset" src={src} alt={alt} loading={isCard ? "lazy" : undefined} />
