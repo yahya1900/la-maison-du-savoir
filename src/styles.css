@@ -1082,23 +1082,23 @@ textarea:focus-visible {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(9, 47, 76, 0.04), rgba(9, 47, 76, 0.72));
+  background: linear-gradient(180deg, rgba(9, 47, 76, 0.03), rgba(9, 47, 76, 0.48));
 }
 
 .gallery-media-asset {
   display: block;
   object-fit: cover;
   object-position: center center;
-  transform: scale(1.14);
-  filter: blur(18px) saturate(0.84) brightness(0.9);
+  transform: scale(1.08);
+  filter: blur(8px) saturate(0.9) brightness(0.96);
   transition: transform 0.7s ease, filter 0.7s ease;
 }
 
 .gallery-privacy-frame-lightbox .gallery-media-asset {
   max-height: calc(100dvh - 68px);
   object-fit: contain;
-  transform: scale(1.03);
-  filter: blur(22px) brightness(0.78);
+  transform: scale(1.01);
+  filter: blur(10px) brightness(0.88);
   border-radius: 22px;
   background: #000;
 }
@@ -1108,7 +1108,7 @@ textarea:focus-visible {
 }
 
 .gallery-card:hover .gallery-media-asset {
-  transform: scale(1.18);
+  transform: scale(1.12);
 }
 
 .gallery-privacy-badge {
