@@ -1238,8 +1238,8 @@ function App() {
 
             <div className="hero-card">
               <div className="card-shell">
-                <span className="float-mark float-mark-one">❦</span>
-                <span className="float-mark float-mark-two">❦</span>
+                
+                
                 <img className="hero-logo" src={LOGO_URL} alt={common.hero.card.alt} />
                 <div className="hero-card-label">{common.hero.card.location}</div>
                 <div className="hero-card-title">{common.hero.card.levels}</div>

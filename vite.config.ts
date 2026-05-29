@@ -1,4 +1,5 @@
 import { defineConfig, loadEnv, type Plugin } from "vite";
+import tailwindcss from '@tailwindcss/vite';
 import react from "@vitejs/plugin-react-swc";
 import {
   DEFAULT_META_DESCRIPTION,
@@ -11,6 +12,7 @@ import {
   resolveSiteUrl,
   withTrailingSlash
 } from "./src/seoConfig";
+
 
 function createSeoPlugin(siteUrl: string, googleSiteVerification?: string, googleAnalyticsId?: string): Plugin {
   const canonicalUrl = withTrailingSlash(siteUrl);

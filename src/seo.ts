@@ -20,6 +20,8 @@ const OG_LOCALE: Record<SeoLanguage, string> = {
   es: "es_ES"
 };
 
+const GOOGLE_SITE_VERIFICATION = import.meta.env.VITE_GOOGLE_SITE_VERIFICATION?.trim();
+
 function ensureMetaTag(attribute: "name" | "property", value: string) {
   let meta = document.head.querySelector(`meta[${attribute}="${value}"]`) as HTMLMetaElement | null;
 
@@ -70,6 +72,9 @@ export function syncSeo({
 
   ensureMetaTag("name", "description").content = description;
   ensureMetaTag("name", "robots").content = "index, follow, max-image-preview:large";
+  if (GOOGLE_SITE_VERIFICATION) {
+    ensureMetaTag("name", "google-site-verification").content = GOOGLE_SITE_VERIFICATION;
+  }
   ensureMetaTag("name", "theme-color").content = "#f4ecdc";
   ensureMetaTag("property", "og:title").content = title;
   ensureMetaTag("property", "og:description").content = description;

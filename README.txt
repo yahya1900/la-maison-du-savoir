@@ -21,9 +21,10 @@ Static deployment:
 
 Google / SEO configuration:
 - copy `.env.example` to `.env` when you want to override production settings
-- `VITE_SITE_URL` sets the public canonical URL used for sitemap, robots, and metadata
-- `VITE_GOOGLE_SITE_VERIFICATION` adds the Search Console verification meta tag
-- `VITE_GA_MEASUREMENT_ID` adds the Google Analytics 4 tag
+- set `VITE_SITE_URL` to your published website URL for sitemap, robots, canonical links and open graph metadata
+- set `VITE_GOOGLE_SITE_VERIFICATION` to the code provided by Google Search Console for site ownership verification
+- set `VITE_GA_MEASUREMENT_ID` only if you want Google Analytics 4 tracking
+- run `npm run build`, then deploy `dist/` and submit the generated `sitemap.xml`/`robots.txt` to Google Search Console
 
 Main source files:
 - `src/App.tsx`
